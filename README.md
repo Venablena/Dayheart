@@ -16,14 +16,14 @@ Front end for a progressive web app
 
 ![welcome](https://github.com/Venablena/Dayheart/blob/master/Templates/welcome.png )
 
-* Search
+* Map view, map view with center detail, filter search
 
 ![search](https://github.com/Venablena/Dayheart/blob/master/Templates/search.png )
 
-* Matches
+* List view, Center detail view, Matches view
 
 ![list-detail-matches](https://github.com/Venablena/Dayheart/blob/master/Templates/list-detail-matches.png)
 
 ## Demo
 
-![demo](https://github.com/Venablena/Dayheart/blob/master/Templates/Dayheart_mock1.gif=270x540 )
+![demo](https://github.com/Venablena/Dayheart/blob/master/Templates/Dayheart_mock1.gif =270x540 )
