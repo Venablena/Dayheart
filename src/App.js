@@ -1,19 +1,51 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import logo from './logo.png';
 import './App.css';
+
+const Page = ({ title }) => (
+    <div className="App">
+      <div className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <h2>{title}</h2>
+      </div>
+      <p className="App-intro">
+        This is the {title} page.
+      </p>
+      <p>
+        <Link to="/">Home</Link>
+      </p>
+      <p>
+        <Link to="/welcome">Welcome</Link>
+      </p>
+      <p>
+        <Link to="/map">Map</Link>
+      </p>
+    </div>
+);
+
+const Home = (props) => (
+  <Page title="Home"/>
+);
+
+const Welcome = (props) => (
+  <Page title="Welcome"/>
+);
+
+const Map = (props) => (
+  <Page title="Map"/>
+);
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={Home}/>
+          <Route path="/about" component={Welcome}/>
+          <Route path="/map" component={Map}/>
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
