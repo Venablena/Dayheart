@@ -26,4 +26,4 @@ Front end for a progressive web app
 
 ## Demo
 
-![demo]<img src="https://github.com/Venablena/Dayheart/blob/master/Templates/Dayheart_mock1.gif" width="270">
+<img src="https://github.com/Venablena/Dayheart/blob/master/Templates/Dayheart_mock1.gif" width="270">
