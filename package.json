@@ -1,7 +1,7 @@
 {
   "name": "dayheart",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "build-client": "cd ./client && npm run build",
     "dev": "npm run serve-client & nodemon ./server/app.js",
