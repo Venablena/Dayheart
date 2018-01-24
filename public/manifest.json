@@ -1,5 +1,5 @@
 {
-  "short_name": "Day Heart",
+  "short_name": "DayHeart",
   "name": "Find Daycare Providers near you",
   "icons": [
     {
@@ -28,7 +28,7 @@
       "type": "image/ico"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "/?utm_source=homescreen",
   "display": "standalone",
   "theme_color": "#F05F27",
   "background_color": "#0B4659"
