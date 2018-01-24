@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
-import logo from './logo.png';
 import './App.css';
 
 const Page = ({ title }) => (
     <div className="App">
       <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src='./DayHeart_logo_192.png' className="App-logo" alt="logo" />
         <h2>{title}</h2>
       </div>
       <p className="App-intro">
