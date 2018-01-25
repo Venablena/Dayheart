@@ -1,6 +1,5 @@
 # Dayheart
-Front end for a progressive web app
-
+A progressive web app that helps parents to find daycare providers in their region (Seattle to start with).
 
 ## Design
 
@@ -13,7 +12,7 @@ Front end for a progressive web app
 
 ![search_no-login](https://github.com/Venablena/Dayheart/blob/master/Templates/search_no-login.png )
 
-#### Profile/Welcome page 
+#### Profile/Welcome page
 * first time user without saved favorites and a returning user with favorites
 * log out in the left top corner for logged in user
 * notification bubble if there has been a match
