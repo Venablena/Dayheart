@@ -7,6 +7,10 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import logger from 'redux-logger'
 import thunkMiddleWare from 'redux-thunk'
+
+//style
+import 'semantic-ui-css/semantic.min.css'
+
 //My reducers and actions:
 // import reducers from './reducers'
 // import { fetchMessages } from './actions'

@@ -10,6 +10,7 @@ import { firebaseConfig } from '../config.js'
 import Home from '../containers/Home'
 import Login from '../containers/Login'
 import Search from '../containers/Search'
+import List from '../containers/List'
 
 const ActionCreators = []
 
@@ -38,9 +39,10 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={Home}/>
           <Route path="/search" component={Search}/>
           <Route path="/login" component={Login}/>
+          <Route path="/list" component={List}/>
+          <Route path="/" component={Home}/>
         </Switch>
       </BrowserRouter>
     );
