@@ -31,16 +31,12 @@ const ActionCreators = []
 
 class App extends Component {
 
-  componentDidMount () {
-    firebase.initializeApp(firebaseConfig)
-  }
-
   render() {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/search" component={Search}/>
-          <Route path="/login" component={Login}/>
+          <Route path="/search" component={() => <Search />}/>
+          <Route path="/login" component={() => <Login {...this.props}/>}/>
           <Route path="/list" component={List}/>
           <Route path="/" component={Home}/>
         </Switch>
@@ -49,9 +45,7 @@ class App extends Component {
   }
 }
 
-const stateToProps = (state) => {
-  return state
-}
+const stateToProps = (state) => ({})
 
 const dispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch)
 

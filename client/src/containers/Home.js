@@ -14,7 +14,7 @@ const Home = ({}) => (
     <Container>
       <Form>
         <Form.Field>
-          <input placeholder="Enter zip code" />
+          <Form.Input placeholder="Enter zip code" />
         </Form.Field>
         <Form.Group inline>
          <label>Radius</label>
@@ -23,10 +23,10 @@ const Home = ({}) => (
             <Form.Radio value='15 miles' label='15 miles' />
             <Form.Radio value='20 miles' label='20 miles' />
         </Form.Group>
-      </Form>
-        <Button className='orange'>
+        <Form.Button className='orange'>
           <Link to="/search">Search</Link>
-        </Button>
+        </Form.Button>
+      </Form>
         <Button className='orange'>
           <Link to="/login">Log in</Link>
         </Button>
