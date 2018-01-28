@@ -45,20 +45,17 @@ const rootReducer = combineReducers({
   firestore: firestoreReducer
 })
 
-//Create store with reducers and initial state
-const initialState = {}
+//Create store with reducers, initial state and middleware
+//const initialState = {}
 const store = createStoreWithFirebase(
-  // () => {},
   rootReducer,
-  initialState,
+  //initialState,
   applyMiddleware(
     thunkMiddleWare,
     logger
   )
 )
-
 // store.dispatch()
-
 ReactDOM.render(
   <Provider store = { store }>
     <App />

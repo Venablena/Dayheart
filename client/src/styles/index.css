@@ -3,10 +3,36 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
 main {
   text-align: center;
   background-color: #0B4659;
 }
+
+.toolbar, .infobar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
+.toolbar {
+  background-color: #F05F27;
+  color: white;
+  height: 4rem;
+}
+
+.infobar {
+  background-color: lightgrey;
+  height: 3rem;
+}
+
+.title {
+  height: 6rem;
+}
+
 .App-header {
   padding: 20px;
   color: white;

@@ -7,3 +7,5 @@ export const firebaseConfig = {
   storageBucket: "dayheart-98108.appspot.com",
   messagingSenderId: "786071528481"
 };
+
+export const GoogleAPIKey = 'AIzaSyB4Yt54AFpoYQp4QAi17qbROs6NMZlb45I'

@@ -1,8 +1,3 @@
-// import * as authActions from './auth'
-// // import * as searchActions from './search'
-//
-// export default { authActions }
-
 import firebase from 'firebase'
 
 export const createUser = (email, password) => {

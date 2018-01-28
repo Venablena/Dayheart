@@ -16,10 +16,10 @@ const Login = ({ createUser }) => {
     <Container>
       <Form onSubmit={ handleSubmit }>
         <Form.Field>
-          <Form.Input name="email" type="email" label="Email"/>
+          <Form.Input name="email" type="email" label="Email" autoComplete="email"/>
         </Form.Field>
         <Form.Field>
-          <Form.Input name="password" type="password" label="Password" />
+          <Form.Input name="password" type="password" label="Password" autoComplete="password"/>
         </Form.Field>
         <Form.Field>
           <Form.Button className='orange'> Submit</Form.Button>
