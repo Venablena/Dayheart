@@ -1,13 +1,19 @@
 import React from 'react';
-import { Form, Container, Segment } from 'semantic-ui-react'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
+import { Form, Container, Segment, Button } from 'semantic-ui-react'
+import { getProviders } from '../actions'
 
-const Search = ({}) => {
+const Search = ({ getProviders }) => {
 
-  const handleSubmit = (e) => e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    getProviders()
+  }
 
   return (
     <Container>
-      <Form onSubmit={ handleSubmit }>
+      <Form name="searchForm" onSubmit={ handleSubmit }>
 
         <Form.Field>
           <Form.Input label='Search near' placeholder="Enter zip code" />
@@ -40,7 +46,7 @@ const Search = ({}) => {
 
         <Segment.Group horizontal>
          <Segment>Clear</Segment>
-         <Segment className='orange inverted'>Search</Segment>
+         <Segment className='orange inverted'><Button type='submit'><a href='/map'>Search</a></Button></Segment>
          <Segment></Segment>
         </Segment.Group>
 
@@ -49,4 +55,10 @@ const Search = ({}) => {
   );
 }
 
-export default Search;
+const mapStateToProps = state => ({})
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ getProviders }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search)

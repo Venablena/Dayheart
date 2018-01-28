@@ -2,10 +2,18 @@ import { combineReducers } from 'redux'
 
 import {
   CREATE_USER_SUCCESS,
-  CREATE_USER_FAIL
+  CREATE_USER_FAIL,
+  PROVIDERS_FETCH_SUCCESS
 } from '../actions'
 
 const INITIAL_STATE = []
+
+export const providers = (state = {}, action) => {
+  switch(action.type) {
+    case(PROVIDERS_FETCH_SUCCESS):
+    return { ...state, providers: action.payload}
+  }
+}
 
 export const auth = (state = {}, action) => {
     switch(action.type) {
@@ -21,5 +29,6 @@ export const auth = (state = {}, action) => {
 }
 
 export default combineReducers({
-  auth
+  auth,
+  providers
 })

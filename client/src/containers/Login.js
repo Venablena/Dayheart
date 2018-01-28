@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { Form, Container } from 'semantic-ui-react'
-import { createUser } from '../actions/'
+import { createUser } from '../actions'
 
 const Login = ({ createUser }) => {
   const handleSubmit = (e) => {

@@ -14,7 +14,6 @@ export class MapContainer extends Component {
   recenterMap = () => {
     const map = this.map;
     const curr = this.state.currentLocation;
-
     const google = this.props.google;
     const maps = google.maps;
 

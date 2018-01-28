@@ -15,8 +15,8 @@ import firebase from 'firebase'
 import { firebaseConfig } from './config.js'
 
 //Firestore for database
-import 'firebase/firestore'
-import { reduxFirestore, firestoreReducer } from 'redux-firestore'
+// import 'firebase/firestore'
+// import { reduxFirestore, firestoreReducer } from 'redux-firestore'
 
 //style
 import 'semantic-ui-css/semantic.min.css'
@@ -28,21 +28,21 @@ import 'semantic-ui-css/semantic.min.css'
 //Initialize Firebase
 firebase.initializeApp(firebaseConfig)
 //Initialize Firestore
-const rrfConfig = {
+const config = {
   userProfile: 'users',
-  useFirestoreForProfile: true
+  // useFirestoreForProfile: true
 }
-firebase.firestore()
+//firebase.firestore()
 //Add FireStore to the store
 const createStoreWithFirebase = compose(
-  reactReduxFirebase(firebase, rrfConfig),
-  reduxFirestore(firebase)
+  reactReduxFirebase(firebase, config),
+  // reduxFirestore(firebase)
 )(createStore)
 
 //Add Firebase to reducers
 const rootReducer = combineReducers({
-  firebase: firebaseReducer,
-  firestore: firestoreReducer
+  firebase: firebaseReducer
+  // firestore: firestoreReducer
 })
 
 //Create store with reducers, initial state and middleware

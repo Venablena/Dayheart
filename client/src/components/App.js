@@ -25,7 +25,9 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      signedIn: false
+      loggedIn: false,
+      userId: '',
+      providers: ''
     }
   }
 
@@ -37,13 +39,19 @@ class App extends Component {
       //firebase.auth.FacebookAuthProvider.PROVIDER_ID
     ],
     //redirectUrl:'',
-    callbacks: {
-      signInSuccess: currentUser => {
-        this.props.createUserProfile(currentUser),
-        this.setState({ signedIn: true })
-        return false // avoids redirect
-      }
-    }
+    signInSuccess: (currentUser) => this.props.createUserSuccess(currentUser)
+        // this.setState({ signedIn: true })
+        // return false // avoids redirect
+
+  }
+
+  componentDidMount() {
+
+    // const userId = firebase.auth().currentUser.uid;
+    // return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+    //   var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+    //   // ...
+    // });
   }
 
   render() {
