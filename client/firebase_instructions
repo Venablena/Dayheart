@@ -1,0 +1,45 @@
+//SET DATA: (params)
+//path String Path to location on Firebase which to set
+//value (Object | String | Boolean | Number) Value to write to Firebase
+//onComplete Function Function to run on complete (not required)
+//Returns Promise Containing reference snapshot
+
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { firebaseConnect } from 'react-redux-firebase'
+const Example = ({ firebase: { set } }) => (
+  <button onClick={() => set('some/path', { here: 'is a value' })}>
+    Set To Firebase
+  </button>
+)
+export default firebaseConnect()(Example)
+
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { firebaseConnect } from 'react-redux-firebase'
+const Example = ({ firebase: { update } }) => (
+  <button onClick={() => update('some/path', { here: 'is a value' })}>
+    Update To Firebase
+  </button>
+)
+export default firebaseConnect()(Example)
+
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { firebaseConnect } from 'react-redux-firebase'
+const Example = ({ firebase: { push } }) => (
+  <button onClick={() => push('some/path', true)}>
+    Push To Firebase
+  </button>
+)
+export default firebaseConnect()(Example)
+
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { firebaseConnect } from 'react-redux-firebase'
+const Example = ({ firebase: { remove } }) => (
+  <button onClick={() => remove('some/path')}>
+    Remove From Firebase
+  </button>
+)
+export default firebaseConnect()(Example)

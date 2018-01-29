@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 //Redux
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
@@ -22,14 +22,14 @@ const ActionCreators = []
 // const Login = (props) => (<Page title="Login"/>)
 
 class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      loggedIn: false,
-      userId: '',
-      providers: ''
-    }
-  }
+  // constructor(props){
+  //   super(props);
+  //   // this.state = {
+  //   //   loggedIn: false,
+  //   //   userId: '',
+  //   //   providers: ''
+  //   // }
+  // }
 
   uiConfig = {
     signInFlow : 'popup',//OR 'redirect'
@@ -55,6 +55,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('app props:', this.props);
     return (
       <BrowserRouter>
         <Switch>
@@ -69,8 +70,11 @@ class App extends Component {
   }
 }
 
-const stateToProps = (state) => ({})
+const mapStateToProps = (state) => ({
+    providers: state.dayheart.providers,
+    user: state.firebase.auth.uid
+})
 
-const dispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch)
 
-export default connect(stateToProps, dispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

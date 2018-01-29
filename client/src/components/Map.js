@@ -7,9 +7,9 @@ export class MapContainer extends Component {
     console.log("I'm clicking on a marker");
   }
 
-  centerMoved = () => {
-    console.log("load new centers at this location");
-  }
+  // centerMoved = () => {
+  //   console.log("load new centers at this location");
+  // }
 
   recenterMap = () => {
     const map = this.map;

@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { Form, Container, Segment, Button } from 'semantic-ui-react'
 import { getProviders } from '../actions'
+import { withRouter } from 'react-router-dom'
 
-const Search = ({ getProviders }) => {
-
+const Search = (props) => {
   const handleSubmit = (e) => {
+    console.log('get providers')
     e.preventDefault()
-    getProviders()
+    props.getProviders()
+    props.history.push('/map')
   }
 
   return (
@@ -46,7 +48,9 @@ const Search = ({ getProviders }) => {
 
         <Segment.Group horizontal>
          <Segment>Clear</Segment>
-         <Segment className='orange inverted'><Button type='submit'><a href='/map'>Search</a></Button></Segment>
+         <Segment className='orange inverted'>
+          <Button type='submit'>Search</Button>
+         </Segment>
          <Segment></Segment>
         </Segment.Group>
 
@@ -61,4 +65,4 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators({ getProviders }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Search))

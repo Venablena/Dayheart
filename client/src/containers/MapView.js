@@ -3,20 +3,32 @@ import Toolbar from '../components/Toolbar'
 import InfoBar from '../components/InfoBar'
 import GoogleApiWrapper from '../components/Map'
 
-class MapView extends Component {
-  constructor(props){
-    super(props)
-  }
-
-  render(){
-    console.log('state:', this.state);
+const MapView = (props) => {
+    console.log('state:', props);
     return (
       <main>
         <Toolbar />
         <InfoBar />
         <GoogleApiWrapper />
       </main>
-  )}
+  )
 }
 
-export default MapView;
+// export default MapView;
+//
+// class MapView extends Component {
+//   constructor(props){
+//     super(props)
+//   }
+//
+//   render(){
+//     console.log('state:', this.props);
+//     return (
+//       <main>
+//         <Toolbar />
+//         <InfoBar />
+//         <GoogleApiWrapper />
+//       </main>
+//   )}
+// }
+export default MapView

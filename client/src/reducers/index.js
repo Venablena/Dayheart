@@ -6,12 +6,14 @@ import {
   PROVIDERS_FETCH_SUCCESS
 } from '../actions'
 
-const INITIAL_STATE = []
+const INITIAL_STATE = {}
 
 export const providers = (state = {}, action) => {
   switch(action.type) {
     case(PROVIDERS_FETCH_SUCCESS):
-    return { ...state, providers: action.payload}
+      return { ...state, providers: action.payload}
+    default:
+      return state
   }
 }
 

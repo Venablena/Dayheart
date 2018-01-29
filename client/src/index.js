@@ -21,8 +21,8 @@ import { firebaseConfig } from './config.js'
 //style
 import 'semantic-ui-css/semantic.min.css'
 
-//My reducers and actions:
-// import reducers from './reducers'
+//My reducers:
+import reducers from './reducers'
 // import { fetchMessages } from './actions'
 
 //Initialize Firebase
@@ -41,15 +41,16 @@ const createStoreWithFirebase = compose(
 
 //Add Firebase to reducers
 const rootReducer = combineReducers({
-  firebase: firebaseReducer
+  firebase: firebaseReducer,
+  dayheart: reducers
   // firestore: firestoreReducer
 })
 
 //Create store with reducers, initial state and middleware
-//const initialState = {}
+const initialState = {}
 const store = createStoreWithFirebase(
   rootReducer,
-  //initialState,
+  initialState,
   applyMiddleware(
     thunkMiddleWare,
     logger
