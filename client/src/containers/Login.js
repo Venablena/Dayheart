@@ -2,37 +2,41 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { Form, Container } from 'semantic-ui-react'
-import { createUser } from '../actions'
+import Header from '../components/Header'
 
-const Login = ({ createUser }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('submitting!');
-    const { email, password } = e.target
-    createUser(email.value, password.value)
-  }
+//Firebase for authorization, login and signup
+import * as firebase from 'firebase'
+import { firebaseConfig } from '../config.js'
+import { FirebaseAuth } from 'react-firebaseui'
+
+const Login = (props) => {
+  const uiConfig = {
+      signInFlow : 'redirect',
+      signInOptions: [
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      ],
+      callbacks: {
+        signInSuccess: (currentUser) => props.history.push('/welcome')
+      }
+    }
 
   return (
-    <Container>
-      <Form onSubmit={ handleSubmit }>
-        <Form.Field>
-          <Form.Input name="email" type="email" label="Email" autoComplete="email"/>
-        </Form.Field>
-        <Form.Field>
-          <Form.Input name="password" type="password" label="Password" autoComplete="password"/>
-        </Form.Field>
-        <Form.Field>
-          <Form.Button className='orange'> Submit</Form.Button>
-        </Form.Field>
-      </Form>
-    </Container>
+    <main>
+      <Header />
+      <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
+    </main>
   );
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = ({ firebase: { auth, profile, currentUser } }) => ({
+  auth,
+  profile,
+  currentUser
+})
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ createUser }, dispatch)
-}
+// const mapDispatchToProps = dispatch => {
+//   return bindActionCreators({ createUser }, dispatch)
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps)(Login);

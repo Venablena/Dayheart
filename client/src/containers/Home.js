@@ -1,16 +1,12 @@
 import React from 'react';
 import '../styles/index.css'
 import { Link } from 'react-router-dom'
-import { Button, Form, Segment, Container } from 'semantic-ui-react'
+import { Button, Form, Container } from 'semantic-ui-react'
+import Header from '../components/Header'
 
 const Home = ({}) => (
   <main>
-    <div className="App-header">
-      <img src='./DayHeart_logo_192.png' className="App-logo" alt="logo" />
-      <p>
-        Find a childcare provider near you.
-      </p>
-    </div>
+    <Header />
     <Container>
       <Form>
         <Form.Field>
@@ -24,7 +20,7 @@ const Home = ({}) => (
             <Form.Radio value='20 miles' label='20 miles' />
         </Form.Group>
         <Form.Button className='orange'>
-          <Link to="/search">Search</Link>
+          <Link to="/map">Search</Link>
         </Form.Button>
       </Form>
         <Button className='orange'>

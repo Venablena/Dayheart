@@ -3,6 +3,10 @@ import { GoogleAPIKey } from '../config'
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 export class MapContainer extends Component {
+  constructor(props){
+    super(props)
+  }
+
   handleClick = (props, marker, e) => {
     console.log("I'm clicking on a marker");
   }
@@ -50,6 +54,8 @@ export class MapContainer extends Component {
       if (!this.props.loaded) {
         return (<div>Loading...</div>)
       }
+      console.log('map props:', this.props);
+
       return (
         <Map
           google={this.props.google}

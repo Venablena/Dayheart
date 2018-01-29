@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { Form, Container, Segment, Button } from 'semantic-ui-react'
@@ -44,6 +44,13 @@ const Search = (props) => {
           <Segment>Starting</Segment>
           <Segment>Now</Segment>
           <Segment>Date</Segment>
+        </Segment.Group>
+
+        <Segment.Group horizontal>
+         <Segment>Type of facility</Segment>
+         <Segment>Center</Segment>
+         <Segment>Family</Segment>
+         <Segment>Preschool</Segment>
         </Segment.Group>
 
         <Segment.Group horizontal>

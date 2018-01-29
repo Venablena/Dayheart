@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 //Firebase for authorization, login and signup
 import * as firebase from 'firebase'
 import { firebaseConfig } from '../config.js'
-import { FirebaseAuth } from 'react-firebaseui'
+// import { FirebaseAuth } from 'react-firebaseui'
 
 import Home from '../containers/Home'
 import Login from '../containers/Login'
@@ -31,19 +31,6 @@ class App extends Component {
   //   // }
   // }
 
-  uiConfig = {
-    signInFlow : 'popup',//OR 'redirect'
-    signInOptions: [
-      firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      //firebase.auth.FacebookAuthProvider.PROVIDER_ID
-    ],
-    //redirectUrl:'',
-    signInSuccess: (currentUser) => this.props.createUserSuccess(currentUser)
-        // this.setState({ signedIn: true })
-        // return false // avoids redirect
-
-  }
 
   componentDidMount() {
 
@@ -59,11 +46,13 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/map" component={() => <MapView />}/>
-          <Route path="/login" component={() => <FirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>}/>
+          <Route path="/map" component={() => <MapView providers = {this.props.providers}/>}/>
+          <Route path="/login" component={Login}/>
           <Route path="/list" component={ListView}/>
           <Route path="/welcome" component={Welcome}/>
-          <Route path="/" component={Home}/>
+          {/*Redirect to welcome screen if user is already logged in*/}
+          <Route exact path='/' render={() => (this.props.user ? (<Welcome/>) : (<Home/>)
+          )}/>
         </Switch>
       </BrowserRouter>
     );
@@ -75,6 +64,6 @@ const mapStateToProps = (state) => ({
     user: state.firebase.auth.uid
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch)
+// const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

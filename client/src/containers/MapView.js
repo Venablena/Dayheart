@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Toolbar from '../components/Toolbar'
 import InfoBar from '../components/InfoBar'
 import GoogleApiWrapper from '../components/Map'
 
 const MapView = (props) => {
-    console.log('state:', props);
+    console.log('MapView props:', props);
     return (
       <main>
         <Toolbar />
         <InfoBar />
-        <GoogleApiWrapper />
+        <GoogleApiWrapper providers= {props.providers} user={props.user}/>
       </main>
   )
 }
