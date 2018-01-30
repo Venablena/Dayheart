@@ -10,7 +10,7 @@ import { firebaseConfig } from '../config.js'
 
 import Home from '../containers/Home'
 import Login from '../containers/Login'
-//import Firebase from './Firebase'
+import Single from '../containers/SingleView'
 import MapView from '../containers/MapView'
 import ListView from '../containers/ListView'
 import Welcome from '../containers/Welcome'
@@ -47,7 +47,8 @@ class App extends Component {
           <Route path="/login" component={Login}/>
           <Route path="/list" component={() => <ListView
             {...this.props}/>}/>
-          <Route path="/welcome" component={Welcome}/>
+          <Route path="/providers/:providerId" component={Single}/>
+          {/*<Route path="/welcome" component={Welcome}/>*/}
           <Route exact path='/' render={() => (this.props.user ? (<Welcome/>) : (<Home/>)
           )}/>
         </Switch>

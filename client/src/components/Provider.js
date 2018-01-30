@@ -1,17 +1,21 @@
 import React from 'react';
 import { Container, Segment, Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 const Provider = ({ provider }) => {
-console.log('Provider props:', provider);
+
   return (
     <Container>
       <Segment.Group horizontal>
-        <Segment color='olive'><h4>{ provider.name }</h4>
-          <p>{ provider.type }</p>
-          <p>{ provider.ages }</p>
-          <p>{ provider.address }</p>
+        <Segment textAlign='left' color='olive'>
+          <Link to={ `/providers/${ provider.id }`}>
+            <h4>{ provider.name }</h4>
+            <p>{ provider.type }</p>
+            <p>{ provider.ages }</p>
+            <p>{ provider.address }</p>
+          </Link>
         </Segment>
-        <Segment compact>
+        <Segment compact textAlign='right'>
           <Icon name='heart outline' size='large' />
         </Segment>
       </Segment.Group>
