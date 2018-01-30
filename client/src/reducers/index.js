@@ -10,7 +10,7 @@ import {
 export const providers = (state = {}, action) => {
   switch(action.type) {
     case(PROVIDERS_FETCH_SUCCESS):
-      return { ...state, providers: action.payload}
+      return { ...state, all: action.payload}
     default:
       return state
   }

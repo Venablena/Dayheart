@@ -1,15 +1,16 @@
 import React from 'react';
 import { Container, Segment, Button } from 'semantic-ui-react'
 
-const Provider = ({ provider }) => (
-  <Container>
-    <Segment><h1>{ Name }</h1></Segment>
-    <Segment>
-      <p>{ Type }</p>
-      <p>{ Short Description }</p>
-    </Segment>
-  </Container>
-);
+const Provider = ({ provider }) => {
+console.log('Provider props:', provider);
+  return (
+    <Container>
+      <Segment><h4>{ provider.Name }</h4>
+        <p>{ provider.Type }</p>
+        <p>{ provider.Address }</p>
+      </Segment>
+    </Container>
+);}
 
 export default Provider;
 

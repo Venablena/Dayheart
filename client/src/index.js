@@ -26,10 +26,8 @@ import reducers from './reducers'
 
 //Initialize Firebase
 firebase.initializeApp(firebaseConfig)
-//Initialize Firestore
 const config = {
-  currentUser: 'users',
-  // useFirestoreForProfile: true
+  userProfile: 'users'
 }
 //firebase.firestore()
 //Add FireStore to the store

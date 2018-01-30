@@ -46,11 +46,11 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/map" component={() => <MapView providers = {this.props.providers}/>}/>
+          <Route path="/map" component={() => <MapView {...this.props}/>}/>
           <Route path="/login" component={Login}/>
-          <Route path="/list" component={ListView}/>
+          <Route path="/list" component={() => <ListView
+            {...this.props}/>}/>
           <Route path="/welcome" component={Welcome}/>
-          {/*Redirect to welcome screen if user is already logged in*/}
           <Route exact path='/' render={() => (this.props.user ? (<Welcome/>) : (<Home/>)
           )}/>
         </Switch>
@@ -60,7 +60,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    providers: state.dayheart.providers,
+    providers: state.dayheart.providers.all,
     user: state.firebase.auth.uid
 })
 

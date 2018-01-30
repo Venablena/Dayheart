@@ -3,13 +3,13 @@ import Toolbar from '../components/Toolbar'
 import InfoBar from '../components/InfoBar'
 import GoogleApiWrapper from '../components/Map'
 
-const MapView = (props) => {
-    console.log('MapView props:', props);
+const MapView = ({providers, user}) => {
+    console.log('MapView props:', providers, user);
     return (
       <main>
         <Toolbar />
         <InfoBar />
-        <GoogleApiWrapper providers= {props.providers} user={props.user}/>
+        <GoogleApiWrapper providers= {providers} user={user}/>
       </main>
   )
 }
