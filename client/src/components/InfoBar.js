@@ -1,7 +1,7 @@
 import React from 'react';
 
-const InfoBar = ({}) => (
+const Infobar = ({}) => (
   <div className = 'infobar'></div>
 );
 
-export default InfoBar;
+export default Infobar;

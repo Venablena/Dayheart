@@ -1,14 +1,20 @@
 import React from 'react';
-import { Container, Segment, Button } from 'semantic-ui-react'
+import { Container, Segment, Icon } from 'semantic-ui-react'
 
 const Provider = ({ provider }) => {
 console.log('Provider props:', provider);
   return (
     <Container>
-      <Segment><h4>{ provider.name }</h4>
-        <p>{ provider.type }</p>
-        <p>{ provider.address }</p>
-      </Segment>
+      <Segment.Group horizontal>
+        <Segment color='olive'><h4>{ provider.name }</h4>
+          <p>{ provider.type }</p>
+          <p>{ provider.ages }</p>
+          <p>{ provider.address }</p>
+        </Segment>
+        <Segment compact>
+          <Icon name='heart outline' size='large' />
+        </Segment>
+      </Segment.Group>
     </Container>
 );}
 
