@@ -48,7 +48,7 @@ const Single = (props) => {
         <Segment compact>Waitlist Fee</Segment>
         <Segment>{ provider.waitlist_fee  }</Segment>
       </Segment.Group>
-      <Segment><a href={`https://apps.del.wa.gov/Check/LicenseView.aspx?id=-${provider.id}`}>Licensing Status</a></Segment>
+      <Segment><a href={`https://apps.del.wa.gov/Check/LicenseView.aspx?id=-${.envprovider.id}`}>Licensing Status</a></Segment>
     </main>
   );
 }
