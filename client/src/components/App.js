@@ -15,6 +15,8 @@ import MapView from '../containers/MapView'
 import ListView from '../containers/ListView'
 import Welcome from '../containers/Welcome'
 
+import { getProviders } from '../actions'
+
 const ActionCreators = []
 
 // example on how to pass props
@@ -33,12 +35,7 @@ class App extends Component {
 
 
   componentDidMount() {
-
-    // const userId = firebase.auth().currentUser.uid;
-    // return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-    //   var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-    //   // ...
-    // });
+    this.props.getProviders()
   }
 
   render() {
@@ -64,6 +61,8 @@ const mapStateToProps = (state) => ({
     user: state.firebase.auth.uid
 })
 
-// const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch)
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ getProviders }, dispatch)
+}
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

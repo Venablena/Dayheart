@@ -5,9 +5,9 @@ const Provider = ({ provider }) => {
 console.log('Provider props:', provider);
   return (
     <Container>
-      <Segment><h4>{ provider.Name }</h4>
-        <p>{ provider.Type }</p>
-        <p>{ provider.Address }</p>
+      <Segment><h4>{ provider.name }</h4>
+        <p>{ provider.type }</p>
+        <p>{ provider.address }</p>
       </Segment>
     </Container>
 );}
