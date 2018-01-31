@@ -26,20 +26,18 @@ const ActionCreators = []
 class App extends Component {
   // constructor(props){
   //   super(props);
-  //   // this.state = {
-  //   //   loggedIn: false,
-  //   //   userId: '',
-  //   //   providers: ''
-  //   // }
+  //   this.state = {
+  //     providers: data
+  //   }
   // }
-
+  //
 
   componentDidMount() {
     this.props.getProviders()
   }
 
   render() {
-    console.log('app props:', this.props);
+    console.log(this.state);
     return (
       <BrowserRouter>
         <Switch>

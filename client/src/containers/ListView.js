@@ -4,7 +4,7 @@ import Toolbar from '../components/Toolbar'
 import Infobar from '../components/Infobar'
 
 const List = ({providers, user}) => {
-  console.log('list props:', providers, user);
+  
   return (
     <main>
       <Toolbar />

@@ -7,7 +7,8 @@ import {
   PROVIDERS_FETCH_SUCCESS
 } from '../actions'
 
-export const providers = (state = {}, action) => {
+export const providers = (state = {all:[]}, action) => {
+  console.log(action);
   switch(action.type) {
     case(PROVIDERS_FETCH_SUCCESS):
       return { ...state, all: action.payload}
