@@ -23,16 +23,24 @@ export class MapView extends Component {
   }
 
   render() {
+    console.log('MapView', this.props);
     return (
       <main>
         <Toolbar />
         <Infobar />
         <Container>
-          <GoogleApiWrapper providers= {this.props.providers} user={this.props.user} handleClick= {this.handleClick}/>
+          <GoogleApiWrapper
+            providers= {this.props.providers}
+            currentSelection= {this.props.currentSelection}
+            user= {this.props.user}
+            handleClick= {this.handleClick}/>
         </Container>
         <div className= 'overlay'>
           {this.props.overlay ?
-            <Provider provider={ this.state.selected } isActive= {true}/> : null }
+            <Provider
+              provider={ this.state.selected }
+              isActive= {true}/>
+              : null }
         </div>
       </main>
     )
@@ -43,7 +51,7 @@ const mapStateToProps = (state) => {
   return ({
     overlay: state.dayheart.toggleOverlay,
     providers: state.dayheart.providers.all,
-    filtered: state.dayheart.providers.filtered,
+    currentSelection: state.dayheart.providers.filtered,
     favorites: state.dayheart.providers.favorites,
     user: state.firebase.auth.uid
   })

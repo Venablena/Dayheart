@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-//import providers from './providers'
 
 import {
   TOGGLE_OVERLAY,
   FAVORITES_FETCH_SUCCESS,
   PROVIDERS_FETCH_SUCCESS,
+  FILTER_SELECTION
 } from '../actions'
 
 const PROVIDER_STATE = {
@@ -20,6 +20,8 @@ export const providers = (state = PROVIDER_STATE, action) => {
       return { ...state, all: action.payload}
     case(FAVORITES_FETCH_SUCCESS):
       return { ...state, favorites: action.payload}
+    case(FILTER_SELECTION):
+      return { ...state, filtered: action.payload}
     default:
       return state
   }

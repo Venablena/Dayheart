@@ -4,8 +4,7 @@ import Provider from '../components/Provider'
 import { Segment, Container } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
-const Single = (props) => {
-  const provider = props.provider
+const Single = ({ provider }) => {
   if (!provider) return (<div>Loading...</div>)
   return (
     <main>
