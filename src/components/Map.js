@@ -7,9 +7,7 @@ export class MapContainer extends Component {
     super(props)
   }
 
-  handleClick = (target) => {
-    console.log(target.provider);
-  }
+
 
   // centerMoved = () => {
   //   console.log("load new centers at this location");
@@ -67,7 +65,7 @@ export class MapContainer extends Component {
         return <Marker
             key = { el.id }
             position = { coordinates }
-            onClick = { this.handleClick }
+            onClick = { this.props.handleClick }
             icon = { icon }
             provider = { el }/>
       })

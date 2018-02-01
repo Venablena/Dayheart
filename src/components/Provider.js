@@ -1,8 +1,15 @@
 import React from 'react';
 import { Container, Segment, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
+import { toggleOverlay } from '../actions'
 
-const Provider = ({ provider }) => {
+const Provider = ({ provider, isActive, toggleOverlay }) => {
+
+  const handleClick = () => {
+    toggleOverlay(false)
+  }
 
   return (
     <Container>
@@ -15,14 +22,28 @@ const Provider = ({ provider }) => {
             <p>{ provider.address }</p>
           </Link>
         </Segment>
-        <Segment compact textAlign='right'>
-          <Icon name='heart outline' size='large' />
-        </Segment>
+        <Segment.Group compact textAlign='right'>
+          <Segment>
+            <Icon name='heart outline' size='large' />
+          </Segment>
+          <Segment>
+            { isActive ? (<Icon name='close' size='large' onClick={handleClick}/>) : null}
+          </Segment>
+        </Segment.Group>
       </Segment.Group>
     </Container>
 );}
 
-export default Provider;
+const mapStateToProps = (state) => ({
+  overlay: state.dayheart.toggleOverlay
+})
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ toggleOverlay }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Provider)
+
 
 // List View
 // Facility Name

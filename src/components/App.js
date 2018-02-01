@@ -15,7 +15,10 @@ import MapView from '../containers/MapView'
 import ListView from '../containers/ListView'
 import Welcome from '../containers/Welcome'
 
-import { getProviders } from '../actions'
+import {
+  getProviders,
+  toggleOverlay
+} from '../actions'
 
 const ActionCreators = []
 
@@ -37,11 +40,11 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.props);
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/map" component={() => <MapView {...this.props}/>}/>
+          <Route path="/map" component={MapView}/>
           <Route path="/login" component={Login}/>
           <Route path="/list" component={() => <ListView
             {...this.props}/>}/>
@@ -55,13 +58,21 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-    providers: state.dayheart.providers.all,
-    user: state.firebase.auth.uid
-})
+const mapStateToProps = (state) => {
+
+  return ({
+      providers: state.dayheart.providers.all,
+      selected: state.dayheart.providers.selected,
+      favorites: state.dayheart.providers.favorites,
+      user: state.firebase.auth.uid
+  })
+}
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ getProviders }, dispatch)
+  return bindActionCreators({
+    getProviders,
+    toggleOverlay
+   }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

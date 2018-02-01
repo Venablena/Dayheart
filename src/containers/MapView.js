@@ -1,22 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Toolbar from '../components/Toolbar'
 import Infobar from '../components/Infobar'
 import Overlay from '../components/Overlay'
+import Provider from '../components/Provider'
 import GoogleApiWrapper from '../components/Map'
-import { Container }from 'semantic-ui-react'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
+import { toggleOverlay } from '../actions'
+import { Container } from 'semantic-ui-react'
 
-const MapView = ({providers, user}) => {
-    console.log('MapView props:', providers, user);
+export class MapView extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      selected: {}
+    }
+  }
+
+  handleClick = (target) => {
+    this.setState({ ...this.state, selected: target.provider })
+    this.props.toggleOverlay(true)
+  }
+
+  render() {
+    console.log('mapview props:', this.props);
     return (
       <main>
         <Toolbar />
         <Infobar />
         <Container>
-          <GoogleApiWrapper providers= {providers} user={user}/>
-        <Overlay providers= {providers} user={user}/>
+          <GoogleApiWrapper providers= {this.props.providers} user={this.props.user} handleClick= {this.handleClick}/>
         </Container>
+        <div className= 'overlay'>
+          {this.props.overlay ?
+            <Provider provider={ this.state.selected } isActive= {true}/> : null }
+        </div>
       </main>
-  )
+    )
+  }
 }
 
-export default MapView
+const mapStateToProps = (state) => {
+  return ({
+    overlay: state.dayheart.toggleOverlay,
+    providers: state.dayheart.providers.all,
+    filtered: state.dayheart.providers.filtered,
+    favorites: state.dayheart.providers.favorites,
+    user: state.firebase.auth.uid
+  })
+}
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ toggleOverlay }, dispatch)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(MapView)

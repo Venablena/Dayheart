@@ -2,35 +2,39 @@ import { combineReducers } from 'redux'
 //import providers from './providers'
 
 import {
-  // CREATE_USER_SUCCESS,
-  // CREATE_USER_FAIL,
-  PROVIDERS_FETCH_SUCCESS
+  TOGGLE_OVERLAY,
+  FAVORITES_FETCH_SUCCESS,
+  PROVIDERS_FETCH_SUCCESS,
 } from '../actions'
 
-export const providers = (state = {all:[]}, action) => {
-  console.log(action);
+const PROVIDER_STATE = {
+    all: [],
+    filtered: [],
+    favorites: [],
+    currentSelection: {}
+}
+
+export const providers = (state = PROVIDER_STATE, action) => {
   switch(action.type) {
     case(PROVIDERS_FETCH_SUCCESS):
       return { ...state, all: action.payload}
+    case(FAVORITES_FETCH_SUCCESS):
+      return { ...state, favorites: action.payload}
     default:
       return state
   }
 }
 
-// export const auth = (state = {}, action) => {
-//     switch(action.type) {
-//         case(CREATE_USER_SUCCESS):
-//             const { user: { uid: userId} } = action;
-//             return { ...state, loggedIn: true, userId }
-//         case(CREATE_USER_FAIL):
-//             const { error } = action;
-//             return { ...state, loggedIn: false, error }
-//         default:
-//             return state;
-//     }
-// }
+export const toggleOverlay = (state = false, action) => {
+  switch(action.type) {
+    case(TOGGLE_OVERLAY):
+      return action.payload
+    default:
+      return state
+  }
+}
 
 export default combineReducers({
-  // auth,
+  toggleOverlay,
   providers
 })

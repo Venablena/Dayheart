@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Overlay = ({}) => (
-  <div>Overlay</div>
+  <div className='detailView hidden'>Overlay</div>
 );
 
 export default Overlay;

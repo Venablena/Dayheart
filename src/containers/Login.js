@@ -17,7 +17,7 @@ const Login = (props) => {
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       ],
       callbacks: {
-        signInSuccess: (currentUser) => props.history.push('/welcome')
+        signInSuccess: (currentUser) => props.history.push('/')
       }
     }
 

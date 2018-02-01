@@ -18,3 +18,8 @@ export const getFavorites = () => {
       })
   }
 }
+
+export const TOGGLE_OVERLAY = 'TOGGLE_OVERLAY'
+export const toggleOverlay = (value) => ({
+  type: TOGGLE_OVERLAY,
+  payload: value })
