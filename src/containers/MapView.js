@@ -23,7 +23,6 @@ export class MapView extends Component {
   }
 
   render() {
-    console.log('mapview props:', this.props);
     return (
       <main>
         <Toolbar />

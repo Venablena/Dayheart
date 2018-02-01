@@ -62,7 +62,6 @@ const mapStateToProps = (state) => {
 
   return ({
       providers: state.dayheart.providers.all,
-      selected: state.dayheart.providers.selected,
       favorites: state.dayheart.providers.favorites,
       user: state.firebase.auth.uid
   })
@@ -70,8 +69,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
-    getProviders,
-    toggleOverlay
+    getProviders
    }, dispatch)
 }
 

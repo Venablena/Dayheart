@@ -1,50 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { Form, Container, Segment, Button } from 'semantic-ui-react'
 import { getProviders } from '../actions'
 import { withRouter } from 'react-router-dom'
+import { LocalForm, Control } from 'react-redux-form'
 
 const Search = (props) => {
   const handleSubmit = (e) => {
-    console.log('get providers')
     e.preventDefault()
     props.getProviders()
     props.history.push('/map')
   }
 
   return (
-    <Container>
-      <Form name="searchForm" onSubmit={ handleSubmit }>
+    <main>
+    <LocalForm>
+      <label>1 Child</label>
+              <Control.radio model='infant' />
+              <Control.radio model='toddler' />
+            <Control.radio model='pre-school' />
+            <Control.radio model='school age' />
+    </LocalForm>
 
-        <Form.Field>
-          <Form.Input label='Search near' placeholder="Enter zip code" />
-        </Form.Field>
+        <Button.Group fluid color='olive'>
+         <Button>Full-time</Button>
+         <Button>Part-time</Button>
+        </Button.Group>
 
-        <Segment>
-          <Form.Group inline>
-           <label>1 Child</label>
-              <Form.Radio value='infant' label='infant'/>
-              <Form.Radio value='toddler' label='toddler' />
-              <Form.Radio value='pre-school' label='pre-school' />
-              <Form.Radio value='school age' label='school age' />
-          </Form.Group>
-        </Segment>
-
-        <Segment>
-          Add Children
-        </Segment>
-
-        <Segment.Group horizontal>
-         <Segment>Full-time</Segment>
-         <Segment>Part-time</Segment>
-        </Segment.Group>
-
-        <Segment.Group horizontal>
-          <Segment>Starting</Segment>
-          <Segment>Now</Segment>
-          <Segment>Date</Segment>
-        </Segment.Group>
+        <Button.Group fluid color='olive'>
+          <Button disabled>Starting</Button>
+          <Button>Now</Button>
+          <Button>Date</Button>
+        </Button.Group>
 
         <Segment.Group horizontal>
          <Segment>Type of facility</Segment>
@@ -60,9 +48,7 @@ const Search = (props) => {
          </Segment>
          <Segment></Segment>
         </Segment.Group>
-
-      </Form>
-    </Container>
+      </main>
   );
 }
 

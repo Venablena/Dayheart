@@ -7,8 +7,10 @@ import { toggleOverlay } from '../actions'
 
 const Provider = ({ provider, isActive, toggleOverlay }) => {
 
-  const handleClick = () => {
-    toggleOverlay(false)
+  const closeOverlay = () => toggleOverlay(false)
+
+  const addFavorite = () => {
+    console.log("I'm adding a favorite");
   }
 
   return (
@@ -24,10 +26,10 @@ const Provider = ({ provider, isActive, toggleOverlay }) => {
         </Segment>
         <Segment.Group compact textAlign='right'>
           <Segment>
-            <Icon name='heart outline' size='large' />
+            <Icon name='heart outline' size='large' onClick={ addFavorite } />
           </Segment>
           <Segment>
-            { isActive ? (<Icon name='close' size='large' onClick={handleClick}/>) : null}
+            { isActive ? (<Icon name='close' size='large' onClick={ closeOverlay }/>) : null}
           </Segment>
         </Segment.Group>
       </Segment.Group>
