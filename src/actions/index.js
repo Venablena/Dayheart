@@ -21,18 +21,13 @@ export const getProviders = () => (dispatch, getState) => {
 export const FAVORITES_FETCH_SUCCESS = 'FAVORITES_FETCH_SUCCESS'
 export const getFavorites = (user) => (dispatch) => {
   console.log('actions user:', user);
-    return firebase.database().ref(`/users/zgYMtraKd5OPZRXeciWPv85uc3L2/favorites`)
+    return firebase.database().ref(`/users/${user}/favorites`)
       .once('value', snapshot => {
-        const result = snapshot.val()
-        //if(result){
-        // return result.map(item => {
-        //   return firebase.database().ref(`providers/${item}`).on('value', snapshot => snapshot.val())
-        // })
+        if(snapshot.val() && snapshot.val().length)
         dispatch({
           type: FAVORITES_FETCH_SUCCESS,
-          payload: result
+          payload: snapshot.val()
         })
-      //}
     })
   }
 
@@ -52,7 +47,7 @@ export const toggleOverlay = (value) => ({
 export const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE'
 export const toggleFavorite = (user, value) => {
   return (dispatch) => {
-    firebase.database().ref(`/users/zgYMtraKd5OPZRXeciWPv85uc3L2/favorites`)
+    firebase.database().ref(`/users/${user}/favorites`)
       .set(value)
       .then(() => {
          dispatch({

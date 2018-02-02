@@ -28,13 +28,16 @@ class App extends Component {
 
   componentDidMount() {
     this.props.getProviders()
-    //this.props.user ?
+  }
+
+  componentDidUpdate(){
+    !this.props.favorites.isLoaded ?
     this.props.getFavorites(this.props.user)
-    //: null
+    : null
   }
 
   render() {
-    console.log("user", this.props.user);
+
     return (
       <BrowserRouter>
         <Switch>
@@ -55,7 +58,7 @@ const mapStateToProps = (state) => {
   return ({
       providers: state.dayheart.providers.all,
       favorites: state.dayheart.providers.favorites,
-      user: state.firebase.auth.uid
+      user: state.firebase.auth.uid,
   })
 }
 

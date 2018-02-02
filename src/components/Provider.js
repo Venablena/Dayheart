@@ -1,56 +1,79 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Container, Segment, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { toggleOverlay, removeFavorite, toggleFavorite } from '../actions'
 
-const Provider = ({
-  provider,
-  isActive,
-  toggleOverlay,
-  favorites,
-  toggleFavorite,
-  user }) => {
-
-  const closeOverlay = () => toggleOverlay(false)
-
-  const handleClick = () => {
-    let newFavorites
-    if(favorites.includes(provider)) {
-      console.log('oh yeah');
-      newFavorites = favorites.filter(el => el !== provider)
+class Provider extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      isFavorite: false
     }
-    else {newFavorites = [...favorites, provider]}
-    toggleFavorite(user, newFavorites)
+    this.handleClick = this.handleClick.bind(this)
   }
 
-  return (
-    <Container>
-      <Segment.Group horizontal>
-        <Segment textAlign='left' color='olive'>
-          <Link to={ `/providers/${ provider.id }`}>
-            <h4>{ provider.name }</h4>
-            <p>{ provider.type }</p>
-            <p>{ provider.ages }</p>
-            <p>{ provider.address }</p>
-          </Link>
-        </Segment>
-        <Segment.Group compact textAlign='right'>
-          <Segment>
-            <Icon name='heart outline' size='large' onClick={ handleClick } />
+  componentDidMount () {
+    const match = this.props.favorites.find(favorite => favorite.id === this.props.provider.id)
+    if (!this.state.isFavorite && match) this.setState({ isFavorite: true })
+  }
+
+  handleClick = () => {
+    const match = this.props.favorites.find(favorite => favorite.id === this.props.provider.id)
+    let result
+    if (match) {
+      const index = this.props.favorites.indexOf(match)
+      result = [
+        ...this.props.favorites.slice(0, index), ...this.props.favorites.slice(index + 1)
+      ]
+    } else {
+      result = [ ...this.props.favorites, this.props.provider ]
+    }
+
+    this.props.toggleFavorite(this.props.user, result)
+  }
+
+  render() {
+    console.log(this.state.isFavorite)
+    return (
+      <Container>
+        <Segment.Group horizontal>
+          <Segment textAlign='left' color='olive'>
+            <Link to={ `/providers/${ this.props.provider.id }`}>
+              <h4>{ this.props.provider.name }</h4>
+              <p>{ this.props.provider.type }</p>
+              <p>{ this.props.provider.ages }</p>
+              <p>{ this.props.provider.address }</p>
+            </Link>
           </Segment>
-          <Segment>
-            { isActive ? (<Icon name='close' size='large' onClick={ closeOverlay }/>) : null}
-          </Segment>
+          <Segment.Group compact textAlign='right'>
+            <Segment>
+              <Icon
+                name =
+                { this.state.isFavorite ?
+                'heart' :
+              'heart outline' }
+                size='large'
+                onClick= {this.handleClick} />
+            </Segment>
+            <Segment>
+              { this.props.isActive ?
+                <Icon name='close'
+                      size='large'
+                      onClick={ this.closeOverlay }/> :
+                      null}
+            </Segment>
+          </Segment.Group>
         </Segment.Group>
-      </Segment.Group>
-    </Container>
-);}
+      </Container>
+    )
+  }
+}
 
 const mapStateToProps = (state) => ({
   overlay: state.dayheart.toggleOverlay,
-  favorites: state.dayheart.providers.favorites,
+  favorites: state.dayheart.providers.favorites.data,
   user: state.firebase.auth.uid
 })
 
@@ -80,3 +103,9 @@ export default connect(mapStateToProps, mapDispatchToProps)(Provider)
 // Early Achievers Rating
 // Longer Description (Substitute short description)
 // Unciollapse other categories detailed in above
+
+///////////////
+// const match = (this.props.favorites.map(el => el.id).find(this.props.provider.id))
+// match ?
+// newFavorites = this.props.favorites.slice(this.props.favorites.indexOf(match), 1)
+// : newFavorites = [...this.props.favorites, this.props.provider]

@@ -11,7 +11,7 @@ import {
 const PROVIDER_STATE = {
     all: [],
     filtered: [],
-    favorites: [],
+    favorites: {isLoaded:false, data:[]},
     currentSelection: {}
 }
 
@@ -19,12 +19,11 @@ export const providers = (state = PROVIDER_STATE, action) => {
   switch(action.type) {
     case(PROVIDERS_FETCH_SUCCESS):
       return { ...state, all: action.payload}
-    case(FAVORITES_FETCH_SUCCESS, TOGGLE_FAVORITE):
-      return { ...state, favorites: action.payload}
+    case(FAVORITES_FETCH_SUCCESS):
+    case(TOGGLE_FAVORITE):
+      return { ...state, favorites: {isLoaded:true, data:action.payload}}
     case(FILTER_SELECTION):
       return { ...state, filtered: action.payload}
-    // case(TOGGLE_FAVORITE):
-    //   return { ...state, favorites: action.payload}
 
     default:
       return state
