@@ -1,7 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
-const Favorites = ({}) => (
+const Favorites = ({ favorites }) => {
+console.log('favorites:', favorites);
+
+  return (
   <div>Favorites image</div>
-);
+)}
 
-export default Favorites;
+const mapStateToProps = (state) => ({
+  favorites: state.dayheart.providers.favorites
+})
+
+export default connect(mapStateToProps)(Favorites)

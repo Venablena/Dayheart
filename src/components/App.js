@@ -17,10 +17,9 @@ import Welcome from '../containers/Welcome'
 
 import {
   getProviders,
+  getFavorites,
   toggleOverlay
 } from '../actions'
-
-const ActionCreators = []
 
 // example on how to pass props
 // const Page = ({ title }) => ();
@@ -37,6 +36,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.getProviders()
+    this.props.user ? this.props.getFavorites(this.props.user) : null
   }
 
   render() {
@@ -49,7 +49,6 @@ class App extends Component {
           <Route path="/list" component={() => <ListView
             {...this.props}/>}/>
           <Route path="/providers/:providerId" component={Single}/>
-          {/*<Route path="/welcome" component={Welcome}/>*/}
           <Route exact path='/' render={() => (this.props.user ? (<Welcome/>) : (<Home/>)
           )}/>
         </Switch>
@@ -59,7 +58,6 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-
   return ({
       providers: state.dayheart.providers.all,
       favorites: state.dayheart.providers.favorites,
@@ -69,7 +67,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
-    getProviders
+    getProviders,
+    getFavorites
    }, dispatch)
 }
 

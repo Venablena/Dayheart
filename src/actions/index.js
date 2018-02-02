@@ -16,12 +16,15 @@ export const getProviders = () => (dispatch, getState) => {
 }
 
 export const FAVORITES_FETCH_SUCCESS = 'FAVORITES_FETCH_SUCCESS'
-export const getFavorites = () => {
-  const { currentUser } = firebase.auth()
+export const getFavorites = (user) => {
   return (dispatch) => {
-    firebase.database().ref(`/users/${currentUser.uid}/favorites`)
+    firebase.database().ref(`/users/${user}/favorites`)
       .on('value', snapshot => {
-        dispatch({ type: FAVORITES_FETCH_SUCCESS, payload: snapshot.val()})
+        snapshot.val() ?
+        dispatch({
+          type: FAVORITES_FETCH_SUCCESS,
+          payload: snapshot.val()
+        }) : null
       })
   }
 }
