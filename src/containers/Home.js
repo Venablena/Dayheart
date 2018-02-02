@@ -7,7 +7,7 @@ import Header from '../components/Header'
 const Home = ({}) => (
   <main>
     <Header />
-    <Container>
+    <Container classname= 'container'>
       <Form>
         <Form.Field>
           <Form.Input placeholder="Enter zip code" />

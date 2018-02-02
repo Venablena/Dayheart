@@ -2,11 +2,17 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: #4BB3E7 linear-gradient(to right, #DCDBDA, #ceccca, #DCDBDA) !important;
 }
 
 main {
   text-align: center;
-  background-color: #0B4659;
+  /* background-color: #0B4659; */
+  margin: auto;
+}
+
+.container {
+  max-width: 800px;
 }
 
 .toolbar, .infobar {

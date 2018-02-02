@@ -35,7 +35,6 @@ class Provider extends Component {
   }
 
   render() {
-    console.log(this.state.isFavorite)
     return (
       <Container>
         <Segment.Group horizontal>
