@@ -21,26 +21,20 @@ import {
   toggleOverlay
 } from '../actions'
 
-// example on how to pass props
-// const Page = ({ title }) => ();
-// const Login = (props) => (<Page title="Login"/>)
-
 class App extends Component {
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //     providers: data
-  //   }
-  // }
-  //
+  constructor(props){
+    super(props)
+  }
 
   componentDidMount() {
     this.props.getProviders()
-    this.props.user ? this.props.getFavorites(this.props.user) : null
+    //this.props.user ?
+    this.props.getFavorites(this.props.user)
+    //: null
   }
 
   render() {
-    console.log(this.props);
+    console.log("user", this.props.user);
     return (
       <BrowserRouter>
         <Switch>

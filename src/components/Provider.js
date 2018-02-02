@@ -3,14 +3,26 @@ import { Container, Segment, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
-import { toggleOverlay } from '../actions'
+import { toggleOverlay, removeFavorite, toggleFavorite } from '../actions'
 
-const Provider = ({ provider, isActive, toggleOverlay }) => {
+const Provider = ({
+  provider,
+  isActive,
+  toggleOverlay,
+  favorites,
+  toggleFavorite,
+  user }) => {
 
   const closeOverlay = () => toggleOverlay(false)
 
-  const addFavorite = () => {
-    console.log("I'm adding a favorite");
+  const handleClick = () => {
+    let newFavorites
+    if(favorites.includes(provider)) {
+      console.log('oh yeah');
+      newFavorites = favorites.filter(el => el !== provider)
+    }
+    else {newFavorites = [...favorites, provider]}
+    toggleFavorite(user, newFavorites)
   }
 
   return (
@@ -26,7 +38,7 @@ const Provider = ({ provider, isActive, toggleOverlay }) => {
         </Segment>
         <Segment.Group compact textAlign='right'>
           <Segment>
-            <Icon name='heart outline' size='large' onClick={ addFavorite } />
+            <Icon name='heart outline' size='large' onClick={ handleClick } />
           </Segment>
           <Segment>
             { isActive ? (<Icon name='close' size='large' onClick={ closeOverlay }/>) : null}
@@ -37,11 +49,16 @@ const Provider = ({ provider, isActive, toggleOverlay }) => {
 );}
 
 const mapStateToProps = (state) => ({
-  overlay: state.dayheart.toggleOverlay
+  overlay: state.dayheart.toggleOverlay,
+  favorites: state.dayheart.providers.favorites,
+  user: state.firebase.auth.uid
 })
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ toggleOverlay }, dispatch)
+  return bindActionCreators({
+    toggleOverlay,
+    toggleFavorite
+  }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Provider)
