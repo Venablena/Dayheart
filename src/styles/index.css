@@ -6,13 +6,18 @@ body {
 }
 
 main {
-  text-align: center;
-  /* background-color: #0B4659; */
-  margin: auto;
-}
 
+  /* background-color: #0B4659; */
+
+}
+.right {
+  text-align: right;
+}
+/* .toolbar-wrapper, */
 .container {
+  width: 100%;
   max-width: 800px;
+  margin: auto
 }
 
 .toolbar, .infobar {

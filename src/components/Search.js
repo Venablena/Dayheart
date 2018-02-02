@@ -51,40 +51,42 @@ export class Search extends Component {
   render() {
 
     return (
-      <Form>
+      <Container className = 'container'>
         <Form.Field>
           <Form.Input label='Search near' placeholder="Enter zip code" />
         </Form.Field>
 
-        <Segment>
-          <Form.Group inline>
-           <label>1 Child</label>
-              <Form.Radio
-                onChange= { this.handleChange }
-                name='ages'
-                value='Infant'
-                label='infant'/>
-              <Form.Radio
-                onChange= { this.handleChange }
-                name='ages'
-                value='Toddler'
-                label='toddler' />
-              <Form.Radio
-                onChange= { this.handleChange }
-                name='ages'
-                value='Preschool'
-                label='pre-school' />
-              <Form.Radio
-                onChange= { this.handleChange }
-                name='ages'
-                value='School Age'
-                label='school age' />
-          </Form.Group>
-        </Segment>
+        <Button.Group fluid>
+          <Button as='div' labelPosition='left'>
+            <Label as='a' basic color='olive' pointing='right'>1 Child</Label>
+            <Button
+              onChange= { this.handleChange }
+              name='ages'
+              value='Infant'>Infant
+            </Button>
+          </Button>
+          <Button
+            onChange= { this.handleChange }
+            name='ages'
+            value='Toddler'>Toddler</Button>
+          <Button
+            onChange= { this.handleChange }
+            name='ages'
+            value='Preschool'>Preschool
+          </Button>
+          <Button
+            onChange= { this.handleChange }
+            name='ages'
+            value='School Age'>School Age
+          </Button>
+        </Button.Group>
+          <Button
+            circular icon='plus'
+            floated='right'>
+          </Button>
+          <p className = 'right'>Add Children</p>
 
-        <Segment>
-          Add Children
-        </Segment>
+
 
         <Segment.Group horizontal>
          <Segment>Full-time</Segment>
@@ -140,7 +142,7 @@ export class Search extends Component {
            </Segment>
            <Segment></Segment>
           </Segment.Group>
-        </Form>
+        </Container>
     )
   }
 }
