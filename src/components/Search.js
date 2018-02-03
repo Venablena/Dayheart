@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
-import { Form, Container, Segment, Button, Label } from 'semantic-ui-react'
+import { Form, Container, Segment, Button, Label, Grid } from 'semantic-ui-react'
 import { getProviders, filterSelection } from '../actions'
 import { withRouter } from 'react-router-dom'
 import { LocalForm, Control } from 'react-redux-form'
@@ -53,17 +53,15 @@ export class Search extends Component {
     return (
       <Container className = 'container'>
         <Form.Field>
-          <Form.Input label='Search near' placeholder="Enter zip code" />
+          <Form.Input className = '.naked_form' label='Search near' placeholder="Enter zip code" />
         </Form.Field>
 
+      <p className= 'left'>Age of my child:</p>
         <Button.Group fluid>
-          <Button as='div' labelPosition='left'>
-            <Label as='a' basic color='olive' pointing='right'>1 Child</Label>
-            <Button
-              onChange= { this.handleChange }
-              name='ages'
-              value='Infant'>Infant
-            </Button>
+          <Button
+            onChange= { this.handleChange }
+            name='ages'
+            value='Infant'>Infant
           </Button>
           <Button
             onChange= { this.handleChange }
@@ -80,12 +78,15 @@ export class Search extends Component {
             value='School Age'>School Age
           </Button>
         </Button.Group>
-          <Button
-            circular icon='plus'
-            floated='right'>
-          </Button>
-          <p className = 'right'>Add Children</p>
 
+        <p className= 'right'>
+          <Button
+            circular icon= 'plus'
+            floated= 'right'
+            color= 'olive'>
+          </Button>
+          <Button className = 'naked'>Add Children</Button>
+        </p>
 
 
         <Segment.Group horizontal>

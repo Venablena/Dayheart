@@ -1,8 +1,36 @@
+@font-face {
+font-family: "AvenirNext Lt";
+src: url("./fonts/AvenirNextLTPro-Cn.otf") format("opentype")
+}
+
+@font-face {
+font-family: "AvenirNext Md";
+src: url("./fonts/AvenirNextLTPro-MediumCn.otf") format("opentype")
+}
+
+@font-face {
+font-family: "Avenir Md";
+src: url("./fonts/AvenirMedium.otf") format("opentype")
+}
+
+Button {
+  font-family:'AvenirNext Md' !important;
+  padding: 11px !important;
+}
+
+html {
+  font-weight:normal;
+  font-style:normal;
+  font-family:'AvenirNext Md' !important;
+}
+
 body {
+  font-family:'AvenirNext Md' !important; */
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: #4BB3E7 linear-gradient(to right, #DCDBDA, #ceccca, #DCDBDA) !important;
+  background: #4BB3E7 linear-gradient(to right, #1fa0e0, #4BB3E7, #1fa0e0) !important;
+  /* background: #4BB3E7 linear-gradient(to right, #8fcff0, #4BB3E7, #8fcff0) !important; */
 }
 
 main {
@@ -10,8 +38,14 @@ main {
   /* background-color: #0B4659; */
 
 }
+
 .right {
   text-align: right;
+}
+
+p,
+.left {
+  text-align: left;
 }
 /* .toolbar-wrapper, */
 .container {
@@ -50,6 +84,19 @@ main {
 }
 .App-intro {
   font-size: large;
+}
+
+.naked,
+.input,
+input {
+  background: initial !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.input,
+input {
+  border-bottom: 1px solid grey !important;
 }
 
 .favorites {
