@@ -1,4 +1,9 @@
 @font-face {
-font-family: "Avenir Next Cd";
-src: url("css/fonts/AvenirNextPro-Cn.otf")format("opentype")
+font-family: "AvenirNext Cd";
+src: url("./fonts/AvenirNextLTPro-Cn.otf") format("opentype")
+}
+
+@font-face {
+font-family: "AvenirNext Cd";
+src: url("./fonts/AvenirNextLTPro-Cn.otf") format("opentype")
 }

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
-import { Form, Container, Segment, Button, Label, Grid } from 'semantic-ui-react'
+import { Form, Container, Segment, Button, Label, Grid, Accordion } from 'semantic-ui-react'
 import { getProviders, filterSelection } from '../actions'
 import { withRouter } from 'react-router-dom'
-import { LocalForm, Control } from 'react-redux-form'
 import _ from 'lodash'
 
 export class Search extends Component {
@@ -15,134 +14,139 @@ export class Search extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange = (event) => {
-    const { target: {name, value} } = event
-    this.setState( { [name]: value } )
+  toggleActive = (e) => {
+    e.target.classList.value.includes('active') ?
+      e.target.classList.remove('active') :
+      e.target.classList.add('active')
   }
 
-  // filterData = (data)=> data.filter(item => {
-  //   for(let key in this.state){
-  //
-  //   }
-  // })
-  //
-  // {
-  //   return data.filter(item => {
-  //     for(let key in this.state){
-  //       //console.log('in the function:', this.state[key]);
-  //       if(this.state[key] !== item[key]){
-  //        return false
-  //       }
-  //       return true
-  //     }
-  //   })
-  // }
+  handleChange = (e) => {
+    this.toggleActive(e)
+    const { target: {name, value} } = e
+    if(this.state.hasOwnProperty(name)){
+      console.log(this.state[name] === value);
 
-  //filterData = (data) => _.filter(data, this.state)
+      const currentState = Object.assign(this.state)
+      delete currentState[name]
+      this.setState(currentState)
+    }
+    else {
+      const currentState = Object.assign(this.state, {[name]: value })
+      this.setState(currentState)
+    }
+  }
 
   handleSubmit = (e) => {
     e.preventDefault()
     // const providers = this.props.getProviders()
     const newSelection = _.filter(this.props.providers, this.state)
     this.props.filterSelection(newSelection)
+    this.setState({})
     this.props.history.push('/map')
   }
 
-  render() {
+  erase = (e) => {
+    e.preventDefault()
+    this.setState({})
+  }
 
+  render() {
+    console.log(this.state);
     return (
       <Container className = 'container'>
-        <Form.Field>
+        <Form.Group>
           <Form.Input className = '.naked_form' label='Search near' placeholder="Enter zip code" />
-        </Form.Field>
-
-      <p className= 'left'>Age of my child:</p>
+        </Form.Group>
+      <p>
+      <Button basic compact floated='left' className='naked'>Age of my child:</Button>
+        <Button
+          circular icon= 'plus'
+          floated= 'right'
+          color= 'olive'>
+        </Button>
+        <Button basic compact floated='right' className='naked'>Add Children</Button>
+      </p>
         <Button.Group fluid>
-          <Button
-            onChange= { this.handleChange }
+          <Button basic compact
+            onClick= { this.handleChange }
             name='ages'
             value='Infant'>Infant
           </Button>
-          <Button
-            onChange= { this.handleChange }
+          <Button basic compact
+            onClick= { this.handleChange }
             name='ages'
             value='Toddler'>Toddler</Button>
-          <Button
-            onChange= { this.handleChange }
+          <Button basic compact
+            onClick= { this.handleChange }
             name='ages'
             value='Preschool'>Preschool
           </Button>
-          <Button
-            onChange= { this.handleChange }
+          <Button basic compact
+            onClick= { this.handleChange }
             name='ages'
             value='School Age'>School Age
           </Button>
         </Button.Group>
 
-        <p className= 'right'>
-          <Button
-            circular icon= 'plus'
-            floated= 'right'
-            color= 'olive'>
-          </Button>
-          <Button className = 'naked'>Add Children</Button>
-        </p>
+        <Grid divided='vertically'>
+          <Grid.Row columns={2}>
+            <Grid.Column>
+              <Button basic compact floated='left' className='naked'>Hours:</Button>
+                <Button.Group fluid>
+                 <Button basic compact
+                   onClick={ this.handleChange }
+                   name='full_time'
+                   value={ true }>Full-time</Button>
 
+                 <Button basic compact
+                   onClick={ this.handleChange }
+                   name='part_time'
+                   value={ true }>Part-time</Button>
+                </Button.Group>
+              </Grid.Column>
+              <Grid.Column>
+              <Button basic compact floated='left' className='naked'>Starting:</Button>
 
-        <Segment.Group horizontal>
-         <Segment>Full-time</Segment>
-         <Segment>Part-time</Segment>
-        </Segment.Group>
+              <Button.Group fluid>
+                <Button basic compact
+                  onClick={ this.toggleActive }>Now</Button>
+                <Button basic compact
+                  onClick={ this.toggleActive }>Date</Button>
+              </Button.Group>
+              </Grid.Column>
+          </Grid.Row>
+        </Grid>
+        <div className= 'hidden'>
 
-        <Segment.Group horizontal>
-          <Segment>Starting</Segment>
-          <Segment>Now</Segment>
-          <Segment>Date</Segment>
-        </Segment.Group>
+        </div>
 
-          <Button.Group fluid color='olive'>
-           <Button
-             onClick={ this.handleChange }
-             name='schedule_daily'
-             value='Full Day' >Full-time</Button>
-           <Button
-             onClick={ this.handleChange }
-             name='schedule_daily'
-             value='Part Day' >Part-time</Button>
-          </Button.Group>
-
-          <Button.Group fluid color='olive'>
-            <Button disabled>Starting</Button>
-            <Button>Now</Button>
-            <Button>Date</Button>
-          </Button.Group>
-
+        <Button basic compact floated='left' className='naked'>
+        Type of childcare provider:</Button>
           <Button.Group fluid>
 
-           <Button as='div' labelPosition='left'>
-            <Label as='a' basic pointing='right'>Type</Label>
-          <Button
+          <Button basic compact
               onClick={ this.handleChange }
              name='type'
              value='Child Care Center'>Center</Button>
-          </Button>
-           <Button
+
+           <Button basic compact
              onClick={ this.handleChange }
              name='type'
              value='Family Child Care'>Family</Button>
-           <Button
+           <Button basic compact
              onClick={ this.handleChange }
              name='type'
              value='Preschool'>Preschool</Button>
           </Button.Group>
 
-          <Segment.Group horizontal>
-           <Segment>Clear</Segment>
-           <Segment className='orange inverted'>
-            <Button onClick= { this.handleSubmit }>Search</Button>
-           </Segment>
-           <Segment></Segment>
-          </Segment.Group>
+          <p>
+           <Button color='orange' floated='left'
+            onClick= { this.handleSubmit }>Search</Button>
+          <Button className='naked' floated='right'
+            onClick= { this.erase }>
+            Clear
+           </Button>
+          </p>
         </Container>
     )
   }
