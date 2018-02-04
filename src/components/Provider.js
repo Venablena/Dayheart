@@ -16,6 +16,7 @@ class Provider extends Component {
   }
 
   handleClick = () => {
+    console.log('clicking');
     const match = this.props.favorites.find(favorite => favorite.id === this.props.provider.id)
     let result
     if (match) {
@@ -23,10 +24,11 @@ class Provider extends Component {
       result = [
         ...this.props.favorites.slice(0, index), ...this.props.favorites.slice(index + 1)
       ]
+      this.setState ({ isFavorite : false })
     } else {
       result = [ ...this.props.favorites, this.props.provider ]
+      this.setState ({ isFavorite : true })
     }
-
     this.props.toggleFavorite(this.props.user, result)
   }
 
@@ -34,15 +36,13 @@ class Provider extends Component {
     return(
       <Card.Content extra>
                   <Icon name='close'
-                        size='medium'
                         onClick={ this.closeOverlay }/>
       </Card.Content>
     )
   }
 
   closeOverlay = () => {
-    this.setState({isActive:false})
-    toggleOverlay(false)
+    this.props.toggleOverlay(false)
   }
 
   componentDidMount () {
@@ -70,7 +70,7 @@ class Provider extends Component {
             'heart' :
             'heart outline' }
             size='large'
-            onClick= {this.handleClick} />
+            onClick= { this.handleClick } />
        </Card.Content>
        { this.props.isActive ?
          this.renderMoreContent() : null}
