@@ -3,7 +3,7 @@ import { Container, Icon, Image, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
-import { toggleOverlay, removeFavorite, toggleFavorite } from '../actions'
+import { toggleOverlay, toggleFavorite } from '../actions'
 import dayheart2 from '../img/dayheart2.jpg'
 
 class Provider extends Component {
@@ -42,7 +42,7 @@ class Provider extends Component {
 
   closeOverlay = () => {
     this.setState({isActive:false})
-    // this.props.toggleOverlay()
+    toggleOverlay(false)
   }
 
   componentDidMount () {
