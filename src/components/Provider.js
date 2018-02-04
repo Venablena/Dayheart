@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Icon, Image, Card } from 'semantic-ui-react'
+import { Icon, Image, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'

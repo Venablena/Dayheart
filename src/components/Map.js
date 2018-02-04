@@ -70,25 +70,28 @@ export class MapContainer extends Component {
             provider = { el }/>
       })
 
-      console.log('map props:', this.props);
-      return (
+    return (
 
-        <Map
-          style={{width: '100%', height: '90%', marginLeft: '-2%'}}
-          google={this.props.google}
-          zoom={12}
-          initialCenter={{
-           lat: 47.5416201,
-           lng: -122.3478753
-         }}>
+      <Map
 
-         { markers }
+        google={this.props.google}
+        zoom={14}
+        initialCenter={{
+         lat: 47.5416201,
+         lng: -122.3478753
+       }}
+        >
 
-        </Map>
-      );
-    }
+       { markers }
+
+      </Map>
+    );
+  }
 }
 
-export default GoogleApiWrapper({
-  apiKey: GoogleAPIKey
-})(MapContainer)
+const GoogleMap = GoogleApiWrapper({apiKey: GoogleAPIKey})(MapContainer)
+
+export default GoogleMap
+// { FullscreenControlOptions: false,
+//  MapTypeControlStyle: false,
+//  disableDEfaultUI: true}

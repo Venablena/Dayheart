@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Toolbar from '../components/Toolbar'
 import Infobar from '../components/Infobar'
-import Overlay from '../components/Overlay'
 import Provider from '../components/Provider'
-import GoogleApiWrapper from '../components/Map'
+import GoogleMap from '../components/Map'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { toggleOverlay } from '../actions'
@@ -28,13 +27,13 @@ export class MapView extends Component {
       <main>
         <Toolbar />
         <Infobar />
-        <Container>
-          <GoogleApiWrapper
+        <div className='map_wrapper'>
+          <GoogleMap
             providers= {this.props.providers}
             currentSelection= {this.props.currentSelection}
             user= {this.props.user}
             handleClick= {this.handleClick}/>
-        </Container>
+        </div>
         <div className= 'overlay'>
           {this.props.overlay ?
             <Provider

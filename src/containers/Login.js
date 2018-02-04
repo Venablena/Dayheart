@@ -1,12 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
-import { Form, Container } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 import Header from '../components/Header'
 
 //Firebase for authorization, login and signup
 import * as firebase from 'firebase'
-import { firebaseConfig } from '../config.js'
 import { FirebaseAuth } from 'react-firebaseui'
 
 const Login = (props) => {
@@ -34,9 +32,5 @@ const mapStateToProps = ({ firebase: { auth, profile, currentUser } }) => ({
   profile,
   currentUser
 })
-
-// const mapDispatchToProps = dispatch => {
-//   return bindActionCreators({ createUser }, dispatch)
-// }
 
 export default connect(mapStateToProps)(Login);
