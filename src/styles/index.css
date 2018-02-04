@@ -29,11 +29,9 @@ Button {
 /* .selected {
   background: lightgrey !important;
 } */
-
+.header,
 .basic,
 html {
-  font-weight:normal;
-  font-style:normal;
   font-family:'AvenirNext Md' !important;
 }
 
@@ -54,6 +52,10 @@ main {
 
 }
 
+a {
+  color: initial !important;
+}
+
 .right {
   text-align: right;
 }
@@ -65,9 +67,9 @@ p,
   margin-top: 2px !important;
 }
 /* .toolbar-wrapper, */
-.container {
-  width: 100%;
-  max-width: 800px !important;
+.wrapper{
+  max-width: 700px !important;
+  /* width: 100%; */
   margin: auto
 }
 
@@ -116,6 +118,7 @@ input {
   background: white !important;
 }
 
+.card_subtitle,
 .ui.basic.button.naked {
   color: #F05F27 !important;
   background: none !important;
@@ -128,14 +131,34 @@ input {
   border-bottom: 0.5px solid grey !important;
 }
 
-.favorites {
+/* .favorites {
   display: flex;
   min-height: 150px;
   background-color: lightgrey;
   align-items: center;
-  padding: 10%;
-}
+  /* padding: 10%; */
+/* }  */
 
 .column {
   margin-bottom: 0 !important;
+}
+
+/* CARD */
+.content {
+  /* padding-left: 0 !important; */
+}
+
+.card {
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+
+.black {
+  color: #444 !important;
+}
+
+.card_icon {
+  position: absolute;
+  right: 10px;
+  bottom: 13px;
 }

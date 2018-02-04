@@ -1,10 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { Image } from 'semantic-ui-react'
+import Provider from '../components/Provider'
+import dayheart1 from '../img/dayheart1.jpg'
+import dayheart2 from '../img/dayheart2.jpg'
+
 
 const Favorites = ({ favorites }) => {
-console.log('favorites:', favorites);
-  return (
-  <div className='favorites'>{favorites.length ? favorites[0].name : "You haven't got any favorite childcare providers yet. Search for providers below."}</div>
+
+return (
+  <div className='favorites'>
+      {favorites.map((center, idx) => <Provider key={idx} provider={center}/>)}
+  </div>
 )}
 
 const mapStateToProps = (state) => ({

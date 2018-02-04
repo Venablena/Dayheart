@@ -53,7 +53,7 @@ export class Search extends Component {
   render() {
     console.log(this.state);
     return (
-      <Container className = 'container'>
+      <div className = 'wrapper'>
         <Form.Group>
           <Form.Input className = '.naked_form' label='Search near' placeholder="Enter zip code" />
         </Form.Group>
@@ -147,7 +147,7 @@ export class Search extends Component {
             Clear
            </Button>
           </p>
-        </Container>
+        </div>
     )
   }
 }
