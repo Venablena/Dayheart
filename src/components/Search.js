@@ -59,32 +59,32 @@ export class Search extends Component {
         </Form.Group>
       <p>
       <Button basic compact floated='left' className='naked'>Age of my child:</Button>
-        <Button
+    {/*   <Button
           circular icon= 'plus'
           floated= 'right'
           color= 'olive'>
         </Button>
-        <Button basic compact floated='right' className='naked'>Add Children</Button>
+        <Button basic compact floated='right' className='naked'>Add Children</Button>*/}
       </p>
         <Button.Group fluid>
           <Button basic compact
             onClick= { this.handleChange }
-            name='ages'
-            value='Infant'>Infant
+            name='ages_infant'
+            value={true}>Infant
           </Button>
           <Button basic compact
             onClick= { this.handleChange }
-            name='ages'
-            value='Toddler'>Toddler</Button>
+            name='ages_toddler'
+            value={true}>Toddler</Button>
           <Button basic compact
             onClick= { this.handleChange }
-            name='ages'
-            value='Preschool'>Preschool
+            name='ages_preschool'
+            value={true}>Preschool
           </Button>
           <Button basic compact
             onClick= { this.handleChange }
-            name='ages'
-            value='School Age'>School Age
+            name='ages_schoolAge'
+            value={true}>School Age
           </Button>
         </Button.Group>
 

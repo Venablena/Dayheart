@@ -52,7 +52,7 @@ class Provider extends Component {
 
   render() {
     return (
-      <Card fluid color='olive'>
+      <Card fluid>
         <Card.Content>
           <Link to={ `/providers/${ this.props.provider.id }`}>
             <Image floated='left' size='small' src={ dayheart2 } />

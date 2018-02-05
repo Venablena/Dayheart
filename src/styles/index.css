@@ -21,14 +21,11 @@ Button {
   /* border-bottom: solid 0.5px #bababa !important;
   box-shadow: 0 1px 2px 0 rgba(34,36,38,.15) !important; */
 }
+.ui.basic.button.compact {
+  background: white !important;
+}
 
-/* .ui.active.button {
-  background-color: #4BB3E7 !important;
-} */
 
-/* .selected {
-  background: lightgrey !important;
-} */
 .header,
 .basic,
 html {
@@ -46,12 +43,6 @@ body {
   /* background: #4BB3E7 linear-gradient(to right, #8fcff0, #4BB3E7, #8fcff0) !important; */
 }
 
-main {
-
-  /* background-color: #0B4659; */
-
-}
-
 a {
   color: initial !important;
 }
@@ -65,6 +56,14 @@ p,
   text-align: left;
   margin-bottom: 2px !important;
   margin-top: 2px !important;
+}
+
+.column {
+  margin-bottom: 0 !important;
+}
+
+.buffer {
+  height: 20px;
 }
 
 .toolbar_wrapper,
@@ -93,6 +92,7 @@ p,
 }
 
 .toolbar {
+  z-index: 99;
   background-color: #F05F27;
   color: white;
   height: 8vh;
@@ -125,28 +125,10 @@ input {
   box-shadow: none !important
 }
 
-.ui.basic.button.compact {
-  background: white !important;
-}
-
-.card_subtitle,
-.ui.basic.button.naked {
-  color: #F05F27 !important;
-  background: none !important;
-}
-
-
-
 .input,
 input {
   border-bottom: 0.5px solid grey !important;
 }
-
-.column {
-  margin-bottom: 0 !important;
-}
-
-
 
 /* CARD */
 .content {
@@ -155,7 +137,7 @@ input {
 
 .card {
   border-radius: 0 !important;
-  margin: 0 !important;
+  margin: 1px 0 !important;
 }
 
 .black {
@@ -168,9 +150,29 @@ input {
   bottom: 13px;
 }
 
+.card_subtitle,
+.ui.basic.button.naked {
+  color: #F05F27 !important;
+  background: none !important;
+}
+
 /* OVERLAY */
 .overlay {
   position: absolute;
   top: 0;
   width: 100%
+}
+
+/* SEGMENTS */
+
+.segments {
+  margin: 0.25rem !important;
+}
+
+.segment {
+  padding: .5rem !important;
+}
+
+.segment.compact {
+  color: #4BB3E7
 }

@@ -52,7 +52,7 @@ export class MapContainer extends Component {
         map.panTo(center)
     }
   }
-
+// FOR LATER:
 // //Get the location from the browser
 //   componentDidMount() {
 //     if (this.props.centerAroundCurrentLocation) {
@@ -77,8 +77,7 @@ export class MapContainer extends Component {
 //   }
 
   render() {
-    console.log('map props:', this.props)
-    console.log('center:', this.state.currentLocation)
+
     if (!this.props.loaded) return (<div>Loading...</div>)
 
     return (
