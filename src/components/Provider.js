@@ -53,7 +53,7 @@ class Provider extends Component {
       <Card fluid>
         <Card.Content>
           <Link to={ `/providers/${ this.props.provider.id }`}>
-            <Image floated='left' size='small' src={`img/${ this.props.provider.img }`}/>
+            <Image floated='left' size='small' src={`/img/${ this.props.provider.img }`}/>
              <Card.Header>
                { this.props.provider.name }
              </Card.Header>
