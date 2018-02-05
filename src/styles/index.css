@@ -72,7 +72,6 @@ p,
 .wrapper {
   max-width: 700px !important;
   margin: auto !important;
-  padding: 0 5px;
 }
 
 .map_wrapper {
@@ -85,14 +84,12 @@ p,
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 8vh
+  height: 8vh;
+  padding: 5px 10px;
 }
 
 .toolbar, .infobar {
   width: 100%;
-
-  /* padding-left: 1rem;
-  padding-right: 1rem */
 }
 
 .toolbar {
@@ -145,17 +142,11 @@ input {
   border-bottom: 0.5px solid grey !important;
 }
 
-/* .favorites {
-  display: flex;
-  min-height: 150px;
-  background-color: lightgrey;
-  align-items: center;
-  /* padding: 10%; */
-/* }  */
-
 .column {
   margin-bottom: 0 !important;
 }
+
+
 
 /* CARD */
 .content {
@@ -175,4 +166,11 @@ input {
   position: absolute;
   right: 10px;
   bottom: 13px;
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  top: 0;
+  width: 100%
 }

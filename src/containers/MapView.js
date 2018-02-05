@@ -32,8 +32,9 @@ export class MapView extends Component {
             providers= {this.props.providers}
             currentSelection= {this.props.currentSelection}
             user= {this.props.user}
-            handleClick= {this.handleClick}/>
-        </div>
+            handleClick= {this.handleClick}
+            favorites= {this.props.favorites}/>
+            
         <div className= 'overlay'>
           {this.props.overlay ?
             <Provider
@@ -41,6 +42,8 @@ export class MapView extends Component {
               isActive= {true}/>
               : null }
         </div>
+        </div>
+
       </main>
     )
   }
@@ -51,7 +54,7 @@ const mapStateToProps = (state) => {
     overlay: state.dayheart.toggleOverlay,
     providers: state.dayheart.providers.all,
     currentSelection: state.dayheart.providers.filtered,
-    favorites: state.dayheart.providers.favorites,
+    favorites: state.dayheart.providers.favorites.data,
     user: state.firebase.auth.uid
   })
 }
