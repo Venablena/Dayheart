@@ -22,20 +22,26 @@ export class Search extends Component {
 
   handleChange = (e) => {
     this.toggleActive(e)
+    let currentState
     const { target: {name, value} } = e
     if(this.state.hasOwnProperty(name)){
-      const currentState = Object.assign(this.state)
+      currentState = Object.assign(this.state)
       delete currentState[name]
       this.setState(currentState)
     }
     else {
-      const currentState = Object.assign(this.state, {[name]: value === 'true' })
+      //if this is a new key:value pair, assign it to the state
+      //note: true value is passed as a string, needed to fix it
+      value === 'true' ?
+      currentState = Object.assign(this.state, {[name]: value === 'true' }) :
+      currentState = Object.assign(this.state, {[name]: value })
       this.setState(currentState)
     }
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
+    //Initially I wanted to load the providers only when the search is selected, currently they get loaded at the app start
     //const providers = this.props.getProviders()
     const newSelection = _.filter(this.props.providers, this.state)
     console.log('NEW SELECTION', newSelection);

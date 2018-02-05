@@ -9,7 +9,6 @@ const List = ({providers, user}) => {
   return (
     <main>
       <Toolbar />
-      <Infobar />
       <Card.Group>
         {providers.map((center, idx) => <Provider key={idx} provider={center}/>)}
       </Card.Group>
