@@ -26,7 +26,6 @@ export class MapView extends Component {
     return (
       <main>
         <Toolbar />
-        <Infobar />
         <div className='map_wrapper'>
           <GoogleMap
             providers= {this.props.providers}
@@ -34,7 +33,7 @@ export class MapView extends Component {
             user= {this.props.user}
             handleClick= {this.handleClick}
             favorites= {this.props.favorites}/>
-            
+
         <div className= 'overlay'>
           {this.props.overlay ?
             <Provider

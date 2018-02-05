@@ -24,8 +24,6 @@ export class Search extends Component {
     this.toggleActive(e)
     const { target: {name, value} } = e
     if(this.state.hasOwnProperty(name)){
-      console.log(this.state[name] === value);
-
       const currentState = Object.assign(this.state)
       delete currentState[name]
       this.setState(currentState)
