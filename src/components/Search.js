@@ -38,7 +38,7 @@ export class Search extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    // const providers = this.props.getProviders()
+    //const providers = this.props.getProviders()
     const newSelection = _.filter(this.props.providers, this.state)
     this.props.filterSelection(newSelection)
     this.setState({})
@@ -51,7 +51,7 @@ export class Search extends Component {
   }
 
   render() {
-    console.log(this.state);
+
     return (
       <div className = 'wrapper'>
         <Form.Group>
@@ -59,12 +59,6 @@ export class Search extends Component {
         </Form.Group>
       <p>
       <Button basic compact floated='left' className='naked'>Age of my child:</Button>
-    {/*   <Button
-          circular icon= 'plus'
-          floated= 'right'
-          color= 'olive'>
-        </Button>
-        <Button basic compact floated='right' className='naked'>Add Children</Button>*/}
       </p>
         <Button.Group fluid>
           <Button basic compact

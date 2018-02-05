@@ -16,7 +16,6 @@ class Provider extends Component {
   }
 
   handleClick = () => {
-    console.log('clicking');
     const match = this.props.favorites.find(favorite => favorite.id === this.props.provider.id)
     let result
     if (match) {

@@ -92,7 +92,6 @@ p,
 }
 
 .toolbar {
-  z-index: 99;
   background-color: #F05F27;
   color: white;
   height: 8vh;
@@ -138,6 +137,8 @@ input {
 .card {
   border-radius: 0 !important;
   margin: 1px 0 !important;
+  min-height: 0;
+  min-width: 0;
 }
 
 .black {
@@ -170,9 +171,15 @@ input {
 }
 
 .segment {
-  padding: .5rem !important;
+  padding: .75rem .75rem .75rem 1.5rem !important;
+  border-left: none !important;
+
 }
 
 .segment.compact {
   color: #4BB3E7
+}
+
+.centered {
+  text-align: center;
 }

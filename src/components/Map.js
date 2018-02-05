@@ -16,7 +16,7 @@ export class MapContainer extends Component {
     }
   }
 
-  markers = this.props.currentSelection.map(el => {
+  markers = this.props.providers.map(el => {
     const match = this.props.favorites.find(favorite => favorite.id === el.id)
     let strokeColor
     match ? strokeColor = 'red' : strokeColor = 'teal'
@@ -40,18 +40,18 @@ export class MapContainer extends Component {
   // centerMoved = () => {
   //   console.log("load new centers at this location");
   // }
-
-  recenterMap = () => {
-    const map = this.map;
-    const curr = this.state.currentLocation;
-    const google = this.props.google;
-    const maps = google.maps;
-
-    if (map) {
-        let center = new maps.LatLng(curr.lat, curr.lng)
-        map.panTo(center)
-    }
-  }
+  //FOR LATER: recenter map on current location
+  // recenterMap = () => {
+  //   const map = this.map;
+  //   const curr = this.state.currentLocation;
+  //   const google = this.props.google;
+  //   const maps = google.maps;
+  //
+  //   if (map) {
+  //       let center = new maps.LatLng(curr.lat, curr.lng)
+  //       map.panTo(center)
+  //   }
+  // }
 // FOR LATER:
 // //Get the location from the browser
 //   componentDidMount() {
@@ -85,7 +85,7 @@ export class MapContainer extends Component {
         google={this.props.google}
         zoom={14}
         initialCenter={this.state.currentLocation}
-        centerAroundCurrentLocation={true}>
+        centerAroundCurrentLocation={false}>
        { this.markers }
       </Map>
     );

@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Provider from '../components/Provider'
+import SwipeToSlide from '../components/Slider'
 
 const Favorites = ({ favorites }) => {
-
-return (
-  <div className='favorites'>
-      {favorites.map((center, idx) => <Provider key={idx} provider={center}/>)}
-  </div>
-)}
+  return (
+    <div>
+      {/*<SwipeToSlide />*/}
+        {favorites.map((center, idx) => <Provider key={idx} index={idx} provider={center}/>)}
+    </div>
+  )
+}
 
 const mapStateToProps = (state) => ({
   favorites: state.dayheart.providers.favorites.data
