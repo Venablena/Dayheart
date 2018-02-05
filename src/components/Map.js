@@ -16,7 +16,7 @@ export class MapContainer extends Component {
     }
   }
 
-  markers = this.props.providers.map(el => {
+  markers = this.props.currentSelection.map(el => {
     const match = this.props.favorites.find(favorite => favorite.id === el.id)
     let strokeColor
     match ? strokeColor = 'red' : strokeColor = 'teal'
