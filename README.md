@@ -1,5 +1,7 @@
 # Dayheart
-A progressive web app that helps parents to find daycare providers in their region (Seattle to start with).
+A mobile-first web app that helps parents to find daycare providers in their region (Seattle postcode 98108 to start with).
+
+Users can search childcare providers on a Google Maps interface and in a list view, filter their search criteria and save favorites.  
 
 ## Design
 
