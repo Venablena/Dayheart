@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { toggleOverlay, toggleFavorite } from '../actions'
-import dayheart2 from '../img/dayheart2.jpg'
 
 class Provider extends Component {
   constructor(props){
@@ -54,7 +53,7 @@ class Provider extends Component {
       <Card fluid>
         <Card.Content>
           <Link to={ `/providers/${ this.props.provider.id }`}>
-            <Image floated='left' size='small' src={ dayheart2 } />
+            <Image floated='left' size='small' src={`img/${ this.props.provider.img }`}/>
              <Card.Header>
                { this.props.provider.name }
              </Card.Header>

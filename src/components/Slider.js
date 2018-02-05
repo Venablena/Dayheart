@@ -6,14 +6,13 @@ import Provider from './Provider'
 class CustomSlide extends Component {
 
   render() {
-    const {...props} = this.props
+    const {provider, ...props} = this.props
     return (
       <div {...props}>
-        <Provider />
+        <Provider provider={ provider }/>
       </div>
     )
   }
-
 }
 
 class SwipeToSlide extends Component {
@@ -23,7 +22,7 @@ class SwipeToSlide extends Component {
   }
 
   renderFavorites = () => {
-    return this.props.favorites.map((center, idx) => <Provider key={idx} data-index={idx} provider={center}/>)
+    return this.props.favorites.map((center, idx) => <CustomSlide key={idx} provider={center}/>)
   }
 
   render() {
@@ -41,7 +40,7 @@ class SwipeToSlide extends Component {
     return (
       <div>
         <Slider {...settings}>
-         <CustomSlide />
+          { this.renderFavorites() }
         </Slider>
       </div>
     )

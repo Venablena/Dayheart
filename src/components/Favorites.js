@@ -6,8 +6,7 @@ import SwipeToSlide from '../components/Slider'
 const Favorites = ({ favorites }) => {
   return (
     <div>
-      {/*<SwipeToSlide />*/}
-        {favorites.map((center, idx) => <Provider key={idx} index={idx} provider={center}/>)}
+      <SwipeToSlide />
     </div>
   )
 }

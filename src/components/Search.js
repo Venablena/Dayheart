@@ -31,7 +31,7 @@ export class Search extends Component {
       this.setState(currentState)
     }
     else {
-      const currentState = Object.assign(this.state, {[name]: value })
+      const currentState = Object.assign(this.state, {[name]: value === 'true' })
       this.setState(currentState)
     }
   }
@@ -40,6 +40,8 @@ export class Search extends Component {
     e.preventDefault()
     //const providers = this.props.getProviders()
     const newSelection = _.filter(this.props.providers, this.state)
+    console.log('NEW SELECTION', newSelection);
+    console.log('PROPS & STATE', this.props.providers, this.state);
     this.props.filterSelection(newSelection)
     this.setState({})
     this.props.history.push('/map')
