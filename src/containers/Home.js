@@ -5,7 +5,7 @@ import { Button, Form, Container } from 'semantic-ui-react'
 import Header from '../components/Header'
 
 const Home = () => (
-  <main className= 'centered white'>
+  <main className= 'centered'>
     <Header />
     <div className= 'wrapper'>
       <Form>

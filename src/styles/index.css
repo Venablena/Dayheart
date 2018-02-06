@@ -165,10 +165,6 @@ input {
   text-align: center !important;
 }
 
-.white {
-  background-color: #fefefe !important;
-}
-
 /*  SLIDER  */
 .slick-next:before {
   content: ">"
