@@ -16,7 +16,13 @@ export class MapContainer extends Component {
     }
   }
 
-  markers = this.props.currentSelection.map(el => {
+  makeMarkers = (array) => {
+    let markers
+    array.length ?
+    markers = array :
+    markers = this.props.providers
+
+    return markers.map(el => {
     const match = this.props.favorites.find(favorite => favorite.id === el.id)
     let strokeColor
     match ? strokeColor = 'red' : strokeColor = 'teal'
@@ -34,7 +40,8 @@ export class MapContainer extends Component {
         onClick = { this.props.handleClick }
         icon = { icon }
         provider = { el }/>
-  })
+    })
+  }
 
   //FOR LATER: Load new providers when the map moves
   // centerMoved = () => {
@@ -77,16 +84,15 @@ export class MapContainer extends Component {
 //   }
 
   render() {
-
     if (!this.props.loaded) return (<div>Loading...</div>)
-
+    console.log('map props:', this.props.providers);
     return (
       <Map
         google={this.props.google}
         zoom={14}
         initialCenter={this.state.currentLocation}
         centerAroundCurrentLocation={false}>
-       { this.markers }
+       { this.makeMarkers(this.props.providers) }
       </Map>
     );
   }
