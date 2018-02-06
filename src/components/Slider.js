@@ -3,8 +3,8 @@ import Slider from 'react-slick'
 import { connect } from 'react-redux'
 import Provider from './Provider'
 
+//Custom slide makes it possible to pass a react component into the slider by adding the right information from the props into the surrounding div
 class CustomSlide extends Component {
-
   render() {
     const {provider, ...props} = this.props
     return (
@@ -16,11 +16,6 @@ class CustomSlide extends Component {
 }
 
 class SwipeToSlide extends Component {
-  constructor(props) {
-    super(props)
-    this.renderFavorites = this.renderFavorites.bind(this)
-  }
-
   renderFavorites = () => {
     return this.props.favorites.map((center, idx) => <CustomSlide key={idx} provider={center}/>)
   }
@@ -31,10 +26,7 @@ class SwipeToSlide extends Component {
       infinite: false,
       centerPadding: '60px',
       slidesToShow: 1,
-      swipeToSlide: true,
-      afterChange: function (index) {
-        console.log(`Slider Changed to: ${index + 1}, background: #222; color: #bada55`);
-      }
+      swipeToSlide: true
     };
 
     return (

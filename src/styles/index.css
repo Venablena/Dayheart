@@ -12,43 +12,30 @@ src: url("./fonts/AvenirNextLTPro-MediumCn.otf") format("opentype")
 font-family: "Avenir Md";
 src: url("./fonts/AvenirMedium.otf") format("opentype")
 }
-
+/* Layout and basic elements  */
 Button {
-  font-family:'AvenirNext Md' !important;
-  /* color: #4BB3E7 !important; */
-  /* padding: 11px !important; */
   box-shadow: 0px 1px 1px #bababa !important;
-  /* border-bottom: solid 0.5px #bababa !important;
-  box-shadow: 0 1px 2px 0 rgba(34,36,38,.15) !important; */
 }
 .ui.basic.button.compact {
   background: white !important;
 }
 
-
+Button,
 .header,
 .basic,
+body,
 html {
   font-family:'AvenirNext Md' !important;
 }
 
 body {
-  font-family:'AvenirNext Md' !important; */
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
   background: #eaeaea !important;
-  /* background:  #F05F27 ; */
-  /* #4BB3E7 linear-gradient(to right, #1fa0e0, #4BB3E7, #1fa0e0) !important; */
-  /* background: #4BB3E7 linear-gradient(to right, #8fcff0, #4BB3E7, #8fcff0) !important; */
 }
 
 a {
   color: initial !important;
-}
-
-.right {
-  text-align: right;
 }
 
 p,
@@ -56,6 +43,10 @@ p,
   text-align: left;
   margin-bottom: 2px !important;
   margin-top: 2px !important;
+}
+
+.right {
+  text-align: right;
 }
 
 .column {
@@ -66,53 +57,8 @@ p,
   height: 20px;
 }
 
-.toolbar_wrapper,
-.map_wrapper,
-.wrapper {
-  max-width: 700px !important;
-  margin: auto !important;
-}
-
-.map_wrapper {
-  width: 100%;
-  height: 92vh;
-  position: relative;
-}
-
-.toolbar_wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 8vh;
-  padding: 5px 10px;
-}
-
-.toolbar, .infobar {
-  width: 100%;
-}
-
-.toolbar {
-  background-color: #F05F27;
-  color: white;
-  height: 8vh;
-  box-shadow: 0px 1px 1px #bababa !important;
-}
-
-.infobar {
-  background-color: #eaeaea;
-  height: 6vh;
-}
-
 .title {
   height: 6rem;
-}
-
-.App-header {
-  padding: 20px;
-  color: white;
-}
-.App-intro {
-  font-size: large;
 }
 
 .naked,
@@ -129,9 +75,45 @@ input {
   border-bottom: 0.5px solid grey !important;
 }
 
+.App-intro {
+  font-family: sans-serif;
+  color: grey;
+}
+
+/* MAP */
+.map_wrapper {
+  width: 100%;
+  height: 92vh;
+  position: relative;
+}
+
+/* TOOLBAR */
+.toolbar_wrapper,
+.map_wrapper,
+.wrapper {
+  max-width: 600px !important;
+  margin: auto !important;
+}
+
+.toolbar_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 8vh;
+  padding: 5px 10px;
+}
+
+.toolbar {
+  width: 100%;
+  background-color: #F05F27;
+  color: white;
+  height: 8vh;
+  box-shadow: 0px 1px 1px #bababa !important;
+}
+
 /* CARD */
-.content {
-  /* padding-left: 0 !important; */
+.cards {
+  margin: 0 !important;
 }
 
 .card {
@@ -165,7 +147,6 @@ input {
 }
 
 /* SEGMENTS */
-
 .segments {
   margin: 0.25rem !important;
 }
@@ -182,4 +163,32 @@ input {
 
 .centered {
   text-align: center !important;
+}
+
+/*  SLIDER  */
+.slick-next:before {
+  content: ">"
+}
+.slick-prev:before {
+  content: "<"
+}
+
+.slick-next:before,
+.slick-prev:before {
+  color: grey;
+  opacity: 0.8;
+}
+
+.slick-next,
+.slick-prev {
+  z-index: 99;
+  box-shadow: none !important;
+}
+
+.slick-next {
+  right: 0;
+}
+
+.slick-prev {
+  left: 0px;
 }

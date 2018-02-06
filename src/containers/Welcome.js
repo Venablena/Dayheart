@@ -3,16 +3,33 @@ import '../styles/index.css'
 import Toolbar from '../components/Toolbar'
 import Favorites from '../components/Favorites'
 import Search from '../components/Search'
-import { Container } from 'semantic-ui-react'
+import { Container, Card, Image } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
-const Welcome = ({}) => (
+const Welcome = ({ favorites }) => (
   <main>
    <Toolbar />
    <div className= 'wrapper'>
-     <Favorites />
-     <Search />
-   </div>
+   {favorites.length ?
+     <Favorites /> :
+       <Card fluid>
+         <Card.Content>
+             <Image
+               floated='left'
+               size='small'
+               src={'/img/DayHeart_logo_192.png'}/>
+              <Card.Header>
+                You don't have any favorites yet.
+              </Card.Header>
+          </Card.Content>
+        </Card>}
+       <Search />
+     </div>
   </main>
 )
 
-export default Welcome
+const mapStateToProps = (state) => ({
+  favorites: state.dayheart.providers.favorites.data
+})
+
+export default connect(mapStateToProps)(Welcome)

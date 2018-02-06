@@ -11,8 +11,11 @@ const Login = (props) => {
   const uiConfig = {
       signInFlow : 'redirect',
       signInOptions: [
-        firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        {
+          provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          requireDisplayName: true
+        },
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID
       ],
       callbacks: {
         signInSuccess: (currentUser) => props.history.push('/')

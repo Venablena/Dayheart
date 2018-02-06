@@ -53,7 +53,10 @@ class Provider extends Component {
       <Card fluid>
         <Card.Content>
           <Link to={ `/providers/${ this.props.provider.id }`}>
-            <Image floated='left' size='small' src={`/img/${ this.props.provider.img }`}/>
+            <Image
+              floated='left'
+              size='small'
+              src={`/img/${ this.props.provider.img }`}/>
              <Card.Header>
                { this.props.provider.name }
              </Card.Header>
@@ -64,11 +67,11 @@ class Provider extends Component {
               <div className= 'black'>{ this.props.provider.address }</div>
            </Card.Meta>
            <Icon className = 'card_icon'
-            name= { this.state.isFavorite ?
-            'heart' :
-            'heart outline' }
-            size='large'
-            onClick= { this.handleClick } />
+              name= { this.state.isFavorite ?
+              'heart' :
+              'heart outline' }
+              size='large'
+              onClick= { this.handleClick } />
        </Card.Content>
        { this.props.isActive ?
          this.renderMoreContent() : null}
