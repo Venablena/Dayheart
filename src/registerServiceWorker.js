@@ -1,3 +1,5 @@
+//I PREPAREED THIS CONTENT WITH THE INTETNTION OF MAKING A PROGRESSIVE WEB APP. THIS MIGHT/WILL PROBABLY HAPPEN IN THE FUTURE
+
 // In production, we register a service worker to serve assets from local cache.
 
 // This lets the app load faster on subsequent visits in production, and gives

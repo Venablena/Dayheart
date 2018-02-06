@@ -1,0 +1,194 @@
+@font-face {
+font-family: "AvenirNext Lt";
+src: url("./fonts/AvenirNextLTPro-Cn.otf") format("opentype")
+}
+
+@font-face {
+font-family: "AvenirNext Md";
+src: url("./fonts/AvenirNextLTPro-MediumCn.otf") format("opentype")
+}
+
+@font-face {
+font-family: "Avenir Md";
+src: url("./fonts/AvenirMedium.otf") format("opentype")
+}
+/* Layout and basic elements  */
+Button {
+  box-shadow: 0px 1px 1px #bababa !important;
+}
+.ui.basic.button.compact {
+  background: white !important;
+}
+
+Button,
+.header,
+.basic,
+body,
+html {
+  font-family:'AvenirNext Md' !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #eaeaea !important;
+}
+
+a {
+  color: initial !important;
+}
+
+p,
+.left {
+  text-align: left;
+  margin-bottom: 2px !important;
+  margin-top: 2px !important;
+}
+
+.right {
+  text-align: right;
+}
+
+.column {
+  margin-bottom: 0 !important;
+}
+
+.buffer {
+  height: 20px;
+}
+
+.title {
+  height: 6rem;
+}
+
+.naked,
+.input,
+input {
+  background: initial !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important
+}
+
+.input,
+input {
+  border-bottom: 0.5px solid grey !important;
+}
+
+.App-intro {
+  font-family: sans-serif;
+  color: grey;
+}
+
+/* MAP */
+.map_wrapper {
+  width: 100%;
+  height: 92vh;
+  position: relative;
+}
+
+/* TOOLBAR */
+.toolbar_wrapper,
+.map_wrapper,
+.wrapper {
+  max-width: 600px !important;
+  margin: auto !important;
+}
+
+.toolbar_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 8vh;
+  padding: 5px 10px;
+}
+
+.toolbar {
+  width: 100%;
+  background-color: #F05F27;
+  color: white;
+  height: 8vh;
+  box-shadow: 0px 1px 1px #bababa !important;
+}
+
+/* CARD */
+.cards {
+  margin: 0 !important;
+}
+
+.card {
+  border-radius: 0 !important;
+  margin: 1px 0 !important;
+  min-height: 0;
+  min-width: 0;
+}
+
+.black {
+  color: #444 !important;
+}
+
+.card_icon {
+  position: absolute;
+  right: 10px;
+  bottom: 13px;
+}
+
+.card_subtitle,
+.ui.basic.button.naked {
+  color: #F05F27 !important;
+  background: none !important;
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  top: 0;
+  width: 100%
+}
+
+/* SEGMENTS */
+.segments {
+  margin: 0.25rem !important;
+}
+
+.segment {
+  padding: .75rem .75rem .75rem 1.5rem !important;
+  border-left: none !important;
+
+}
+
+.segment.compact {
+  color: #4BB3E7
+}
+
+.centered {
+  text-align: center !important;
+}
+
+/*  SLIDER  */
+.slick-next:before {
+  content: ">"
+}
+.slick-prev:before {
+  content: "<"
+}
+
+.slick-next:before,
+.slick-prev:before {
+  color: grey;
+  opacity: 0.8;
+}
+
+.slick-next,
+.slick-prev {
+  z-index: 99;
+  box-shadow: none !important;
+}
+
+.slick-next {
+  right: 0;
+}
+
+.slick-prev {
+  left: 0px;
+}

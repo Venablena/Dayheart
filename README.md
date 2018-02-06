@@ -1,19 +1,40 @@
 # Dayheart
-Front end for a progressive web app
+A mobile-first web app that helps parents to find daycare providers in their region (Seattle postcode 98108 to start with).
 
+Users can search childcare providers on a Google Maps interface and in a list view, filter their search criteria and save favorites.  
 
 ## Design
 
-![login](https://github.com/Venablena/Dayheart/Templates/login.png )
+#### Log in and Sign up
+* if the user is not logged in, they can still view a limited version of the search
 
-![search_no-login](https://github.com/Venablena/Dayheart/Templates/search_no-login.png )
+![login](https://github.com/Venablena/Dayheart/blob/master/Templates/login.png )
 
-![welcome](https://github.com/Venablena/Dayheart/Templates/welcome.png )
+#### Search without logging in
 
-![search](https://github.com/Venablena/Dayheart/Templates/search.png )
+![search_no-login](https://github.com/Venablena/Dayheart/blob/master/Templates/search_no-login.png )
 
-![list-detail-matches](https://github.com/Venablena/Dayheart/Templates/list-detail-matches.png )
+#### Profile/Welcome page
+* first time user without saved favorites and a returning user with favorites
+* log out in the left top corner for logged in user
+* notification bubble if there has been a match
+
+![welcome](https://github.com/Venablena/Dayheart/blob/master/Templates/welcome.png )
+
+#### Map view, map view with center overlay, filter search
+* centers are color-coded to show vacancy
+* tap on the center overlay will show center detail view
+* tap on hte heart icon will add center to favorites
+
+![search](https://github.com/Venablena/Dayheart/blob/master/Templates/search.png )
+
+#### List view, Center detail view, Matches view
+* swipe to remove center from list view
+* tap on heart icon to add centers to favorites
+* tap to see center detail view
+
+![list-detail-matches](https://github.com/Venablena/Dayheart/blob/master/Templates/list-detail-matches.png)
 
 ## Demo
 
-![demo](https://github.com/Venablena/Dayheart/Templates/Dayheart_mock1.gif )
+<img src="https://github.com/Venablena/Dayheart/blob/master/Templates/Dayheart_mock1.gif" width="270">
