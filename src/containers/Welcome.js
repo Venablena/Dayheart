@@ -17,7 +17,7 @@ const Welcome = ({ favorites }) => (
              <Image
                floated='left'
                size='small'
-               src={'/img/DayHeart_logo_192.png'}/>
+               src={'/DayHeart_logo_192.png'}/>
               <Card.Header>
                 You don't have any favorites yet.
               </Card.Header>

@@ -60,9 +60,9 @@ export class Search extends Component {
 
     return (
       <div className = 'wrapper'>
-        <Form.Group>
-          <Form.Input className = '.naked_form' label='Search near' placeholder="Enter zip code" />
-        </Form.Group>
+        <div className= 'centered'>
+          <Form.Input className = '.naked_form' label='Search near' placeholder="Enter zip code"/>
+        </div>
       <p>
       <Button basic compact floated='left' className='naked'>Age of my child:</Button>
       </p>
