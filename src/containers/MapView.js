@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Toolbar from '../components/Toolbar'
-import Infobar from '../components/Infobar'
-import Provider from '../components/Provider'
-import GoogleMap from '../components/Map'
+import Provider from './Provider'
+import GoogleMap from './Map'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { toggleOverlay } from '../actions'

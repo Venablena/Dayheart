@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import Provider from '../components/Provider'
-import SwipeToSlide from '../components/Slider'
+import Provider from '../containers/Provider'
+import SwipeToSlide from '../containers/Slider'
 
 const Favorites = ({ favorites }) => {
   return (

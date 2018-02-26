@@ -1,6 +1,6 @@
 import React from 'react';
 import Toolbar from '../components/Toolbar'
-import Provider from '../components/Provider'
+import Provider from './Provider'
 import { Segment, Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import _ from 'lodash'

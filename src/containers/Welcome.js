@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/index.css'
 import Toolbar from '../components/Toolbar'
 import Favorites from '../components/Favorites'
-import Search from '../components/Search'
+import Search from './Search'
 import { Container, Card, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
@@ -10,7 +10,7 @@ const Welcome = ({ favorites }) => (
   <main>
    <Toolbar />
    <div className= 'wrapper'>
-   {favorites.length ?
+   { favorites.length ?
      <Favorites /> :
        <Card fluid>
          <Card.Content>
@@ -22,7 +22,7 @@ const Welcome = ({ favorites }) => (
                 You don't have any favorites yet.
               </Card.Header>
           </Card.Content>
-        </Card>}
+        </Card> }
        <Search />
      </div>
   </main>

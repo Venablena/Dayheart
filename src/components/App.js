@@ -12,7 +12,7 @@ import Home from '../containers/Home'
 import Login from '../containers/Login'
 import Single from '../containers/SingleView'
 import MapView from '../containers/MapView'
-import ListView from '../containers/ListView'
+import ListView from './ListView'
 import Welcome from '../containers/Welcome'
 
 import {
