@@ -16,7 +16,7 @@ const Single = ({ provider }) => {
   if (!provider) return (<div>Loading...</div>)
   return (
     <main>
-      <Toolbar />
+      <Toolbar redirect= 'list'/>
 
       <div className= 'wrapper'>
         <Provider provider={provider} />

@@ -24,8 +24,8 @@ export class MapView extends Component {
 
     return (
       <main>
-        <Toolbar />
-        <div className='map_wrapper'>
+        <Toolbar redirect= 'list'/>
+        <div className= 'map_wrapper'>
           <GoogleMap
             providers= { this.props.providers }
             currentSelection= { this.props.currentSelection }

@@ -4,7 +4,7 @@ import { Icon } from 'semantic-ui-react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-const Toolbar = ({ firebase, user }) => {
+const Toolbar = ({ firebase, user, redirect }) => {
 
 return (
   <div className = 'toolbar'>
@@ -14,7 +14,9 @@ return (
         <span><Link to={'/'}> DayHeart</Link></span>
       </div>
       <div className = 'toolbar-middle'></div>
-      <div className = 'toolbar-right'><Link to={'/list'}> LIST</Link> </div>
+      <div className = 'toolbar-right'>
+        <Link to={`/${ redirect}`}>{ redirect.toUpperCase() }</Link>
+      </div>
     </div>
   </div>
 );

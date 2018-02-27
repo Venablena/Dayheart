@@ -41,11 +41,11 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/map" component={MapView}/>
-          <Route path="/login" component={Login}/>
-          <Route path="/list" component={() => <ListView
-            {...this.props}/>}/>
-          <Route path="/providers/:providerId" component={Single}/>
+          <Route path="/map" component= { MapView }/>
+          <Route path="/login" component= { Login }/>
+          <Route path="/list" component= { () =>
+            <ListView {...this.props}/> }/>
+          <Route path="/providers/:providerId" component= { Single }/>
           <Route exact path='/' render={() => (this.props.user ? (<Welcome/>) : (<Home/>)
           )}/>
         </Switch>
