@@ -27,17 +27,17 @@ export class MapView extends Component {
         <Toolbar />
         <div className='map_wrapper'>
           <GoogleMap
-            providers= {this.props.providers}
-            currentSelection= {this.props.currentSelection}
-            user= {this.props.user}
-            handleClick= {this.handleClick}
-            favorites= {this.props.favorites}/>
+            providers= { this.props.providers }
+            currentSelection= { this.props.currentSelection }
+            user= { this.props.user }
+            handleClick= { this.handleClick }
+            favorites= { this.props.favorites }/>
 
         <div className= 'overlay'>
-          {this.props.overlay ?
+          { this.props.overlay ?
             <Provider
-              provider={ this.state.selected }
-              isActive= {true}/>
+              provider= { this.state.selected }
+              isActive= { true }/>
               : null }
         </div>
         </div>
