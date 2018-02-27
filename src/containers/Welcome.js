@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 
 const Welcome = ({ favorites }) => (
   <main>
-   <Toolbar />
+   <Toolbar redirect= ''/>
    <div className= 'wrapper'>
    { favorites.length ?
      <Favorites /> :
