@@ -6,21 +6,12 @@ import { connect } from 'react-redux';
 
 const Toolbar = ({ firebase, user }) => {
 
-const logOut = () => {
-//   firebase.logOut()
-//    .then(() => {
-//         this.setState({
-//           user: null
-//   });
-}
-
 return (
   <div className = 'toolbar'>
     <div className = 'toolbar_wrapper'>
       <div className = 'toolbar-left'>
         <span>{
-          <Icon name = 'sign out'
-                onClick = { logOut()}/>}
+          <Icon name = 'sign out'/>}
         </span>
         <span><Link to={'/'}> DayHeart</Link></span>
       </div>
@@ -35,11 +26,5 @@ const mapStateToProps = (state) => ({
   firebase: state.firebase,
   user: state.firebase.auth.uid,
 })
-
-// const mapDispatchToProps = dispatch => {
-//   return bindActionCreators({
-//     logOut
-//    }, dispatch)
-// }
 
 export default connect(mapStateToProps)(Toolbar);

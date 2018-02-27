@@ -8,14 +8,9 @@ import _ from 'lodash'
 const formatTuition = (array) => {
   let result = ''
    return array.map(el => {
-     for(let key in el) console.log(el[key]);
-     // result = <Segment>el[key]</Segment>
+     for(let key in el) console.log(el[key])
    })
 }
-
-// const formatTuition = (array) => {
-//   return array.map(el, idx) => <Segment>
-// }
 
 const Single = ({ provider }) => {
   if (!provider) return (<div>Loading...</div>)
@@ -77,7 +72,7 @@ const Single = ({ provider }) => {
 
         <Segment.Group horizontal>
           <Segment compact>Meals</Segment>
-          <Segment>{ provider.meals ? (provider.meals) : 'no' }</Segment>
+          <Segment>{ provider.meals ? ( provider.meals ) : 'no' }</Segment>
           <Segment compact>Cloth diapers</Segment>
           <Segment>{ provider.cloth_diapers ? 'yes' : 'no' }</Segment>
         </Segment.Group>
@@ -113,9 +108,9 @@ const Single = ({ provider }) => {
         </Segment.Group>
 
         <Segment.Group>
-          <Segment  color= 'olive' textAlign='center'>{ provider.phone }</Segment>
+          <Segment  color= 'olive' textAlign='center'>Tel. { provider.phone }</Segment>
           <Segment textAlign='center'>{ provider.contact }</Segment>
-          { provider.eail ?
+          { provider.email ?
             <Segment textAlign='center'>{ provider.email }</Segment>
           : null }
         </Segment.Group>
