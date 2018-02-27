@@ -15,7 +15,7 @@ return (
       </div>
       <div className = 'toolbar-middle'></div>
       <div className = 'toolbar-right'>
-        <Link to={`/${ redirect}`}>{ redirect.toUpperCase() }</Link>
+        <Link to={`/${ redirect }`}>{ redirect.toUpperCase() }</Link>
       </div>
     </div>
   </div>
