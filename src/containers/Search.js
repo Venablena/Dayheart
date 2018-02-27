@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
-import { Form, Container, Segment, Button, Label, Grid, Accordion } from 'semantic-ui-react'
+import { Form, Button, Grid } from 'semantic-ui-react'
 import { getProviders, filterSelection } from '../actions'
 import { withRouter } from 'react-router-dom'
 import _ from 'lodash'
