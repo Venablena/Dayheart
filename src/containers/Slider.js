@@ -6,10 +6,10 @@ import Provider from './Provider'
 //Custom slide makes it possible to pass a react component into the slider by adding the right information from the props into the surrounding div
 class CustomSlide extends Component {
   render() {
-    const {provider, ...props} = this.props
+    const { provider, ...props } = this.props
     return (
-      <div {...props}>
-        <Provider provider={ provider }/>
+      <div { ...props }>
+        <Provider provider={provider}/>
       </div>
     )
   }
@@ -31,7 +31,7 @@ class SwipeToSlide extends Component {
 
     return (
       <div>
-        <Slider {...settings}>
+        <Slider { ...settings }>
           { this.renderFavorites() }
         </Slider>
       </div>
