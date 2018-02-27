@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { GoogleAPIKey } from '../config'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { iconPath } from '../config'
-import { connect } from 'react-redux'
 
 export class MapContainer extends Component {
   constructor(props){
@@ -96,10 +95,6 @@ export class MapContainer extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => ({
-  overlay: state.dayheart.toggleOverlay
-})
 
 const GoogleMap = GoogleApiWrapper({apiKey: GoogleAPIKey})(MapContainer)
 

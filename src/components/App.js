@@ -3,10 +3,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 //Redux
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
-//Firebase for authorization, login and signup
-import * as firebase from 'firebase'
-import { firebaseConfig } from '../config.js'
-// import { FirebaseAuth } from 'react-firebaseui'
 
 import Home from '../containers/Home'
 import Login from '../containers/Login'
@@ -17,14 +13,10 @@ import Welcome from '../containers/Welcome'
 
 import {
   getProviders,
-  getFavorites,
-  toggleOverlay
+  getFavorites
 } from '../actions'
 
 class App extends Component {
-  constructor(props){
-    super(props)
-  }
 
   componentDidMount() {
     this.props.getProviders()

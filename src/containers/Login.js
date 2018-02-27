@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Container } from 'semantic-ui-react'
 import Header from '../components/Header'
 
 //Firebase for authorization, login and signup

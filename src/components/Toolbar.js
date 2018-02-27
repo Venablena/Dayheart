@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { Icon } from 'semantic-ui-react'
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 const Toolbar = ({ firebase, user, redirect }) => {

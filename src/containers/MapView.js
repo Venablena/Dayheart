@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import Toolbar from '../components/Toolbar'
 import Provider from './Provider'
-import GoogleMap from './Map'
+import GoogleMap from '../components/Map'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { toggleOverlay } from '../actions'
-import { Container } from 'semantic-ui-react'
 
 export class MapView extends Component {
   constructor(props){

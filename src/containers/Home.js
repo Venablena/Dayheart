@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/index.css'
 import { Link } from 'react-router-dom'
-import { Button, Form, Container } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 import Header from '../components/Header'
 
 const Home = () => (

@@ -3,14 +3,6 @@ import Toolbar from '../components/Toolbar'
 import Provider from './Provider'
 import { Segment, Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import _ from 'lodash'
-
-const formatTuition = (array) => {
-  let result = ''
-   return array.map(el => {
-     for(let key in el) console.log(el[key])
-   })
-}
 
 const Single = ({ provider }) => {
   if (!provider) return (<div>Loading...</div>)
@@ -19,7 +11,7 @@ const Single = ({ provider }) => {
       <Toolbar redirect= 'list'/>
 
       <div className= 'wrapper'>
-        <Provider provider={provider} />
+        <Provider provider= { provider } />
         <Card fluid color='olive'>
           <Card.Content extra>
            { provider.description }
@@ -124,7 +116,7 @@ const Single = ({ provider }) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { provider: state.dayheart.providers.all.filter((el)=> el.id == ownProps.match.params.providerId)[0] }
+  return { provider: state.dayheart.providers.all.filter((el)=> el.id === ownProps.match.params.providerId)[0] }
 }
 
 export default connect(mapStateToProps)(Single)
