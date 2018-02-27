@@ -44,8 +44,6 @@ export class Search extends Component {
     //Initially I wanted to load the providers only when the search is selected, currently they get loaded at the app start
     //const providers = this.props.getProviders()
     const newSelection = _.filter(this.props.providers, this.state)
-    console.log('NEW SELECTION', newSelection);
-    console.log('PROPS & STATE', this.props.providers, this.state);
     this.props.filterSelection(newSelection)
     this.setState({})
     this.props.history.push('/map')
@@ -70,21 +68,21 @@ export class Search extends Component {
           <Button basic compact
             onClick= { this.handleChange }
             name='ages_infant'
-            value={true}>Infant
+            value={ true }>Infant
           </Button>
           <Button basic compact
             onClick= { this.handleChange }
             name='ages_toddler'
-            value={true}>Toddler</Button>
+            value={ true }>Toddler</Button>
           <Button basic compact
             onClick= { this.handleChange }
             name='ages_preschool'
-            value={true}>Preschool
+            value={ true }>Preschool
           </Button>
           <Button basic compact
             onClick= { this.handleChange }
             name='ages_schoolAge'
-            value={true}>School Age
+            value={ true }>School Age
           </Button>
         </Button.Group>
 
@@ -142,8 +140,7 @@ export class Search extends Component {
           <p>
            <Button color='orange' floated='left'
             onClick= { this.handleSubmit }>Search</Button>
-          <Button className='naked' floated='right'
-            onClick= { this.erase }>
+          <Button className='naked' floated='right'>
             Clear
            </Button>
           </p>

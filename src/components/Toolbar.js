@@ -10,9 +10,7 @@ return (
   <div className = 'toolbar'>
     <div className = 'toolbar_wrapper'>
       <div className = 'toolbar-left'>
-        <span>{
-          <Icon name = 'sign out'/>}
-        </span>
+        <span>{<Icon name = 'sign out'/>}</span>
         <span><Link to={'/'}> DayHeart</Link></span>
       </div>
       <div className = 'toolbar-middle'></div>

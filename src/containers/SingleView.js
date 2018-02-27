@@ -116,7 +116,7 @@ const Single = ({ provider }) => {
         </Segment.Group>
 
         <Segment.Group>
-          <Segment textAlign='center'><a href={`https://apps.del.wa.gov/Check/LicenseView.aspx?id=-${provider.id}`}>Licensing Status</a></Segment>
+          <Segment textAlign='center'><a href={`https://apps.del.wa.gov/Check/LicenseView.aspx?id=-${ provider.id }`}>Licensing Status</a></Segment>
         </Segment.Group>
       </div>
     </main>
