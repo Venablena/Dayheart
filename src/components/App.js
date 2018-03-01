@@ -33,11 +33,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          {/*<Route path="/map" component= { MapView }/>*/}
-          <Route path="/map" render={() => {
-            console.log("whats up dude?")
-             return (<MapView/> )
-          }}/>
+          <Route path="/map" component= { MapView }/>
           <Route path="/login" component= { Login }/>
           <Route path="/list" component= { () =>
             <ListView {...this.props}/> }/>

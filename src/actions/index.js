@@ -31,16 +31,15 @@ export const getProviders = () => (dispatch) => {
 
 export const FAVORITES_FETCH_SUCCESS = 'FAVORITES_FETCH_SUCCESS'
 export const getFavorites = (user) => (dispatch) => {
-  console.log('actions user:', user);
-    return firebase.database().ref(`/users/${user}/favorites`)
-      .once('value', snapshot => {
-        if(snapshot.val() && snapshot.val().length)
-        dispatch({
-          type: FAVORITES_FETCH_SUCCESS,
-          payload: snapshot.val()
-        })
-    })
-  }
+  return firebase.database().ref(`/users/${user}/favorites`)
+    .once('value', snapshot => {
+      if(snapshot.val() && snapshot.val().length)
+      dispatch({
+        type: FAVORITES_FETCH_SUCCESS,
+        payload: snapshot.val()
+      })
+  })
+}
 
 
 export const FILTER_SELECTION = 'FILTER_SELECTION'
@@ -68,9 +67,3 @@ export const toggleFavorite = (user, value) => {
     })
   }
 }
-
-// export const REMOVE_FAVORITE = 'REMOVE_FAVORITE'
-// export const removeFavorite = (user, value) => ({
-//   type: REMOVE_FAVORITE,
-//   payload: value
-// })

@@ -5,6 +5,7 @@ import { Segment, Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 const Single = ({ provider }) => {
+
   if (!provider) return (<div>Loading...</div>)
   return (
     <main>
@@ -116,7 +117,8 @@ const Single = ({ provider }) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { provider: state.dayheart.providers.all.filter((el)=> el.id === ownProps.match.params.providerId)[0] }
+  //need to have '==' here because ids are of different type (string vs. number)
+  return { provider: state.dayheart.providers.all.filter((el)=> el.id == ownProps.match.params.providerId)[0] }
 }
 
 export default connect(mapStateToProps)(Single)
