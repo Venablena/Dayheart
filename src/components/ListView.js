@@ -10,7 +10,7 @@ const List = ({ providers, user }) => {
       <Toolbar redirect= 'map'/>
       <div className='wrapper'>
         <Card.Group>
-          { providers.map((center, idx) => <Provider key={idx} provider={center}/>) }
+          { providers.map((center, idx) => <Provider key={ idx } provider={ center }/>) }
         </Card.Group>
       </div>
     </main>
