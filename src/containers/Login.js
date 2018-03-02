@@ -7,6 +7,7 @@ import * as firebase from 'firebase'
 import { FirebaseAuth } from 'react-firebaseui'
 
 const Login = (props) => {
+
   const uiConfig = {
       signInFlow : 'redirect',
       signInOptions: [
@@ -17,14 +18,17 @@ const Login = (props) => {
         firebase.auth.GoogleAuthProvider.PROVIDER_ID
       ],
       callbacks: {
-        signInSuccess: (currentUser) => props.history.push('/')
+        signInSuccess: () => props.history.push('/')
       }
-    }
+  }
 
   return (
     <main>
       <Header />
-      <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
+      <FirebaseAuth
+        uiConfig={ uiConfig }
+        firebaseAuth={ firebase.auth() }
+        uiCallback={ ui => ui.disableAutoSignIn()} />
     </main>
   );
 }
