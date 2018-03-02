@@ -10,10 +10,13 @@ return (
   <div className = 'toolbar'>
     <div className = 'toolbar_wrapper'>
       <div className = 'toolbar-left'>
+      { user ?
         <span>{
           <Icon name = 'sign out'
+                flipped= 'horizontally'
                 onClick = { firebase.logout }/>}
         </span>
+        :null }
         <span><Link to={'/'}> DayHeart</Link></span>
       </div>
       <div className = 'toolbar-middle'></div>
