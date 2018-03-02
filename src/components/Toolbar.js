@@ -1,16 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { Icon } from 'semantic-ui-react'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import { withFirebase } from 'react-redux-firebase'
 
 const Toolbar = ({ firebase, user, redirect }) => {
-
-const logOut = () => {
-  firebase.logOut()
-   // .then(() => {
-   //      this.setState({user: null})
-    }
-  //)
 
 return (
   <div className = 'toolbar'>
@@ -18,7 +12,7 @@ return (
       <div className = 'toolbar-left'>
         <span>{
           <Icon name = 'sign out'
-                onClick = { logOut() }/>}
+                onClick = { firebase.logout }/>}
         </span>
         <span><Link to={'/'}> DayHeart</Link></span>
       </div>
@@ -32,8 +26,7 @@ return (
 }
 
 const mapStateToProps = (state) => ({
-  firebase: state.firebase,
-  user: state.firebase.auth.uid,
+  user: state.firebase.auth.uid
 })
 
-export default connect(mapStateToProps)(Toolbar);
+export default withFirebase(connect(mapStateToProps)(Toolbar));
