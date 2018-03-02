@@ -1,15 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { Icon } from 'semantic-ui-react'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import { withFirebase } from 'react-redux-firebase'
 
 const Toolbar = ({ firebase, user, redirect }) => {
+
+  const handleLogOut = () => {
+    localStorage.clear()
+    firebase.logout()
+    window.location.assign('https://accounts.google.com/Logout')
+    // console.log('local storage');
+    // localStorage.setItem('firebaseui::rememberedAccounts', null)
+  }
 
 return (
   <div className = 'toolbar'>
     <div className = 'toolbar_wrapper'>
       <div className = 'toolbar-left'>
-        <span>{<Icon name = 'sign out'/>}</span>
+      { user ?
+        <span>{
+          <Icon name = 'sign out'
+                flipped= 'horizontally'
+                onClick = { firebase.logout }/>}
+        </span>
+        :null }
         <span><Link to={'/'}> DayHeart</Link></span>
       </div>
       <div className = 'toolbar-middle'></div>
@@ -22,8 +37,7 @@ return (
 }
 
 const mapStateToProps = (state) => ({
-  firebase: state.firebase,
-  user: state.firebase.auth.uid,
+  user: state.firebase.auth.uid
 })
 
-export default connect(mapStateToProps)(Toolbar);
+export default withFirebase(connect(mapStateToProps)(Toolbar));
