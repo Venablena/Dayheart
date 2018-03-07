@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Toolbar from '../components/Toolbar'
+import Toolbar from './Toolbar'
 import Provider from './Provider'
 import GoogleMap from '../components/Map'
 import { connect } from 'react-redux';

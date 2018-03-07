@@ -1,6 +1,6 @@
 import React from 'react';
 import Provider from '../containers/Provider'
-import Toolbar from './Toolbar'
+import Toolbar from '../containers/Toolbar'
 import { Card } from 'semantic-ui-react'
 
 const List = ({ providers, user }) => {

@@ -9,7 +9,7 @@ import Login from '../containers/Login'
 import Single from '../containers/SingleView'
 import MapView from '../containers/MapView'
 import ListView from './ListView'
-import Welcome from '../containers/Welcome'
+import Welcome from './Welcome'
 
 import {
   getProviders,
@@ -22,11 +22,11 @@ class App extends Component {
     this.props.getProviders()
   }
 
-  componentDidUpdate(){
-    !this.props.favorites.isLoaded ?
-    this.props.getFavorites(this.props.user)
-    : null
-  }
+  // componentDidUpdate(){
+  //   !this.props.favorites.isLoaded ?
+  //   this.props.getFavorites(this.props.user)
+  //   : null
+  // }
 
   render() {
 
@@ -49,7 +49,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return ({
       providers: state.dayheart.providers.all,
-      favorites: state.dayheart.providers.favorites,
+      //favorites: state.dayheart.providers.favorites,
       user: state.firebase.auth.uid,
   })
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import Toolbar from '../components/Toolbar'
+import Toolbar from './Toolbar'
 import Provider from './Provider'
 import { Segment, Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
