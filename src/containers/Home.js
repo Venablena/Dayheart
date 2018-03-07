@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/index.css'
 import { Link } from 'react-router-dom'
-import { Button, Form, Container } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 import Header from '../components/Header'
 
 const Home = () => (
@@ -21,13 +21,13 @@ const Home = () => (
             <Form.Radio value='20 miles' label='20 miles' />
         </Form.Group>
       </Form>
-      <Button className='orange'>
-        <Link to="/map">Search</Link>
-      </Button>
+      <Link to="/map">
+        <Button className='orange'>Search</Button>
+      </Link>
       <div className= 'buffer'></div>
-      <Button className='blue'>
-        <Link to="/login">Log in</Link>
-      </Button>
+      <Link to="/login">
+        <Button className='blue'>Log in</Button>
+      </Link>
     </div>
   </main>
 );

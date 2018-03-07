@@ -39,7 +39,7 @@ const createStoreWithFirebase = compose(
 //Add Firebase to reducers
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
-  dayheart: reducers,
+  dayheart: reducers
 })
 
 //Create store with reducers, initial state and middleware

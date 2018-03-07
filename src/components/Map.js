@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { GoogleAPIKey } from '../config'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { iconPath } from '../config'
-import { connect } from 'react-redux'
-//import { bindActionCreators } from 'redux'
 
 export class MapContainer extends Component {
   constructor(props){
@@ -16,7 +14,13 @@ export class MapContainer extends Component {
     }
   }
 
-  markers = this.props.currentSelection.map(el => {
+  makeMarkers = (array) => {
+    let markers
+    array.length ?
+    markers = array :
+    markers = this.props.providers
+
+    return markers.map(el => {
     const match = this.props.favorites.find(favorite => favorite.id === el.id)
     let strokeColor
     match ? strokeColor = 'red' : strokeColor = 'teal'
@@ -34,7 +38,8 @@ export class MapContainer extends Component {
         onClick = { this.props.handleClick }
         icon = { icon }
         provider = { el }/>
-  })
+    })
+  }
 
   //FOR LATER: Load new providers when the map moves
   // centerMoved = () => {
@@ -77,7 +82,6 @@ export class MapContainer extends Component {
 //   }
 
   render() {
-
     if (!this.props.loaded) return (<div>Loading...</div>)
 
     return (
@@ -86,20 +90,12 @@ export class MapContainer extends Component {
         zoom={14}
         initialCenter={this.state.currentLocation}
         centerAroundCurrentLocation={false}>
-       { this.markers }
+       { this.makeMarkers(this.props.providers) }
       </Map>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  overlay: state.dayheart.toggleOverlay
-})
-//
-// const mapDispatchToProps = dispatch => {
-//   return bindActionCreators({ toggleOverlay }, dispatch)
-// }
-
 const GoogleMap = GoogleApiWrapper({apiKey: GoogleAPIKey})(MapContainer)
-// connect(mapStateToProps, mapDispatchToProps)
+
 export default GoogleMap

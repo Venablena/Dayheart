@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import Toolbar from '../components/Toolbar'
-import Infobar from '../components/Infobar'
-import Provider from '../components/Provider'
+import Toolbar from './Toolbar'
+import Provider from './Provider'
 import GoogleMap from '../components/Map'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { toggleOverlay } from '../actions'
-import { Container } from 'semantic-ui-react'
 
 export class MapView extends Component {
   constructor(props){
@@ -25,20 +23,20 @@ export class MapView extends Component {
 
     return (
       <main>
-        <Toolbar />
-        <div className='map_wrapper'>
+        <Toolbar redirect= 'list'/>
+        <div className= 'map_wrapper'>
           <GoogleMap
-            providers= {this.props.providers}
-            currentSelection= {this.props.currentSelection}
-            user= {this.props.user}
-            handleClick= {this.handleClick}
-            favorites= {this.props.favorites}/>
+            providers= { this.props.providers }
+            currentSelection= { this.props.currentSelection }
+            user= { this.props.user }
+            handleClick= { this.handleClick }
+            favorites= { this.props.favorites }/>
 
         <div className= 'overlay'>
-          {this.props.overlay ?
+          { this.props.overlay ?
             <Provider
-              provider={ this.state.selected }
-              isActive= {true}/>
+              provider= { this.state.selected }
+              isActive= { true }/>
               : null }
         </div>
         </div>

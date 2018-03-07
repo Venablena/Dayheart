@@ -1,30 +1,18 @@
 import React from 'react';
-import Toolbar from '../components/Toolbar'
-import Provider from '../components/Provider'
+import Toolbar from './Toolbar'
+import Provider from './Provider'
 import { Segment, Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import _ from 'lodash'
-
-const formatTuition = (array) => {
-  let result = ''
-   return array.map(el => {
-     for(let key in el) console.log(el[key]);
-     // result = <Segment>el[key]</Segment>
-   })
-}
-
-// const formatTuition = (array) => {
-//   return array.map(el, idx) => <Segment>
-// }
 
 const Single = ({ provider }) => {
+
   if (!provider) return (<div>Loading...</div>)
   return (
     <main>
-      <Toolbar />
+      <Toolbar redirect= 'list'/>
 
       <div className= 'wrapper'>
-        <Provider provider={provider} />
+        <Provider provider= { provider } />
         <Card fluid color='olive'>
           <Card.Content extra>
            { provider.description }
@@ -77,7 +65,7 @@ const Single = ({ provider }) => {
 
         <Segment.Group horizontal>
           <Segment compact>Meals</Segment>
-          <Segment>{ provider.meals ? (provider.meals) : 'no' }</Segment>
+          <Segment>{ provider.meals ? ( provider.meals ) : 'no' }</Segment>
           <Segment compact>Cloth diapers</Segment>
           <Segment>{ provider.cloth_diapers ? 'yes' : 'no' }</Segment>
         </Segment.Group>
@@ -113,15 +101,15 @@ const Single = ({ provider }) => {
         </Segment.Group>
 
         <Segment.Group>
-          <Segment  color= 'olive' textAlign='center'>{ provider.phone }</Segment>
+          <Segment  color= 'olive' textAlign='center'>Tel. { provider.phone }</Segment>
           <Segment textAlign='center'>{ provider.contact }</Segment>
-          { provider.eail ?
+          { provider.email ?
             <Segment textAlign='center'>{ provider.email }</Segment>
           : null }
         </Segment.Group>
 
         <Segment.Group>
-          <Segment textAlign='center'><a href={`https://apps.del.wa.gov/Check/LicenseView.aspx?id=-${provider.id}`}>Licensing Status</a></Segment>
+          <Segment textAlign='center'><a href={`https://apps.del.wa.gov/Check/LicenseView.aspx?id=-${ provider.id }`}>Licensing Status</a></Segment>
         </Segment.Group>
       </div>
     </main>
@@ -129,6 +117,7 @@ const Single = ({ provider }) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  //need to have '==' here because ids are of different type (string vs. number)
   return { provider: state.dayheart.providers.all.filter((el)=> el.id == ownProps.match.params.providerId)[0] }
 }
 

@@ -3,28 +3,20 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 //Redux
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
-//Firebase for authorization, login and signup
-import * as firebase from 'firebase'
-import { firebaseConfig } from '../config.js'
-// import { FirebaseAuth } from 'react-firebaseui'
 
 import Home from '../containers/Home'
 import Login from '../containers/Login'
 import Single from '../containers/SingleView'
 import MapView from '../containers/MapView'
-import ListView from '../containers/ListView'
-import Welcome from '../containers/Welcome'
+import ListView from './ListView'
+import Welcome from './Welcome'
 
 import {
   getProviders,
-  getFavorites,
-  toggleOverlay
+  getFavorites
 } from '../actions'
 
 class App extends Component {
-  constructor(props){
-    super(props)
-  }
 
   componentDidMount() {
     this.props.getProviders()
@@ -41,11 +33,11 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/map" component={MapView}/>
-          <Route path="/login" component={Login}/>
-          <Route path="/list" component={() => <ListView
-            {...this.props}/>}/>
-          <Route path="/providers/:providerId" component={Single}/>
+          <Route path="/map" component= { MapView }/>
+          <Route path="/login" component= { Login }/>
+          <Route path="/list" component= { () =>
+            <ListView {...this.props}/> }/>
+          <Route path="/providers/:providerId" component= { Single }/>
           <Route exact path='/' render={() => (this.props.user ? (<Welcome/>) : (<Home/>)
           )}/>
         </Switch>
