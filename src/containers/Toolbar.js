@@ -21,7 +21,9 @@ return (
       </div>
       <div className = 'toolbar-middle'></div>
       <div className = 'toolbar-right'>
-        <Link to={`/${ redirect }`}>{ redirect.toUpperCase() }</Link>
+        { user ?
+          <Link to={`/${ redirect }`}>{ redirect.toUpperCase() }</Link> :
+          <Link to={'/login'}>LOG IN</Link> }
       </div>
     </div>
   </div>
