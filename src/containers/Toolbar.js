@@ -7,11 +7,7 @@ import { withFirebase } from 'react-redux-firebase'
 const Toolbar = ({ firebase, user, redirect }) => {
 
   const handleLogOut = () => {
-    localStorage.clear()
     firebase.logout()
-    window.location.assign('https://accounts.google.com/Logout')
-    // console.log('local storage');
-    // localStorage.setItem('firebaseui::rememberedAccounts', null)
   }
 
 return (

@@ -9,7 +9,7 @@ import Login from '../containers/Login'
 import Single from '../containers/SingleView'
 import MapView from '../containers/MapView'
 import ListView from './ListView'
-import Welcome from '../containers/Welcome'
+import Welcome from './Welcome'
 
 import {
   getProviders,
@@ -38,8 +38,7 @@ class App extends Component {
           <Route path="/list" component= { () =>
             <ListView {...this.props}/> }/>
           <Route path="/providers/:providerId" component= { Single }/>
-          <Route exact path='/' render={() => (this.props.user ? (<Welcome/>) : (<Home/>)
-          )}/>
+          <Route path='/' component={ Welcome }/>
         </Switch>
       </BrowserRouter>
     );
@@ -62,3 +61,5 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+// <Route exact path='/' render={() => (this.props.user ? (<Welcome/>) : (<Home/>)
