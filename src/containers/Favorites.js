@@ -13,7 +13,7 @@ class CustomSlide extends Component {
     const { provider, ...props } = this.props
     return (
       <div { ...props }>
-        <Provider provider={provider}/>
+        <Provider provider={ provider }/>
       </div>
     )
   }
@@ -51,24 +51,24 @@ class Favorites extends Component {
 
     return (
       <div>
-        { // !isLoaded( this.props.favorites ) ?
-          //'Loading' :
-          // isEmpty( this.props.favorites ) ?
-          // <Card fluid>
-          //   <Card.Content>
-          //       <Image
-          //         floated= 'left'
-          //         size= 'small'
-          //         src= { '/DayHeart_logo_192.png' }/>
-          //        <Card.Header>
-          //         'Welcome!'
-          //        </Card.Header>
-          //    </Card.Content>
-          //  </Card> :
+        { !isLoaded( this.props.favorites ) ?
+          'Loading' :
+          isEmpty( this.props.favorites ) ?
+          <Card fluid>
+            <Card.Content>
+                <Image
+                  floated= 'left'
+                  size= 'small'
+                  src= { '/DayHeart_logo_192.png' }/>
+                 <Card.Header>
+                  Welcome!
+                 </Card.Header>
+             </Card.Content>
+           </Card> :
+           <Slider { ...settings }>
+             { this.renderFavorites() }
+           </Slider>
         }
-          <Slider { ...settings }>
-            { this.renderFavorites() }
-          </Slider>
       </div>
     )
   }

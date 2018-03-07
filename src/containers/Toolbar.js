@@ -6,10 +6,6 @@ import { withFirebase } from 'react-redux-firebase'
 
 const Toolbar = ({ firebase, user, redirect }) => {
 
-  const handleLogOut = () => {
-    firebase.logout()
-  }
-
 return (
   <div className = 'toolbar'>
     <div className = 'toolbar_wrapper'>

@@ -6,14 +6,16 @@ import Search from '../containers/Search'
 
 import { connect } from 'react-redux'
 
-const Welcome = (
-  <main>
-   <Toolbar redirect= ''/>
-   <div className= 'wrapper'>
-      <Favorites />
-      <Search />
-    </div>
-  </main>
-)
+const Welcome = () => {
+  return(
+    <main>
+      <Toolbar redirect= ''/>
+      <div className= 'wrapper'>
+        <Favorites />
+        <Search />
+      </div>
+    </main>
+  )
+}
 
 export default Welcome
