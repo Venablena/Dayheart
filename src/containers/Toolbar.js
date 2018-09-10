@@ -4,34 +4,38 @@ import { Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { withFirebase } from 'react-redux-firebase'
 
-const Toolbar = ({ firebase, user, redirect }) => {
+import '../styles/toolbar.css'
 
-return (
-  <div className = 'toolbar'>
-    <div className = 'toolbar_wrapper'>
-      <div className = 'toolbar-left'>
-      { user ?
-        <span>{
-          <Icon name = 'sign out'
-                flipped= 'horizontally'
-                onClick = { firebase.logout }/>}
-        </span>
-        :null }
-        <span><Link to={'/'}> DayHeart</Link></span>
-      </div>
-      <div className = 'toolbar-middle'></div>
-      <div className = 'toolbar-right'>
-        { user ?
-          <Link to={`/${ redirect }`}>{ redirect.toUpperCase() }</Link> :
-          <Link to={'/login'}>LOG IN</Link> }
+const Toolbar = ({ firebase, user, userName, redirect }) => {
+  return (
+    <div className = 'toolbar'>
+      <div className = 'toolbar_wrapper'>
+        <div className = 'toolbar-left'>
+        { user &&
+          <span onClick = { firebase.logout }>
+            { <Icon name = 'sign out'
+                    flipped= 'horizontally'
+              /> } LOG OUT
+           </span>
+        }
+        </div>
+        <div className = 'toolbar-middle'>
+          <span><Link to={'/'}>DayHeart </Link></span>
+          { userName && <span>{` - ${ userName }`}</span> }
+        </div>
+        <div className = 'toolbar-right'>
+          { user ?
+            <Link to={`/${ redirect }`}>{ redirect.toUpperCase() }</Link> :
+            <Link to={'/login'}>LOG IN</Link> }
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 }
 
 const mapStateToProps = (state) => ({
-  user: state.firebase.auth.uid
+  user: state.firebase.auth.uid,
+  userName: state.firebase.auth.displayName,
 })
 
 export default withFirebase(connect(mapStateToProps)(Toolbar));
