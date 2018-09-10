@@ -21,7 +21,11 @@ export const providers = (state = PROVIDER_STATE, action) => {
       return { ...state, all: action.payload}
     case(FAVORITES_FETCH_SUCCESS):
     case(TOGGLE_FAVORITE):
-      return { ...state, favorites: {isLoaded:true, data:action.payload}}
+      return { ...state,
+        favorites: {
+          isLoaded:true, 
+          data:action.payload
+        }}
     case(FILTER_SELECTION):
       return { ...state, filtered: action.payload}
 
