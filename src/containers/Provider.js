@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Icon, Image, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
@@ -11,10 +11,14 @@ class Provider extends Component {
     this.state = {
       isFavorite: false
     }
-    this.handleClick = this.handleClick.bind(this)
+    // this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick = () => {
+    //make a Firebase call here instead:
+    //remove the favorite if this.state.isFavorite = true,
+    //add a favorite if this.state.isFavorite = false
+
     const match = this.props.favorites.find(favorite => favorite.id === this.props.provider.id)
     let result
     if (match) {
@@ -33,8 +37,8 @@ class Provider extends Component {
   renderMoreContent = () => {
     return(
       <Card.Content extra>
-                  <Icon name='close'
-                        onClick={ this.closeOverlay }/>
+        <Icon name='close'
+              onClick={ this.closeOverlay }/>
       </Card.Content>
     )
   }
@@ -49,9 +53,11 @@ class Provider extends Component {
   }
 
   render() {
-    return (
-      <Card fluid>
-        <Card.Content>
+    const { user } = this.props
+//DRY this!!!
+    const providerView = (
+      user ? (
+        <Fragment>
           <Link to={ `/providers/${ this.props.provider.id }`}>
             <Image
               floated='left'
@@ -72,9 +78,31 @@ class Provider extends Component {
               'heart outline' }
               size='large'
               onClick= { this.handleClick } />
-       </Card.Content>
-       { this.props.isActive ?
-         this.renderMoreContent() : null}
+        </Fragment>
+      ):(
+        <Fragment>
+            <Image
+              floated='left'
+              size='small'
+              src={`/img/${ this.props.provider.img }`}/>
+             <Card.Header>
+               { this.props.provider.name }
+             </Card.Header>
+           <Card.Meta>
+              <div className= 'card_subtitle'>
+                Log in to get more detailed information about child care providers.
+              </div>
+           </Card.Meta>
+        </Fragment>
+      )
+    )
+    return (
+      <Card fluid>
+        <Card.Content>
+          { providerView }
+        </Card.Content>
+       { this.props.isActive &&
+         this.renderMoreContent() }
      </Card>
     )
   }
