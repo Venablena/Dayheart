@@ -1,0 +1,26 @@
+.toolbar_wrapper,
+.map_wrapper,
+.wrapper {
+  max-width: 600px !important;
+  margin: auto !important;
+}
+
+.toolbar_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 8vh;
+  padding: 5px 10px;
+}
+
+.toolbar {
+  width: 100%;
+  background-color: #F05F27;
+  color: white !important;
+  height: 8vh;
+  box-shadow: 0px 1px 1px #bababa !important;
+}
+
+.toolbar a {
+  color: white !important;
+}

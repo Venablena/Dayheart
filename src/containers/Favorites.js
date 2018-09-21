@@ -78,6 +78,4 @@ const mapStateToProps = (state) => ({
   favorites: state.dayheart.providers.favorites.data
 })
 
-export default compose(
-  firebaseConnect(['favorites']),
-  connect(mapStateToProps))(Favorites, CustomSlide)
+export default connect(mapStateToProps)(Favorites, CustomSlide);
