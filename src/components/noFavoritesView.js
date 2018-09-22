@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 
-const noFavoritesView = ({}) => (
+const NoFavoritesView = () => (
   <Card fluid>
     <Card.Content>
         <Image
@@ -18,4 +18,4 @@ const noFavoritesView = ({}) => (
    </Card>
 );
 
-export default noFavoritesView;
+export default NoFavoritesView;

@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import { Icon, Image, Card } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Icon, Image, Card } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
-import { toggleOverlay, toggleFavorite } from '../actions'
-import { getFavoritesById } from '../reducers'
+import { bindActionCreators } from 'redux';
+import { toggleOverlay, toggleFavorite } from '../actions';
+import { getFavoritesById } from '../selectors';
 
 class Provider extends Component {
   constructor(props){
@@ -12,7 +12,6 @@ class Provider extends Component {
     this.state = {
       isFavorite: false
     }
-    // this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick = () => {
@@ -20,19 +19,20 @@ class Provider extends Component {
     //remove the favorite if this.state.isFavorite = true,
     //add a favorite if this.state.isFavorite = false
 
-    const match = this.props.favorites.find(favorite => favorite.id === this.props.provider.id)
-    let result
-    if (match) {
-      const index = this.props.favorites.indexOf(match)
-      result = [
-        ...this.props.favorites.slice(0, index), ...this.props.favorites.slice(index + 1)
-      ]
-      this.setState ({ isFavorite : false })
-    } else {
-      result = [ ...this.props.favorites, this.props.provider ]
-      this.setState ({ isFavorite : true })
+    const { id } = this.props.provider;
+    const { favoritesById, user, provider  } = this.props;
+    let updatedFavorites = {}
+
+    favoritesById[id] ?
+    //this deletes ALL of the favorites, only remove one!
+    updatedFavorites =  delete favoritesById[id]
+    :
+    updatedFavorites = {
+      ...favoritesById,
+      [id]: provider,
     }
-    this.props.toggleFavorite(this.props.user, result)
+
+    this.props.toggleFavorite(user, updatedFavorites)
   }
 
   renderMoreContent = () => {
@@ -97,6 +97,7 @@ class Provider extends Component {
         </Fragment>
       )
     )
+
     return (
       <Card fluid>
         <Card.Content>
@@ -112,8 +113,8 @@ class Provider extends Component {
 const mapStateToProps = (state) => ({
   overlay: state.dayheart.toggleOverlay,
   favorites: state.dayheart.providers.favorites.data,
-  // favoritesById: getFavoritesById,
-  user: state.firebase.auth.uid
+  favoritesById: getFavoritesById(state),
+  user: state.firebase.auth.uid,
 })
 
 const mapDispatchToProps = dispatch => {

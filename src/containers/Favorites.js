@@ -3,11 +3,10 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import Slider from 'react-slick';
-import noFavoritesView from '../components/noFavoritesView';
+import NoFavoritesView from '../components/NoFavoritesView';
 import Provider from './Provider';
 
 import {
-  getFavoritesById,
   getAllFavorites,
   favoritesAreLoaded,
 } from '../selectors'
@@ -51,7 +50,7 @@ class Favorites extends Component {
           <div>'Loading'</div>
           :
           !favorites.length ?
-          <noFavoritesView/>
+          <NoFavoritesView/>
           :
            <Slider { ...settings }>
              { this.renderFavorites() }
@@ -65,7 +64,6 @@ class Favorites extends Component {
 const mapStateToProps = (state) => ({
   favorites: getAllFavorites(state),
   isLoaded: favoritesAreLoaded(state),
-  favoritesById: getFavoritesById(state),
 })
 
 export default connect(mapStateToProps)(Favorites, CustomSlide);
