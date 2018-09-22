@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { toggleOverlay, toggleFavorite } from '../actions'
+import { getFavoritesById } from '../reducers'
 
 class Provider extends Component {
   constructor(props){
@@ -111,6 +112,7 @@ class Provider extends Component {
 const mapStateToProps = (state) => ({
   overlay: state.dayheart.toggleOverlay,
   favorites: state.dayheart.providers.favorites.data,
+  // favoritesById: getFavoritesById,
   user: state.firebase.auth.uid
 })
 

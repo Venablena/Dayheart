@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { keyBy } from 'lodash';
 
 import {
   TOGGLE_OVERLAY,
@@ -16,13 +15,6 @@ const PROVIDER_STATE = {
     currentSelection: {},
     favoritesById: {}
 }
-
-export const getFavoritesById = (state => {
-  return {
-    ...state,
-    favoritesById: keyBy(this.state.favorites)
-  }
-})
 
 export const providers = (state = PROVIDER_STATE, action) => {
   switch(action.type) {

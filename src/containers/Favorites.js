@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import Provider from './Provider'
-//Connect to Firebase
-import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 
 import Slider from 'react-slick'
 import { Card, Image } from 'semantic-ui-react'
+
+import Provider from './Provider'
+import {
+  getFavoritesById,
+  getAllFavorites,
+} from '../selectors'
 
 class CustomSlide extends Component {
   render() {
@@ -22,23 +25,8 @@ class CustomSlide extends Component {
 class Favorites extends Component {
 
   renderFavorites = () => {
-    return this.props.favorites.map((center, idx) => <CustomSlide key={idx} provider={center}/>)
+    return this.props.favorites.data.map((center, idx) => <CustomSlide key={idx} provider={center}/>)
   }
-
-  // const placeholder = !isLoaded(favorites) ?
-  //   'Loading' :
-  //   isEmpty( favorites ) ?
-  //   'Welcome!'
-
-  // favoritesList = !isLoaded(favorites)
-  //   ? 'Loading'
-  //   : isEmpty( favorites )
-  //     ? 'Welcome!'
-  //     : Object.keys(favorites).map(
-  //         (key, id) => (
-  //           <TodoItem key={key} id={id} todo={ favorites [key]}/>
-  //         )
-  //       )
 
   render() {
     const settings = {
@@ -51,9 +39,9 @@ class Favorites extends Component {
 
     return (
       <div>
-        { !isLoaded( this.props.favorites ) ?
+        { !this.props.favorites.isLoaded ?
           'Loading' :
-          isEmpty( this.props.favorites ) ?
+          !this.props.favorites.data.length ?
           <Card fluid>
             <Card.Content>
                 <Image
@@ -75,7 +63,7 @@ class Favorites extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  favorites: state.dayheart.providers.favorites.data
+  favorites: state.dayheart.providers.favorites
 })
 
 export default connect(mapStateToProps)(Favorites, CustomSlide);
