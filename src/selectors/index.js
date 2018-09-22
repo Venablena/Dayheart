@@ -1,11 +1,12 @@
 import { keyBy } from 'lodash';
 
 export const getFavoritesById = (state => {
-  console.log(keyBy(this.state.favorites.data));
   return {
     ...state,
-    favoritesById: keyBy(this.state.favorites.data)
+    favoritesById: keyBy(state.dayheart.providers.favorites.data)
   }
 })
 
-export const getAllFavorites = (state => state.favorites)
+export const getAllFavorites = (state => state.dayheart.providers.favorites.data)
+
+export const favoritesAreLoaded = (state => state.dayheart.providers.favorites.isLoaded)

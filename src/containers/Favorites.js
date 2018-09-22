@@ -9,6 +9,7 @@ import Provider from './Provider'
 import {
   getFavoritesById,
   getAllFavorites,
+  favoritesAreLoaded,
 } from '../selectors'
 
 class CustomSlide extends Component {
@@ -25,7 +26,7 @@ class CustomSlide extends Component {
 class Favorites extends Component {
 
   renderFavorites = () => {
-    return this.props.favorites.data.map((center, idx) => <CustomSlide key={idx} provider={center}/>)
+    return this.props.favorites.map((center, idx) => <CustomSlide key={idx} provider={center}/>)
   }
 
   render() {
@@ -37,11 +38,17 @@ class Favorites extends Component {
       swipeToSlide: true
     };
 
+    const {
+      favorites,
+      favoritesById,
+      isLoaded,
+    } = this.props;
+
     return (
       <div>
-        { !this.props.favorites.isLoaded ?
+        { !isLoaded ?
           'Loading' :
-          !this.props.favorites.data.length ?
+          !favorites.length ?
           <Card fluid>
             <Card.Content>
                 <Image
@@ -63,7 +70,9 @@ class Favorites extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  favorites: state.dayheart.providers.favorites
+  favorites: getAllFavorites(state),
+  isLoaded: favoritesAreLoaded(state),
+  favoritesById: getFavoritesById(state),
 })
 
 export default connect(mapStateToProps)(Favorites, CustomSlide);
