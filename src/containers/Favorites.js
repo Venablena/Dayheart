@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { compose } from 'redux'
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
-import Slider from 'react-slick'
-import { Card, Image } from 'semantic-ui-react'
+import Slider from 'react-slick';
+import noFavoritesView from '../components/noFavoritesView';
+import Provider from './Provider';
 
-import Provider from './Provider'
 import {
   getFavoritesById,
   getAllFavorites,
@@ -31,7 +31,6 @@ class Favorites extends Component {
 
   render() {
 
-    console.log(this.props);
     const settings = {
       className: 'center',
       infinite: false,
@@ -47,29 +46,18 @@ class Favorites extends Component {
     } = this.props;
 
     return (
-      <div>
+      <Fragment>
         { !isLoaded ?
-          'Loading' :
+          <div>'Loading'</div>
+          :
           !favorites.length ?
-          <Card fluid>
-            <Card.Content>
-                <Image
-                  floated= 'left'
-                  size= 'small'
-                  src= { '/DayHeart_logo_192.png' }/>
-                 <Card.Header>
-                  Welcome!
-                 </Card.Header>
-                 <Card.Description>
-                  You have no favorites yet. Go ahead and search for providers.
-                </Card.Description>
-             </Card.Content>
-           </Card> :
+          <noFavoritesView/>
+          :
            <Slider { ...settings }>
              { this.renderFavorites() }
            </Slider>
         }
-      </div>
+      </Fragment>
     )
   }
 }
