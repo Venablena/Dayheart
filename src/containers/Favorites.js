@@ -26,10 +26,12 @@ class CustomSlide extends Component {
 class Favorites extends Component {
 
   renderFavorites = () => {
-    return this.props.favorites.map((center, idx) => <CustomSlide key={idx} provider={center}/>)
+    return this.props.favorites.map((el, idx) => <CustomSlide key={idx} provider={el}/>)
   }
 
   render() {
+
+    console.log(this.props);
     const settings = {
       className: 'center',
       infinite: false,
@@ -58,6 +60,9 @@ class Favorites extends Component {
                  <Card.Header>
                   Welcome!
                  </Card.Header>
+                 <Card.Description>
+                  You have no favorites yet. Go ahead and search for providers.
+                </Card.Description>
              </Card.Content>
            </Card> :
            <Slider { ...settings }>

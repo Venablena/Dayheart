@@ -14,7 +14,6 @@ const PROVIDER_STATE = {
     filtered: [],
     favorites: {isLoaded:false, data:[]},
     currentSelection: {},
-    favoritesById: {}
 }
 
 export const providers = (state = PROVIDER_STATE, action) => {

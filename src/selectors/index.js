@@ -2,8 +2,7 @@ import { keyBy } from 'lodash';
 
 export const getFavoritesById = (state => {
   return {
-    ...state,
-    favoritesById: keyBy(state.dayheart.providers.favorites.data)
+    favoritesById: keyBy(state.dayheart.providers.favorites.data, 'id')
   }
 })
 
