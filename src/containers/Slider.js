@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Slider from 'react-slick';
 
-import { getFavoritesById } from '../selectors';
 import Provider from './Provider';
 
-
+import { getFavoritesById } from '../selectors';
 //Custom slide makes it possible to pass a react component into the slider by adding the right information from the props into the surrounding div
 class CustomSlide extends Component {
   render() {

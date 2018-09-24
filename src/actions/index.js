@@ -23,10 +23,10 @@ export const FAVORITES_FETCH_SUCCESS = 'FAVORITES_FETCH_SUCCESS'
 export const getFavorites = (user) => (dispatch) => {
   return firebase.database().ref(`/users/${user}/favorites`)
     .once('value', snapshot => {
-      console.log("from firebase:", snapshot.val());
+      console.log('from Firebase:', snapshot.val());
       dispatch({
         type: FAVORITES_FETCH_SUCCESS,
-        payload: snapshot.val()||[]
+        payload: snapshot.val()||{}
       })
   })
 }

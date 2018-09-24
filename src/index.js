@@ -4,15 +4,15 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
 //Redux
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
-import logger from 'redux-logger'
-import thunkMiddleWare from 'redux-thunk'
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+import logger from 'redux-logger';
+import thunkMiddleWare from 'redux-thunk';
 
 //Firebase for auth and login
-import { reactReduxFirebase, firebaseReducer } from 'react-redux-firebase'
-import firebase from 'firebase'
-import { firebaseConfig } from './config.js'
+import { reactReduxFirebase, firebaseReducer } from 'react-redux-firebase';
+import firebase from 'firebase';
+import { firebaseConfig } from './config.js';
 
 //Firestore for database
 // import 'firebase/firestore'
@@ -38,8 +38,9 @@ const createStoreWithFirebase = compose(
 
 //Add Firebase to reducers
 const rootReducer = combineReducers({
+  dayheart: reducers,
   firebase: firebaseReducer,
-  dayheart: reducers
+
 })
 
 //Create store with reducers, initial state and middleware

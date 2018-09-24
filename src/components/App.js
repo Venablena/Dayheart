@@ -23,9 +23,7 @@ class App extends Component {
   }
 
   componentDidUpdate(){
-    !this.props.favorites.isLoaded ?
-    this.props.getFavorites(this.props.user)
-    : null
+    // !this.props.favorites.isLoaded && this.props.getFavorites(this.props.user)
   }
 
   render() {
@@ -48,8 +46,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return ({
-      providers: state.dayheart.providers.all,
-      favorites: state.dayheart.providers.favorites,
+      providers: state.dayheart.providers,
+      favorites: state.dayheart.favorites,
       user: state.firebase.auth.uid,
   })
 }

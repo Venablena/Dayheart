@@ -2,10 +2,10 @@ import { keyBy } from 'lodash';
 
 export const getFavoritesById = (state => {
   return {
-    favoritesById: keyBy(state.dayheart.providers.favorites.data, 'id')
+    favoritesById: keyBy(state.dayheart.favorites.data, 'id')
   }
 })
 
-export const getAllFavorites = (state => state.dayheart.providers.favorites.data)
+export const getAllFavorites = (state => state.dayheart.favorites)
 
-export const favoritesAreLoaded = (state => state.dayheart.providers.favorites.isLoaded)
+export const favoritesAreLoaded = (state => state.dayheart.favorites.isLoaded)

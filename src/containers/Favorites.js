@@ -2,14 +2,15 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import Slider from 'react-slick';
+import { isEmpty, forEach } from 'lodash';
 
-import { getFavoritesById } from '../selectors';
 import NoFavoritesView from '../components/NoFavoritesView';
 import Provider from './Provider';
 
 import {
   getAllFavorites,
   favoritesAreLoaded,
+  getFavoritesById
 } from '../selectors'
 
 class CustomSlide extends Component {
@@ -26,7 +27,11 @@ class CustomSlide extends Component {
 class Favorites extends Component {
 
   renderFavorites = () => {
-    return this.props.favorites.map((el, idx) => <CustomSlide key={idx} provider={el}/>)
+    // return forEach(this.props.favoritesById, (el, idx) => {
+    //     // <CustomSlide key={idx} provider={el}/>
+    //     console.log(el);
+    // })
+    console.log("favoritesById: ", this.props.favoritesById);
   }
 
   render() {
@@ -50,7 +55,7 @@ class Favorites extends Component {
         { !isLoaded ?
           <div>'Loading'</div>
           :
-          !favorites.length ?
+          isEmpty(favoritesById) ?
           <NoFavoritesView/>
           :
            <Slider { ...settings }>

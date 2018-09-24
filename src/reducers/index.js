@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-// import { keyBy } from 'lodash';
 
 import {
   TOGGLE_OVERLAY,
@@ -10,30 +9,40 @@ import {
 } from '../actions'
 
 const PROVIDER_STATE = {
-    all: [],
-    filtered: [],
-    favorites: {isLoaded:false, data:[]},
-    currentSelection: {},
+  all: [],
+  filtered: [],
+  currentSelection: {},
+}
+
+const FAVORITE_STATE = {
+  isLoaded:false,
+  data:{}
 }
 
 export const providers = (state = PROVIDER_STATE, action) => {
   switch(action.type) {
     case(PROVIDERS_FETCH_SUCCESS):
       return { ...state, all: action.payload}
-    case(FAVORITES_FETCH_SUCCESS):
-    case(TOGGLE_FAVORITE):
-      return { ...state,
-        favorites: {
-          isLoaded:true,
-          data:action.payload
-        }}
     case(FILTER_SELECTION):
       return { ...state, filtered: action.payload}
-
     default:
       return state
   }
 }
+
+export const favorites = (state = FAVORITE_STATE, action) => {
+  switch(action.type) {
+    case(FAVORITES_FETCH_SUCCESS):
+    case(TOGGLE_FAVORITE):
+      return { ...state,
+        isLoaded:true,
+        data:action.payload
+      };
+    default:
+      return state;
+  }
+}
+
 
 export const toggleOverlay = (state = false, action) => {
   switch(action.type) {
@@ -46,5 +55,6 @@ export const toggleOverlay = (state = false, action) => {
 
 export default combineReducers({
   toggleOverlay,
-  providers
+  providers,
+  favorites,
 })
