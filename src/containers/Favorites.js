@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-
 import Slider from 'react-slick';
+
+import { getFavoritesById } from '../selectors';
 import NoFavoritesView from '../components/NoFavoritesView';
 import Provider from './Provider';
 
@@ -64,6 +65,7 @@ class Favorites extends Component {
 const mapStateToProps = (state) => ({
   favorites: getAllFavorites(state),
   isLoaded: favoritesAreLoaded(state),
+  favoritesById: getFavoritesById(state),
 })
 
 export default connect(mapStateToProps)(Favorites, CustomSlide);

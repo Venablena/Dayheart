@@ -1,10 +1,8 @@
 import React from 'react';
-//? import '../styles/index.css'
-import Toolbar from '../containers/Toolbar'
-import Favorites from '../containers/Favorites'
-import Search from '../containers/Search'
 
-import { connect } from 'react-redux'
+import Toolbar from '../containers/Toolbar';
+import Favorites from '../containers/Favorites';
+import Search from '../containers/Search';
 
 const Welcome = () => {
   return(
@@ -15,7 +13,7 @@ const Welcome = () => {
         <Search />
       </div>
     </main>
-  )
+  );
 }
 
-export default Welcome
+export default Welcome;

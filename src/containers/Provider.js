@@ -15,16 +15,11 @@ class Provider extends Component {
   }
 
   handleClick = () => {
-    //make a Firebase call here instead:
-    //remove the favorite if this.state.isFavorite = true,
-    //add a favorite if this.state.isFavorite = false
-
     const { id } = this.props.provider;
     const { favoritesById, user, provider  } = this.props;
     let updatedFavorites = {}
 
     favoritesById[id] ?
-    //this deletes ALL of the favorites, only remove one!
     updatedFavorites =  delete favoritesById[id]
     :
     updatedFavorites = {
@@ -112,8 +107,7 @@ class Provider extends Component {
 
 const mapStateToProps = (state) => ({
   overlay: state.dayheart.toggleOverlay,
-  favorites: state.dayheart.providers.favorites.data,
-  favoritesById: getFavoritesById(state),
+  favorites: getFavoritesById(state),
   user: state.firebase.auth.uid,
 })
 
