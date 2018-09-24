@@ -1,6 +1,7 @@
 import firebase from 'firebase'
 
 //only load providers if they are not already cached
+//this works because we only have one dataset of providers that doesn't currently change
 export const PROVIDERS_FETCH_SUCCESS = 'PROVIDERS_FETCH_SUCCESS'
 export const getProviders = () => (dispatch, getState) => {
   if (getState().dayheart.providers.length) {

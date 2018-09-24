@@ -2,28 +2,35 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 //Redux
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux';
 
-import Home from '../containers/Home'
-import Login from '../containers/Login'
-import Single from '../containers/SingleView'
-import MapView from '../containers/MapView'
-import ListView from './ListView'
-import Welcome from './Welcome'
+import Home from './Home';
+import Login from './Login';
+import Single from './SingleView';
+import MapView from './MapView';
+import ListView from '../components/ListView';
+import Welcome from '../components/Welcome';
 
 import {
   getProviders,
   getFavorites
-} from '../actions'
+} from '../actions';
 
 class App extends Component {
 
   componentDidMount() {
-    this.props.getProviders()
+    const { getProviders } = this.props;
+    getProviders()
   }
 
   componentDidUpdate(){
-    // !this.props.favorites.isLoaded && this.props.getFavorites(this.props.user)
+    const {
+      user,
+      favorites,
+      getFavorites,
+    } = this.props;
+
+    (user && !favorites.isLoaded ) && getFavorites(user)
   }
 
   render() {

@@ -15,8 +15,8 @@ const PROVIDER_STATE = {
 }
 
 const FAVORITE_STATE = {
-  isLoaded:false,
-  data:{}
+  isLoaded: false,
+  data: {}
 }
 
 export const providers = (state = PROVIDER_STATE, action) => {
@@ -35,8 +35,8 @@ export const favorites = (state = FAVORITE_STATE, action) => {
     case(FAVORITES_FETCH_SUCCESS):
     case(TOGGLE_FAVORITE):
       return { ...state,
-        isLoaded:true,
-        data:action.payload
+        isLoaded: true,
+        data: action.payload
       };
     default:
       return state;
