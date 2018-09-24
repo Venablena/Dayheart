@@ -34,6 +34,7 @@ class App extends Component {
   }
 
   render() {
+    const { user } = this.props;
 
     return (
       <BrowserRouter>
@@ -43,7 +44,7 @@ class App extends Component {
           <Route path="/list" component= { () =>
             <ListView {...this.props}/> }/>
           <Route path="/providers/:providerId" component= { Single }/>
-          <Route exact path='/' render={() => (this.props.user ? (<Welcome/>) : (<Home/>)
+          <Route exact path='/' render={() => (user ? (<Welcome/>) : (<Home/>)
           )}/>
         </Switch>
       </BrowserRouter>
