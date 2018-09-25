@@ -7,11 +7,11 @@ import { bindActionCreators } from 'redux';
 import '../styles/index.css';
 
 import Home from '../components/Home';
+import Welcome from '../components/Welcome';
 import Login from './Login';
 import Single from './SingleView';
 import MapView from './MapView';
-import ListView from '../components/ListView';
-import Welcome from '../components/Welcome';
+import ListView from './ListView';
 
 import {
   getProviders,
@@ -36,15 +36,14 @@ class App extends Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, providers } = this.props;
 
     return (
       <BrowserRouter>
         <Switch>
           <Route path="/map" component= { MapView }/>
           <Route path="/login" component= { Login }/>
-          <Route path="/list" component= { () =>
-            <ListView {...this.props}/> }/>
+          <Route path="/list" component= { ListView }/>
           <Route path="/providers/:providerId" component= { Single }/>
           <Route exact path='/' render={() => (user ? (<Welcome/>) : (<Home/>)
           )}/>

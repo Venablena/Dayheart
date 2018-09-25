@@ -9,7 +9,7 @@ import Provider from './Provider';
 import {
   getFavoritesArray,
   favoritesAreLoaded,
-  getFavoritesById
+  getFavoritesById,
 } from '../selectors';
 
 class CustomSlide extends Component {

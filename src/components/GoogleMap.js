@@ -17,7 +17,7 @@ export class MapContainer extends Component {
     const {
       handleClick,
       favorites,
-      providers
+      providers,
     } = this.props;
 
     return providers.map(el => {
