@@ -32,7 +32,6 @@ export const getFavorites = (user) => (dispatch) => {
   })
 }
 
-
 export const FILTER_SELECTION = 'FILTER_SELECTION'
 export const filterSelection = (value) => ({
   type: FILTER_SELECTION,

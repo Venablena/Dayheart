@@ -1,6 +1,6 @@
 import React from 'react';
 import Toolbar from './Toolbar'
-import Provider from './Provider'
+import ProviderView from './ProviderView'
 import { Segment, Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
@@ -12,7 +12,7 @@ const Single = ({ provider }) => {
       <Toolbar redirect= 'list'/>
 
       <div className= 'wrapper'>
-        <Provider provider= { provider } />
+        <ProviderView provider= { provider } />
         <Card fluid color='olive'>
           <Card.Content extra>
            { provider.description }

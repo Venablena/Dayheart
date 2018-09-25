@@ -36,7 +36,7 @@ class App extends Component {
   }
 
   render() {
-    const { user, providers } = this.props;
+    const { user } = this.props;
 
     return (
       <BrowserRouter>

@@ -4,12 +4,11 @@ import Slider from 'react-slick';
 import { isEmpty } from 'lodash';
 
 import NoFavoritesView from '../components/NoFavoritesView';
-import Provider from './Provider';
+import ProviderView from './ProviderView';
 
 import {
   getFavoritesArray,
   favoritesAreLoaded,
-  getFavoritesById,
 } from '../selectors';
 
 class CustomSlide extends Component {
@@ -17,7 +16,7 @@ class CustomSlide extends Component {
     const { provider, ...props } = this.props
     return (
       <div { ...props }>
-        <Provider provider={ provider }/>
+        <ProviderView provider={ provider }/>
       </div>
     )
   }

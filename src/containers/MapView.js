@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Toolbar from './Toolbar';
-import Provider from './Provider';
+import ProviderView from './ProviderView';
 import GoogleMap from '../components/GoogleMap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -8,7 +8,6 @@ import { toggleOverlay } from '../actions';
 
 import {
   getUser,
-  getFavoritesArray,
   getFavoritesById,
   getProviders,
 } from '../selectors';
@@ -28,14 +27,11 @@ export class MapView extends Component {
   }
 
   render() {
-
     const {
       providers,
       currentSelection,
-      user,
       favorites,
       overlay,
-      favoritesById,
     } = this.props;
 
     return (
@@ -46,11 +42,11 @@ export class MapView extends Component {
             providers= { providers }
             currentSelection= { currentSelection }
             handleClick= { this.handleClick }
-            favorites= { favoritesById }/>
+            favorites= { favorites }/>
 
         <div className= 'overlay'>
           { overlay &&
-            <Provider
+            <ProviderView
               provider= { this.state.selected }
               isActive= { true }/>
           }
@@ -66,9 +62,7 @@ const mapStateToProps = (state) => {
     overlay: state.dayheart.toggleOverlay,
     providers: getProviders(state),
     currentSelection: state.dayheart.providers.filtered,
-    favorites: getFavoritesArray(state),
-    favoritesById: getFavoritesById(state),
-    user: getUser(state),
+    favorites: getFavoritesById(state),
   })
 }
 

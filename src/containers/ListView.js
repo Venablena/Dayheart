@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'semantic-ui-react';
-import Provider from '../containers/Provider';
+import ProviderView from '../containers/ProviderView';
 import Toolbar from '../containers/Toolbar';
 
 import { getProviders } from "../selectors";
@@ -12,7 +12,7 @@ const List = ({ providers }) => {
       <Toolbar redirect= 'map'/>
       <div className='wrapper'>
         <Card.Group>
-          { providers.map((el, idx) => <Provider key={ idx } provider={ el }/>) }
+          { providers.map((el, idx) => <ProviderView key={ idx } provider={ el }/>) }
         </Card.Group>
       </div>
     </main>
