@@ -9,6 +9,7 @@ import { toggleOverlay } from '../actions';
 import {
   getUser,
   getFavoritesArray,
+  getFavoritesById,
   getProviders,
 } from '../selectors';
 
@@ -21,9 +22,9 @@ export class MapView extends Component {
   }
 
   handleClick = (target) => {
-    const { toggleOverlay } = this.props;
+    const { overlay, toggleOverlay } = this.props;
     this.setState({ ...this.state, selected: target.provider })
-    toggleOverlay(true)
+    !overlay && toggleOverlay(true)
   }
 
   render() {
@@ -33,7 +34,8 @@ export class MapView extends Component {
       currentSelection,
       user,
       favorites,
-      overlay
+      overlay,
+      favoritesById,
     } = this.props;
 
     return (
@@ -43,19 +45,17 @@ export class MapView extends Component {
           <GoogleMap
             providers= { providers }
             currentSelection= { currentSelection }
-            user= { user }
             handleClick= { this.handleClick }
-            favorites= { favorites }/>
+            favorites= { favoritesById }/>
 
         <div className= 'overlay'>
-          { overlay ?
+          { overlay &&
             <Provider
               provider= { this.state.selected }
               isActive= { true }/>
-              : null }
+          }
         </div>
         </div>
-
       </main>
     )
   }
@@ -67,6 +67,7 @@ const mapStateToProps = (state) => {
     providers: getProviders(state),
     currentSelection: state.dayheart.providers.filtered,
     favorites: getFavoritesArray(state),
+    favoritesById: getFavoritesById(state),
     user: getUser(state),
   })
 }

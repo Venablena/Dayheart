@@ -23,22 +23,26 @@ Header:
 - in list view, display & link to "map"
 - link to "welcome" view (DayHeart)
 
-
 Search:
 - Filter selection
 
 Map / List :
 - display all centers
 - display favorites with a different color
-- click on a favorite will display overlay
-- MAP only: load an instance of Google maps with correct coordinates
+
+Map:
+- load an instance of Google maps with correct coordinates
+- click on a pin will display overlay if overlay not active
+- no overlay displayed if no pin selected
+- content of the overlay will change when clicked on a new pin
 
 Overlay:
 - display reduced details if user not logged in
+- display more content if user is logged in
 - close with a click
 - display favorite status, change it on click
 
 Favorites:
 - if favorites: display all favorites in a slider
 - navigate to the next favorite with a click
-- if no favorites: display a no favorites view 
+- if no favorites: display a no favorites view

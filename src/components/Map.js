@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { GoogleAPIKey } from '../config'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
-import { iconPath } from '../config'
+import { GoogleAPIKey, iconPath } from '../config';
 
 export class MapContainer extends Component {
   constructor(props){
@@ -14,88 +13,71 @@ export class MapContainer extends Component {
     }
   }
 
-  makeMarkers = (array) => {
-    let markers
-    array.length ?
-    markers = array :
-    markers = this.props.providers
+  makeMarkers = () => {
+    const {
+      handleClick,
+      favorites,
+      providers
+    } = this.props;
 
-    return markers.map(el => {
-    const match = this.props.favorites.find(favorite => favorite.id === el.id)
-    let strokeColor
-    match ? strokeColor = 'red' : strokeColor = 'teal'
+    return providers.map(el => {
+      const strokeColor = favorites.hasOwnProperty(el.id) ? 'red' : 'teal';
+      const icon = {
+        path: iconPath,
+        strokeColor: strokeColor,
+        strokeWeight: 1,
+        scale: 1.25
+      };
+      const coordinates = { lat: el.lat, lng: el.long };
 
-    const icon = {
-      path: iconPath,
-      strokeColor: strokeColor,
-      strokeWeight: 1,
-      scale: 1.25
-    }
-    const coordinates = { lat: el.lat, lng: el.long }
-    return <Marker
-        key = { el.id }
-        position = { coordinates }
-        onClick = { this.props.handleClick }
-        icon = { icon }
-        provider = { el }/>
+      return <Marker
+          key = { el.id }
+          position = { coordinates }
+          onClick = { handleClick }
+          icon = { icon }
+          provider = { el }/>
     })
   }
 
-  //FOR LATER: Load new providers when the map moves
-  // centerMoved = () => {
-  //   console.log("load new centers at this location");
-  // }
-  //FOR LATER: recenter map on current location
-  // recenterMap = () => {
-  //   const map = this.map;
-  //   const curr = this.state.currentLocation;
-  //   const google = this.props.google;
-  //   const maps = google.maps;
-  //
-  //   if (map) {
-  //       let center = new maps.LatLng(curr.lat, curr.lng)
-  //       map.panTo(center)
+  // FOR LATER:
+  // //Get the location from the browser
+  //   componentDidMount() {
+  //     if (this.props.centerAroundCurrentLocation) {
+  //       if (navigator && navigator.geolocation) {
+  //         navigator.geolocation.getCurrentPosition((pos) => {
+  //           const coords = pos.coords;
+  //           this.setState({
+  //             currentLocation: {
+  //               lat: coords.latitude,
+  //               lng: coords.longitude
+  //             }
+  //           })
+  //         })
+  //       }
+  //     }
   //   }
-  // }
-// FOR LATER:
-// //Get the location from the browser
-//   componentDidMount() {
-//     if (this.props.centerAroundCurrentLocation) {
-//       if (navigator && navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition((pos) => {
-//           const coords = pos.coords;
-//           this.setState({
-//             currentLocation: {
-//               lat: coords.latitude,
-//               lng: coords.longitude
-//             }
-//           })
-//         })
-//       }
-//     }
-//   }
-// //Center the map on the new location
-//   componentDidUpdate(prevProps, prevState) {
-//     if (prevState.currentLocation !== this.state.currentLocation) {
-//       this.recenterMap();
-//     }
-//   }
 
   render() {
-    if (!this.props.loaded) return (<div>Loading...</div>)
+    const {
+      loaded,
+      google,
+      providers
+    } = this.props;
+
+    if (!loaded) return (<div>Loading...</div>)
 
     return (
       <Map
-        google={this.props.google}
+        google={google}
         zoom={14}
         initialCenter={this.state.currentLocation}
-        centerAroundCurrentLocation={false}>
-       { this.makeMarkers(this.props.providers) }
+        centerAroundCurrentLocation>
+       { providers.length && this.makeMarkers() }
       </Map>
     );
   }
 }
 
-const GoogleMap = GoogleApiWrapper({apiKey: GoogleAPIKey})(MapContainer)
+const GoogleMap = GoogleApiWrapper({ apiKey: GoogleAPIKey })(MapContainer)
 
 export default GoogleMap
