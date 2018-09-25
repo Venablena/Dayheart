@@ -1,17 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 import Slider from 'react-slick';
-import { isEmpty, forEach } from 'lodash';
+import { isEmpty } from 'lodash';
 
 import NoFavoritesView from '../components/NoFavoritesView';
 import Provider from './Provider';
 
 import {
-  getAllFavorites,
+  getFavoritesArray,
   favoritesAreLoaded,
   getFavoritesById
-} from '../selectors'
+} from '../selectors';
 
 class CustomSlide extends Component {
   render() {
@@ -27,15 +26,11 @@ class CustomSlide extends Component {
 class Favorites extends Component {
 
   renderFavorites = () => {
-    // return forEach(this.props.favoritesById, (el, idx) => {
-    //     // <CustomSlide key={idx} provider={el}/>
-    //     console.log(el);
-    // })
-    console.log("favoritesById: ", this.props.favoritesById);
+    const { favorites } = this.props;
+    return favorites.map((el, idx) => <CustomSlide key={idx} provider={el}/>)
   }
 
   render() {
-
     const settings = {
       className: 'center',
       infinite: false,
@@ -55,7 +50,7 @@ class Favorites extends Component {
         { !isLoaded ?
           <div>'Loading'</div>
           :
-          isEmpty(favoritesById) ?
+          isEmpty(favorites) ?
           <NoFavoritesView/>
           :
            <Slider { ...settings }>
@@ -68,9 +63,8 @@ class Favorites extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  favorites: getAllFavorites(state),
+  favorites: getFavoritesArray(state),
   isLoaded: favoritesAreLoaded(state),
-  favoritesById: getFavoritesById(state),
 })
 
 export default connect(mapStateToProps)(Favorites, CustomSlide);

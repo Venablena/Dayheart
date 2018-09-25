@@ -7,5 +7,38 @@ Start:
 
 Home:
 - don't display if user is logged in
+- click/hover over form input will display: "currently on ly zip code 98108 has data"
 - click on search button will open the map view
 - click on log in will open the login pop up
+
+Welcome:
+- display header
+- display search search bar
+- on search button click, go to map view
+
+Header:
+- display log in/log out Button
+- display user's name if user
+- in map view, display & link to "list"
+- in list view, display & link to "map"
+- link to "welcome" view (DayHeart)
+
+
+Search:
+- Filter selection
+
+Map / List :
+- display all centers
+- display favorites with a different color
+- click on a favorite will display overlay
+- MAP only: load an instance of Google maps with correct coordinates
+
+Overlay:
+- display reduced details if user not logged in
+- close with a click
+- display favorite status, change it on click
+
+Favorites:
+- if favorites: display all favorites in a slider
+- navigate to the next favorite with a click
+- if no favorites: display a no favorites view 

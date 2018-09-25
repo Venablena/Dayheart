@@ -4,7 +4,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Home from './Home';
+import '../styles/index.css';
+
+import Home from '../components/Home';
 import Login from './Login';
 import Single from './SingleView';
 import MapView from './MapView';

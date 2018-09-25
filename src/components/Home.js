@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { Button, Input, Divider, Popup } from 'semantic-ui-react'
-import Header from '../components/Header'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Button, Input, Divider, Popup } from 'semantic-ui-react';
+import Header from './Header';
 
 const Home = () => {
   const searchBar = (
