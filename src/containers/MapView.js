@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import Toolbar from './Toolbar'
-import Provider from './Provider'
-import GoogleMap from '../components/Map'
+import Toolbar from './Toolbar';
+import Provider from './Provider';
+import GoogleMap from '../components/Map';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
-import { toggleOverlay } from '../actions'
+import { bindActionCreators } from 'redux';
+import { toggleOverlay } from '../actions';
+
+import {
+  getUser,
+  getFavoritesArray,
+  getProviders,
+} from '../selectors';
 
 export class MapView extends Component {
   constructor(props){
@@ -15,25 +21,34 @@ export class MapView extends Component {
   }
 
   handleClick = (target) => {
+    const { toggleOverlay } = this.props;
     this.setState({ ...this.state, selected: target.provider })
-    this.props.toggleOverlay(true)
+    toggleOverlay(true)
   }
 
   render() {
+
+    const {
+      providers,
+      currentSelection,
+      user,
+      favorites,
+      overlay
+    } = this.props;
 
     return (
       <main>
         <Toolbar redirect= 'list'/>
         <div className= 'map_wrapper'>
           <GoogleMap
-            providers= { this.props.providers }
-            currentSelection= { this.props.currentSelection }
-            user= { this.props.user }
+            providers= { providers }
+            currentSelection= { currentSelection }
+            user= { user }
             handleClick= { this.handleClick }
-            favorites= { this.props.favorites }/>
+            favorites= { favorites }/>
 
         <div className= 'overlay'>
-          { this.props.overlay ?
+          { overlay ?
             <Provider
               provider= { this.state.selected }
               isActive= { true }/>
@@ -49,10 +64,10 @@ export class MapView extends Component {
 const mapStateToProps = (state) => {
   return ({
     overlay: state.dayheart.toggleOverlay,
-    providers: state.dayheart.providers.all,
+    providers: getProviders(state),
     currentSelection: state.dayheart.providers.filtered,
-    favorites: state.dayheart.providers.favorites.data,
-    user: state.firebase.auth.uid
+    favorites: getFavoritesArray(state),
+    user: getUser(state),
   })
 }
 
