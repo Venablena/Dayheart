@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Icon, Image, Card } from 'semantic-ui-react';
 import { toggleOverlay } from '../actions';
-import ProviderLoggedIn from '../components/ProviderLoggedIn';
-import ProviderNotLoggedIn from './ProviderNotLoggedIn';
+import ProviderLoggedIn from './ProviderLoggedIn';
+import ProviderNotLoggedIn from '../components/ProviderNotLoggedIn';
 
 class ProviderView extends Component {
 
@@ -26,27 +26,31 @@ class ProviderView extends Component {
   render() {
     const { user, provider } = this.props;
 
-    const providerContent =
+    const commonProviderContent =
       <Fragment>
-        <Link to={ `/providers/${ provider.id }`}>
-          <Image
-            floated='left'
-            size='small'
-            src={`/img/${ provider.img }`}/>
-           <Card.Header>
-             { provider.name }
-           </Card.Header>
-         </Link>
+        <Image
+          floated='left'
+          size='small'
+          src={`/img/${ provider.img }`}/>
+         <Card.Header>
+           { provider.name }
+         </Card.Header>
       </Fragment> ;
 
     return (
       <Card fluid>
         <Card.Content>
-          { providerContent }
-          { user ?
-            <ProviderLoggedIn provider={provider}/>
-            :
-            <ProviderNotLoggedIn /> }
+          { user ? (
+              <Link to={ `/providers/${ provider.id }`}>
+                { commonProviderContent }
+                <ProviderLoggedIn provider={provider}/>
+              </Link>
+            ):(
+              <Fragment>
+                { commonProviderContent }
+                <ProviderNotLoggedIn/>
+              </Fragment>
+          )}
         </Card.Content>
        { this.props.isActive &&
          this.renderMoreContent() }
