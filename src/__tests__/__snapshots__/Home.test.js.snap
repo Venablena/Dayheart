@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home renders without crashing 1`] = `
+<main
+  className="centered"
+>
+  <Header />
+  <div
+    className="wrapper"
+  >
+    <h4>
+       Find a child care provider near you
+    </h4>
+    <Popup
+      content="Currently only zip code 98108 has data"
+      hideOnScroll={true}
+      on="focus"
+      position="right center"
+      trigger={
+        <Input
+          icon="search"
+          placeholder="Enter zip code"
+          transparent={true}
+          type="text"
+        />
+      }
+    />
+    <Divider
+      hidden={true}
+    />
+    <Link
+      replace={false}
+      to="/map"
+    >
+      <Button
+        as="button"
+        className="orange"
+        content="Search"
+      />
+    </Link>
+    <Divider
+      hidden={true}
+    />
+    <Link
+      replace={false}
+      to="/login"
+    >
+      <Button
+        as="button"
+        className="blue"
+      >
+        Log in
+      </Button>
+    </Link>
+  </div>
+</main>
+`;
