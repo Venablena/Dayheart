@@ -14,37 +14,30 @@ import { reactReduxFirebase, firebaseReducer } from 'react-redux-firebase';
 import firebase from 'firebase';
 import { firebaseConfig } from './config.js';
 
-//Firestore for database
-// import 'firebase/firestore'
-// import { reduxFirestore, firestoreReducer } from 'redux-firestore'
-
 //style
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
 
 //My reducers:
-import reducers from './reducers'
+import reducers from './reducers';
 
 //Initialize Firebase
 firebase.initializeApp(firebaseConfig)
 const config = {
   userProfile: 'users'
-}
-//firebase.firestore()
-//Add FireStore to the store
+};
+
 const createStoreWithFirebase = compose(
   reactReduxFirebase(firebase, config),
-  // reduxFirestore(firebase)
-)(createStore)
+)(createStore);
 
 //Add Firebase to reducers
 const rootReducer = combineReducers({
   dayheart: reducers,
   firebase: firebaseReducer,
-
-})
+});
 
 //Create store with reducers, initial state and middleware
-const initialState = {}
+const initialState = {};
 const store = createStoreWithFirebase(
   rootReducer,
   initialState,
@@ -52,7 +45,8 @@ const store = createStoreWithFirebase(
     thunkMiddleWare,
     logger
   )
-)
+);
+//WHAT IS THIS HERE FOR?
 // store.dispatch()
 ReactDOM.render(
   <Provider store = { store }>
