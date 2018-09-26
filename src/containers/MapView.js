@@ -20,6 +20,7 @@ export class MapView extends Component {
     }
   }
 
+//SEPARATE OVERLAY INTO A HOC/WRAPPER
   handleClick = (target) => {
     const { overlay, toggleOverlay } = this.props;
     this.setState({ ...this.state, selected: target.provider })

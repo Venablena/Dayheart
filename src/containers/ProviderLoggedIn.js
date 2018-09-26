@@ -23,6 +23,7 @@ class ProviderLoggedIn extends Component {
     } = this.props;
     let updatedFavorites = {}
 
+//THIS REMOVES ALL OF THE FAVORITES, FIX!!!
     favorites[id] ?
     updatedFavorites =  delete favorites[id]
     :
@@ -30,9 +31,13 @@ class ProviderLoggedIn extends Component {
       ...favorites,
       [id]: provider,
     }
-
-    return toggleFavorite(user, updatedFavorites)
+    toggleFavorite(user, updatedFavorites)
+    this.toggleState()
   }
+
+  toggleState = () => this.setState( prevState => ({
+    isFavorite: !prevState.isFavorite
+  }))
 
   componentDidMount () {
     const { favorites, provider } = this.props;
@@ -43,7 +48,7 @@ class ProviderLoggedIn extends Component {
 
   render() {
     const { provider } = this.props;
-    
+
     return (
       <Fragment>
        <Card.Meta>

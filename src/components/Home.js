@@ -19,7 +19,7 @@ const Home = () => {
         <Popup
           trigger={ searchBar }
           on='focus'
-          content='Curently only zip code 98108 has data'
+          content='Currently only zip code 98108 has data'
           hideOnScroll
           position='right center'
         />

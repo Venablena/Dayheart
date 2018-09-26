@@ -41,10 +41,12 @@ class ProviderView extends Component {
       <Card fluid>
         <Card.Content>
           { user ? (
-              <Link to={ `/providers/${ provider.id }`}>
-                { commonProviderContent }
+              <Fragment>
+                <Link to={ `/providers/${ provider.id }`}>
+                  { commonProviderContent }
+                </Link>
                 <ProviderLoggedIn provider={provider}/>
-              </Link>
+              </Fragment>
             ):(
               <Fragment>
                 { commonProviderContent }
