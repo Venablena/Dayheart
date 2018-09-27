@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
-import { Form, Button, Grid } from 'semantic-ui-react'
-import { getProviders, filterSelection } from '../actions'
-import { withRouter } from 'react-router-dom'
-import _ from 'lodash'
+import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router-dom';
+import { Form, Button, Grid } from 'semantic-ui-react';
+import _ from 'lodash';
+import { getProviders, filterSelection } from '../actions';
+
+import SearchInput from '../components/SearchInput';
 
 export class Search extends Component {
   constructor(props) {
@@ -59,7 +61,7 @@ export class Search extends Component {
     return (
       <div className = 'wrapper'>
         <div className= 'centered'>
-          <Form.Input className = '.naked_form' label='Search near' placeholder="Enter zip code"/>
+          { <SearchInput /> }
         </div>
       <p>
       <Button basic compact floated='left' className='naked'>Age of my child:</Button>

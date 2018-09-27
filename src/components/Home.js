@@ -2,27 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Input, Divider, Popup } from 'semantic-ui-react';
 import Header from './Header';
+import SearchInput from './SearchInput';
 
 const Home = () => {
-  const searchBar = (
-    <Input
-      transparent
-      icon= 'search'
-      placeholder="Enter zip code" />
-  )
-
   return (
     <main className= 'centered'>
       <Header />
       <div className= 'wrapper'>
         <h4> Find a child care provider near you</h4>
-        <Popup
-          trigger={ searchBar }
-          on='focus'
-          content='Currently only zip code 98108 has data'
-          hideOnScroll
-          position='right center'
-        />
+        { <SearchInput /> }
         <Divider hidden />
         <Link to="/map">
           <Button className='orange' content="Search" />
