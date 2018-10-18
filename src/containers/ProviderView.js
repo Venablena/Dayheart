@@ -20,13 +20,13 @@ class ProviderView extends Component {
 
   closeOverlay = () => {
     const { toggleOverlay } = this.props;
-    return toggleOverlay(false)
+    return toggleOverlay(false);
   }
 
   render() {
     const { user, provider } = this.props;
 
-    const commonProviderContent =
+    const commonProviderContent = provider &&
       <Fragment>
         <Image
           floated='left'

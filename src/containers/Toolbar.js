@@ -13,20 +13,20 @@ const Toolbar = ({ firebase, user, userName, redirect }) => {
         <div className = 'toolbar-left'>
         { user &&
           <span onClick = { firebase.logout }>
-            { <Icon name = 'sign out'
-                    flipped= 'horizontally'
-              /> } LOG OUT
+            { <Icon name = 'sign out' flipped = 'horizontally'/> } LOG OUT
            </span>
         }
         </div>
         <div className = 'toolbar-middle'>
-          <span><Link to={'/'}>DayHeart </Link></span>
-          { userName && <span>{` - ${ userName }`}</span> }
+          <Link to={'/'}>
+            DayHeart { userName && ` - ${ userName }`}
+          </Link>
         </div>
         <div className = 'toolbar-right'>
           { user ?
             <Link to={`/${ redirect }`}>{ redirect.toUpperCase() }</Link> :
-            <Link to={'/login'}>LOG IN</Link> }
+            <Link to={'/login'}>LOG IN</Link>
+          }
         </div>
       </div>
     </div>

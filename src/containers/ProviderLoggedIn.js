@@ -24,12 +24,14 @@ class ProviderLoggedIn extends Component {
     let updatedFavorites = {}
 
 //THIS REMOVES ALL OF THE FAVORITES, FIX!!!
-    favorites[id] ?
-    updatedFavorites =  delete favorites[id]
-    :
-    updatedFavorites = {
-      ...favorites,
-      [id]: provider,
+    if(favorites[id]) {
+      delete favorites[id]
+      updatedFavorites = favorites
+    } else {
+        updatedFavorites = {
+          ...favorites,
+          [id]: provider,
+        }
     }
     toggleFavorite(user, updatedFavorites)
     this.toggleState()
