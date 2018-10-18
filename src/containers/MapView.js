@@ -7,23 +7,19 @@ import { bindActionCreators } from 'redux';
 import { toggleOverlay } from '../actions';
 
 import {
-  getUser,
   getFavoritesById,
   getProviders,
 } from '../selectors';
 
 export class MapView extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      selected: {}
-    }
+  state = {
+    selected: {}
   }
 
 //SEPARATE OVERLAY INTO A HOC/WRAPPER
   handleClick = (target) => {
     const { overlay, toggleOverlay } = this.props;
-    this.setState({ ...this.state, selected: target.provider })
+    this.setState({ selected: target.provider })
     !overlay && toggleOverlay(true)
   }
 

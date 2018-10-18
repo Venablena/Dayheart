@@ -6,11 +6,9 @@ import { toggleFavorite } from '../actions';
 import { getFavoritesById } from '../selectors';
 
 class ProviderLoggedIn extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      isFavorite: false
-    }
+  state = {
+    isFavorite: false,
+    // prevProvider: this.props.provider,
   }
 
   handleClick = () => {
@@ -41,11 +39,26 @@ class ProviderLoggedIn extends Component {
     isFavorite: !prevState.isFavorite
   }))
 
-  componentDidMount () {
-    const { favorites, provider } = this.props;
+  // componentDidMount () {
+  //   const { favorites, provider } = this.props;
+  //   favorites.hasOwnProperty(provider.id) ?
+  //   this.setState({ ...this.state, isFavorite: true }) :
+  //   this.setState({ ...this.state, isFavorite: false })
+  // }
+
+  static getDerivedStateFromProps(props, state) {
+    const { favorites, provider } = props;
+    const { prevProvider } = state;
+    console.log(provider, prevProvider);
     favorites.hasOwnProperty(provider.id) ?
     this.setState({ ...this.state, isFavorite: true }) :
     this.setState({ ...this.state, isFavorite: false })
+  }
+
+  componentDidUpdate(prevProps) {
+    const { favorites, provider } = this.props;
+    if(favorites.hasOwnProperty(provider.id)) console.log("I'm a favorite");
+    else { console.log("i'm not a favorite");}
   }
 
   render() {
